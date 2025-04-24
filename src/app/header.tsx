@@ -33,7 +33,7 @@ const Header = () => {
           <li><Link href="/detailed-offerings" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Offerings</Link></li>
           <li><Link href="/contact" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Contact</Link></li>
           <li>
-            <Button variant="accent" size="sm" className="border-2 border-accent text-accent hover:bg-accent/20 transition-colors duration-300">
+            <Button variant="accent" size="sm" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
               <Link href="/book-consultation">Book Consultation</Link>
             </Button>
           </li>
