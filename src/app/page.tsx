@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -52,6 +53,7 @@ export default function Home() {
             <CardContent>
               We create AI-driven systems tailored to your specific needs,
               automating repetitive tasks and enhancing overall efficiency.
+              <Link href="/offerings/ai-system-development" className="text-accent underline">Learn More</Link>
             </CardContent>
           </Card>
           <Card>
@@ -64,6 +66,7 @@ export default function Home() {
             <CardContent>
               Our workflow optimisation service identifies bottlenecks and
               implements AI solutions to streamline your operations.
+              <Link href="/offerings/workflow-optimisation" className="text-accent underline">Learn More</Link>
             </CardContent>
           </Card>
           <Card>
@@ -76,6 +79,7 @@ export default function Home() {
             <CardContent>
               We offer AR solutions that integrate seamlessly with your digital
               presence, creating immersive experiences for your customers.
+              <Link href="/offerings/ar-digital-integration" className="text-accent underline">Learn More</Link>
             </CardContent>
           </Card>
           <Card>
@@ -88,6 +92,7 @@ export default function Home() {
             <CardContent>
               Our consulting services provide you with the insights and strategies
               needed to successfully implement AI in your business.
+              <Link href="/offerings/consulting" className="text-accent underline">Learn More</Link>
             </CardContent>
           </Card>
         </div>
@@ -191,6 +196,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button variant="accent">Book a Consultation</Button>
           <Button variant="secondary">Sign Up for Newsletter</Button>
+          <Button variant="ghost"><Link href="/demo">View Demo</Link></Button>
         </div>
       </section>
 
