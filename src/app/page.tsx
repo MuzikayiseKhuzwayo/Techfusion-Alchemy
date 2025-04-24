@@ -36,7 +36,7 @@ export default function Home() {
           <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToOfferings}>
             Find Out More
           </Button>
-          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent">
+          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
             <Link href="/book-consultation">Book a Consultation</Link>
           </Button>
         </div>
@@ -280,9 +280,19 @@ export default function Home() {
               <Button variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300">Submit</Button>
             </form>
           </div>
+          <div>
+            <Image
+              src="https://picsum.photos/500/300" // Replace with actual image
+              alt="Happy Business Person"
+              width={500}
+              height={300}
+              className="rounded-lg shadow-md"
+            />
+          </div>
         </div>
       </section>
     </div>
   );
 }
+
 
