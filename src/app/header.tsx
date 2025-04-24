@@ -1,18 +1,40 @@
+"use client";
+
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react';
 
 const Header = () => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="bg-secondary text-secondary-foreground p-4 flex justify-between items-center">
+    <header className={`
+      sticky top-0 z-50
+      bg-secondary text-secondary-foreground
+      p-4 flex justify-between items-center
+      ${isSticky ? 'bg-secondary/75 backdrop-blur-sm' : ''}
+      transition-all duration-300
+    `}>
       <Link href="/" className="text-xl font-bold">Tehcfusion Alchemy</Link>
       <nav>
-        <ul className="flex space-x-4">
+        <ul className="flex space-x-4 items-center">
           <li><Link href="/about" className="hover:underline">About</Link></li>
           <li><Link href="/detailed-offerings" className="hover:underline">Offerings</Link></li>
           <li><Link href="/pricing" className="hover:underline">Pricing</Link></li>
           <li><Link href="/contact" className="hover:underline">Contact</Link></li>
           <li>
-            <Button variant="accent" size="sm">
+            <Button variant="accent" size="sm" className="border-2 border-accent text-accent hover:bg-accent/20 transition-colors duration-300">
               <Link href="/book-consultation">Book Consultation</Link>
             </Button>
           </li>
@@ -23,3 +45,4 @@ const Header = () => {
 };
 
 export default Header;
+
