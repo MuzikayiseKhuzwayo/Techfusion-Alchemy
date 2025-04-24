@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
-      <section className="text-center mb-16 pb-44">
+      <section className="text-center mb-16 pb-20">
         <h1 className="text-4xl font-bold text-primary mb-4">
           Revolutionising Productivity Through Intelligent Automation
         </h1>
@@ -316,4 +316,5 @@ export default function Home() {
     </div>
   );
 }
+
 
