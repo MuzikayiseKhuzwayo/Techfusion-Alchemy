@@ -43,10 +43,10 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="mb-32 pb-79">
+      <section className="mb-32 pb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-2 gap-8 mt-20">
+        <div className="grid grid-cols-2 gap-8 mt-10">
           {/* Our Story */}
           <div className="flex items-center justify-center">
             <p className="text-md text-foreground mb-4 text-center">
@@ -86,10 +86,10 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-32 pb-79" ref={offeringsRef}>
+      <section className="mb-32 pb-20" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>AI System Development</CardTitle>
@@ -178,12 +178,12 @@ export default function Home() {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="mb-32 pb-79">
+      <section className="mb-32 pb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
         <div className="section-title-divider"></div>
-        <Card className="mt-20">
+        <Card className="mt-10">
           <CardHeader>
             <CardTitle>Increased Efficiency by 40%</CardTitle>
             <CardDescription>
@@ -202,10 +202,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="mb-32 pb-79">
+      <section className="mb-32 pb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Innovative Approach</CardTitle>
@@ -242,10 +242,10 @@ export default function Home() {
       </section>
 
       {/* Engagement Section */}
-      <section className="mb-32 pb-79">
+      <section className="mb-32 pb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
           <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Consultation</Button>
           <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
           <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300"><Link href="/demo">View Demo</Link></Button>
@@ -253,10 +253,10 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="pb-79">
+      <section className="pb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <div>
             <form className="space-y-4">
               <div>
