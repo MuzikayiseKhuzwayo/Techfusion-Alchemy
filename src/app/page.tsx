@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -26,13 +27,13 @@ export default function Home() {
 
       {/* About Us Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-primary mb-4">About Us</h2>
-        <p className="text-md text-foreground mb-4">
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
+        <p className="text-md text-foreground mb-4 text-center">
           Tehcfusion Alchemy was born from a vision to help businesses thrive in
           the digital age. We leverage the power of AI and automation to create
           bespoke solutions that drive efficiency and innovation.
         </p>
-        <p className="text-md text-foreground mb-4">
+        <p className="text-md text-foreground mb-4 text-center">
           Our expertise lies in crafting intelligent systems that adapt to your
           unique needs. We value innovation, reliability, and a relentless focus
           on customer success.
@@ -41,58 +42,90 @@ export default function Home() {
 
       {/* Offerings Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-primary mb-4">Our Offerings</h2>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>AI System Development</CardTitle>
               <CardDescription>
                 Customised automation workflows to optimise business processes.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              We create AI-driven systems tailored to your specific needs,
-              automating repetitive tasks and enhancing overall efficiency.
-              <Link href="/offerings/ai-system-development" className="text-accent underline">Learn More</Link>
+            <CardContent className="flex flex-col justify-between">
+              <p className="text-md text-foreground mb-4">
+                We create AI-driven systems tailored to your specific needs,
+                automating repetitive tasks and enhancing overall efficiency.
+              </p>
+              <div className="flex justify-center">
+                <Button variant="link" asChild>
+                  <Link href="/offerings/ai-system-development" className="text-accent">
+                    Learn More
+                  </Link>
+                </Button>
+              </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Workflow Optimisation</CardTitle>
               <CardDescription>
                 Streamlining tasks for maximum productivity.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              Our workflow optimisation service identifies bottlenecks and
-              implements AI solutions to streamline your operations.
-              <Link href="/offerings/workflow-optimisation" className="text-accent underline">Learn More</Link>
+            <CardContent className="flex flex-col justify-between">
+              <p className="text-md text-foreground mb-4">
+                Our workflow optimisation service identifies bottlenecks and
+                implements AI solutions to streamline your operations.
+              </p>
+              <div className="flex justify-center">
+                <Button variant="link" asChild>
+                  <Link href="/offerings/workflow-optimisation" className="text-accent">
+                    Learn More
+                  </Link>
+                </Button>
+              </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>AR and Digital Integration</CardTitle>
               <CardDescription>
                 Augmented Reality solutions for enhanced customer engagement.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              We offer AR solutions that integrate seamlessly with your digital
-              presence, creating immersive experiences for your customers.
-              <Link href="/offerings/ar-digital-integration" className="text-accent underline">Learn More</Link>
+            <CardContent className="flex flex-col justify-between">
+              <p className="text-md text-foreground mb-4">
+                We offer AR solutions that integrate seamlessly with your digital
+                presence, creating immersive experiences for your customers.
+              </p>
+              <div className="flex justify-center">
+                <Button variant="link" asChild>
+                  <Link href="/offerings/ar-digital-integration" className="text-accent">
+                    Learn More
+                  </Link>
+                </Button>
+              </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Consulting</CardTitle>
               <CardDescription>
                 Expert advice on AI implementation tailored to business needs.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              Our consulting services provide you with the insights and strategies
-              needed to successfully implement AI in your business.
-              <Link href="/offerings/consulting" className="text-accent underline">Learn More</Link>
+            <CardContent className="flex flex-col justify-between">
+              <p className="text-md text-foreground mb-4">
+                Our consulting services provide you with the insights and strategies
+                needed to successfully implement AI in your business.
+              </p>
+              <div className="flex justify-center">
+                <Button variant="link" asChild>
+                  <Link href="/offerings/consulting" className="text-accent">
+                    Learn More
+                  </Link>
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -100,7 +133,7 @@ export default function Home() {
 
       {/* Pricing Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-primary mb-4">Pricing</h2>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Pricing</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card>
             <CardHeader>
@@ -152,13 +185,13 @@ export default function Home() {
           </Card>
         </div>
         <div className="text-center mt-8">
-          <Button variant="accent">Book a Consultation</Button>
+          <Button variant="accent" className="border-2 border-accent text-accent">Book a Consultation</Button>
         </div>
       </section>
 
       {/* Client Success Stories Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-primary mb-4">
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
         <Card>
@@ -181,18 +214,46 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-primary mb-4">Why Choose Us</h2>
-        <ul className="list-disc pl-5 text-md text-foreground">
-          <li>Innovative Approach</li>
-          <li>Personalised Solutions</li>
-          <li>Measurable Results</li>
-          <li>Expert Team</li>
-        </ul>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Innovative Approach</CardTitle>
+            </CardHeader>
+            <CardContent>
+              We leverage the latest AI technologies to create innovative solutions that drive efficiency and growth.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Personalised Solutions</CardTitle>
+            </CardHeader>
+            <CardContent>
+              We tailor our solutions to meet your specific business needs, ensuring maximum impact and value.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Measurable Results</CardTitle>
+            </CardHeader>
+            <CardContent>
+              We focus on delivering measurable results that demonstrate the value of our services and drive tangible outcomes.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Expert Team</CardTitle>
+            </CardHeader>
+            <CardContent>
+              Our team of experts brings years of experience in AI and automation to deliver exceptional results for our clients.
+            </CardContent>
+          </Card>
+        </div>
       </section>
 
       {/* Engagement Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-primary mb-4">Get Started</h2>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button variant="accent">Book a Consultation</Button>
           <Button variant="secondary">Sign Up for Newsletter</Button>
@@ -202,7 +263,7 @@ export default function Home() {
 
       {/* Contact Us Section */}
       <section>
-        <h2 className="text-3xl font-semibold text-primary mb-4">Contact Us</h2>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <form className="space-y-4">
@@ -226,20 +287,6 @@ export default function Home() {
               </div>
               <Button variant="primary">Submit</Button>
             </form>
-          </div>
-          <div>
-            <p className="text-md text-foreground">
-              Additional Contact Details:
-            </p>
-            <p className="text-md text-foreground">
-              Phone: +44 1234 567890
-            </p>
-            <p className="text-md text-foreground">
-              Email: info@tehcfusionalchemy.com
-            </p>
-            <p className="text-md text-foreground">
-              Address: 123 Alchemy Street, London, UK
-            </p>
           </div>
         </div>
       </section>
