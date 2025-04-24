@@ -246,9 +246,9 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-20">
-          <Button variant="accent">Book a Consultation</Button>
-          <Button variant="secondary">Sign Up for Newsletter</Button>
-          <Button variant="ghost"><Link href="/demo">View Demo</Link></Button>
+          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Consultation</Button>
+          <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
+          <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300"><Link href="/demo">View Demo</Link></Button>
         </div>
       </section>
 
@@ -285,3 +285,4 @@ export default function Home() {
     </div>
   );
 }
+
