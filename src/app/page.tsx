@@ -19,17 +19,25 @@ export default function Home() {
           Empowering Founders and Professionals with Tailor-Made AI Solutions
         </p>
         <p className="text-md text-foreground">
-          Tehcfusion Alchemy is an automation agency dedicated to transforming
+          TechFusion Alchemy is an automation agency dedicated to transforming
           businesses through innovative AI solutions. Our mission is to streamline
           operations, enhance productivity, and drive growth for our clients.
         </p>
+        <div className="flex justify-center mt-8 space-x-4">
+          <Button variant="accent" className="border-2 border-accent text-accent">
+            Find Out More
+          </Button>
+          <Button variant="primary" className="bg-primary text-primary-foreground">
+            Book a Consultation
+          </Button>
+        </div>
       </section>
 
       {/* About Us Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
         <p className="text-md text-foreground mb-4 text-center">
-          Tehcfusion Alchemy was born from a vision to help businesses thrive in
+          TechFusion Alchemy was born from a vision to help businesses thrive in
           the digital age. We leverage the power of AI and automation to create
           bespoke solutions that drive efficiency and innovation.
         </p>
@@ -203,7 +211,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <p className="text-md text-foreground">
-              "Thanks to Tehcfusion Alchemy, we've seen a remarkable improvement
+              "Thanks to TechFusion Alchemy, we've seen a remarkable improvement
               in our operational efficiency. Their AI solutions have saved us
               time and resources, allowing us to focus on growth." - John Smith,
               CEO
