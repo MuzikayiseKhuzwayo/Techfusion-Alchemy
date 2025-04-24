@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
-      <section className="text-center mb-20 pb-20">
+      <section className="text-center mb-20">
         <h1 className="text-4xl font-bold text-primary mb-4">
           Revolutionising Productivity Through Intelligent Automation
         </h1>
@@ -43,7 +43,7 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="mb-32 pb-20">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-2 gap-8 mt-10">
@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-32 pb-20" ref={offeringsRef}>
+      <section className="mb-20" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="mb-32 pb-20">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
@@ -202,7 +202,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="mb-32 pb-20">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
@@ -242,7 +242,7 @@ export default function Home() {
       </section>
 
       {/* Engagement Section */}
-      <section className="mb-32 pb-20">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
@@ -253,7 +253,7 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="pb-20">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
@@ -285,5 +285,4 @@ export default function Home() {
     </div>
   );
 }
-
 
