@@ -36,9 +36,9 @@ const Footer = () => {
           </div>
 
           {/* Social Links */}
-          <div>
+          <div className="flex flex-col items-center">
             <p className="font-bold">Follow Us</p>
-            <div className="flex space-x-4">
+            <div className="flex flex-col space-y-4">
               <Link href="#" className="hover:text-accent">
                 <Facebook size={20} />
               </Link>
@@ -73,3 +73,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
