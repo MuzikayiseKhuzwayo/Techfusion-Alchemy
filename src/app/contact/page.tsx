@@ -8,10 +8,11 @@ import Image from 'next/image';
 const ContactPage = () => {
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4 text-center">Contact Us</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <h1 className="text-3xl font-bold mb-4 text-center text-[#F2C72C]">Contact Us</h1>
+      <div className="section-title-divider"></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
         <div>
-          <form className="space-y-4">
+          <form className="space-y-4 border rounded-lg p-8 shadow-md">
             <div>
               <label className="block text-sm font-medium text-foreground mb-1">
                 Name
@@ -30,7 +31,7 @@ const ContactPage = () => {
               </label>
               <Textarea placeholder="Your Message" />
             </div>
-            <Button variant="primary">Submit</Button>
+            <Button variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300">Submit</Button>
           </form>
         </div>
         <div>
@@ -48,4 +49,5 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+
 
