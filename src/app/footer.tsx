@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import {Facebook, Instagram, Twitter, Youtube} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -23,18 +24,34 @@ const Footer = () => {
             </ul>
           </nav>
 
-          {/* Contact Information */}
+          {/* Combined Contact Information and Address */}
           <div>
             <p className="font-bold">Contact</p>
             <p>Phone: +44 1234 567890</p>
             <p>Email: info@techfusionalchemy.com</p>
-          </div>
-
-          {/* Address */}
-          <div>
+            <br />
             <p className="font-bold">Address</p>
             <p>123 Alchemy Street</p>
             <p>London, UK</p>
+          </div>
+
+          {/* Social Links */}
+          <div>
+            <p className="font-bold">Follow Us</p>
+            <div className="flex space-x-4">
+              <Link href="#" className="hover:text-accent">
+                <Facebook size={20} />
+              </Link>
+              <Link href="#" className="hover:text-accent">
+                <Instagram size={20} />
+              </Link>
+              <Link href="#" className="hover:text-accent">
+                <Twitter size={20} />
+              </Link>
+              <Link href="#" className="hover:text-accent">
+                <Youtube size={20} />
+              </Link>
+            </div>
           </div>
         </div>
 
