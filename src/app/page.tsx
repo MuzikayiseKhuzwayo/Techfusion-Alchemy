@@ -36,7 +36,7 @@ export default function Home() {
           <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToOfferings}>
             Find Out More
           </Button>
-          <Button variant="accent" className="border-2 border-accent text-secondary-foreground bg-accent">
+          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent">
             <Link href="/book-consultation">Book a Consultation</Link>
           </Button>
         </div>
@@ -257,7 +257,7 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <div>
+          <div className="border rounded-lg p-8 shadow-md">
             <form className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1">
@@ -277,7 +277,7 @@ export default function Home() {
                 </label>
                 <Textarea placeholder="Your Message" />
               </div>
-              <Button variant="primary">Submit</Button>
+              <Button variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300">Submit</Button>
             </form>
           </div>
         </div>
@@ -285,4 +285,5 @@ export default function Home() {
     </div>
   );
 }
+
 
