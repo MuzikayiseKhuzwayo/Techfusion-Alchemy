@@ -11,6 +11,13 @@ html {
   color-scheme: dark;
 }
 
+/* Custom Section Title Divider */
+.section-title-divider {
+  width: 100px;
+  margin: 10px auto;
+  border-bottom: 2px solid #F2C72C; /* Match the yellow accent */
+}
+
 @layer base {
   :root {
     --background: 210 10% 10%; /* Dark Gray */
@@ -56,3 +63,4 @@ html {
     @apply bg-background text-foreground;
   }
 }
+

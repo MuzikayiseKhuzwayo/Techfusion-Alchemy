@@ -18,10 +18,11 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
-      <section className="text-center mb-16">
+      <section className="text-center mb-16 pb-24">
         <h1 className="text-4xl font-bold text-primary mb-4">
           Revolutionising Productivity Through Intelligent Automation
         </h1>
+        <div className="section-title-divider"></div>
         <p className="text-lg text-secondary mb-8">
           Empowering Founders and Professionals with Tailor-Made AI Solutions
         </p>
@@ -31,18 +32,19 @@ export default function Home() {
           operations, enhance productivity, and drive growth for our clients.
         </p>
         <div className="flex justify-center mt-8 space-x-4">
-          <Button variant="accent" className="border-2 border-accent text-accent" onClick={scrollToOfferings}>
+          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToOfferings}>
             Find Out More
           </Button>
           <Button variant="accent" className="border-2 border-accent text-secondary-foreground bg-accent">
-            Book a Consultation
+            <Link href="/book-consultation">Book a Consultation</Link>
           </Button>
         </div>
       </section>
 
       {/* About Us Section */}
-      <section className="mb-16">
+      <section className="mb-16 pb-24">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
+        <div className="section-title-divider"></div>
         <p className="text-md text-foreground mb-4 text-center">
           TechFusion Alchemy was born from a vision to help businesses thrive in
           the digital age. We leverage the power of AI and automation to create
@@ -56,8 +58,9 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-16" ref={offeringsRef}>
+      <section className="mb-16 pb-24" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
+        <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
@@ -73,7 +76,7 @@ export default function Home() {
               </p>
               <div className="flex justify-center">
                 <Button variant="link" asChild>
-                  <Link href="/offerings/ai-system-development" className="text-accent">
+                  <Link href="/detailed-offerings" className="text-accent">
                     Learn More
                   </Link>
                 </Button>
@@ -94,7 +97,7 @@ export default function Home() {
               </p>
               <div className="flex justify-center">
                 <Button variant="link" asChild>
-                  <Link href="/offerings/workflow-optimisation" className="text-accent">
+                  <Link href="/detailed-offerings" className="text-accent">
                     Learn More
                   </Link>
                 </Button>
@@ -115,7 +118,7 @@ export default function Home() {
               </p>
               <div className="flex justify-center">
                 <Button variant="link" asChild>
-                  <Link href="/offerings/ar-digital-integration" className="text-accent">
+                  <Link href="/detailed-offerings" className="text-accent">
                     Learn More
                   </Link>
                 </Button>
@@ -136,7 +139,7 @@ export default function Home() {
               </p>
               <div className="flex justify-center">
                 <Button variant="link" asChild>
-                  <Link href="/offerings/consulting" className="text-accent">
+                  <Link href="/detailed-offerings" className="text-accent">
                     Learn More
                   </Link>
                 </Button>
@@ -147,8 +150,9 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="mb-16">
+      <section className="mb-16 pb-24">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Pricing</h2>
+        <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card>
             <CardHeader>
@@ -205,10 +209,11 @@ export default function Home() {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="mb-16">
+      <section className="mb-16 pb-24">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
+        <div className="section-title-divider"></div>
         <Card>
           <CardHeader>
             <CardTitle>Increased Efficiency by 40%</CardTitle>
@@ -228,8 +233,9 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="mb-16">
+      <section className="mb-16 pb-24">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
+        <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
@@ -267,8 +273,9 @@ export default function Home() {
       </section>
 
       {/* Engagement Section */}
-      <section className="mb-16">
+      <section className="mb-16 pb-24">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
+        <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button variant="accent">Book a Consultation</Button>
           <Button variant="secondary">Sign Up for Newsletter</Button>
@@ -277,8 +284,9 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section>
+      <section className="pb-24">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
+        <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <form className="space-y-4">
@@ -308,3 +316,4 @@ export default function Home() {
     </div>
   );
 }
+
