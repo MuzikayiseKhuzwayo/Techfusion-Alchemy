@@ -31,7 +31,6 @@ const Header = () => {
         <ul className="flex space-x-4 items-center">
           <li><Link href="/about" className="hover:underline text-foreground px-4 py-2 hover:text-accent">About</Link></li>
           <li><Link href="/detailed-offerings" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Offerings</Link></li>
-          <li><Link href="/pricing" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Pricing</Link></li>
           <li><Link href="/contact" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Contact</Link></li>
           <li>
             <Button variant="accent" size="sm" className="border-2 border-accent text-accent hover:bg-accent/20 transition-colors duration-300">

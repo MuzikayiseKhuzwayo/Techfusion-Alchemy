@@ -177,65 +177,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="mb-32 pb-79">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Pricing</h2>
-        <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-          <Card>
-            <CardHeader>
-              <CardTitle>Starter</CardTitle>
-              <CardDescription>
-                Basic automation solutions for small businesses.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc pl-5">
-                <li>Workflow analysis</li>
-                <li>Basic AI implementation</li>
-                <li>Email support</li>
-              </ul>
-              <p className="font-bold mt-4">£499/month</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Premium</CardTitle>
-              <CardDescription>
-                Advanced automation with dedicated support.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc pl-5">
-                <li>Custom AI development</li>
-                <li>Dedicated support team</li>
-                <li>Advanced analytics</li>
-              </ul>
-              <p className="font-bold mt-4">£999/month</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Enterprise</CardTitle>
-              <CardDescription>
-                Comprehensive AI solutions for large organisations.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc pl-5">
-                <li>Full AI system integration</li>
-                <li>24/7 priority support</li>
-                <li>Bespoke AR solutions</li>
-              </ul>
-              <p className="font-bold mt-4">Custom Quote</p>
-            </CardContent>
-          </Card>
-        </div>
-        <div className="text-center mt-8">
-          <Button variant="accent" className="border-2 border-accent text-accent">Book a Consultation</Button>
-        </div>
-      </section>
-
       {/* Client Success Stories Section */}
       <section className="mb-32 pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
@@ -344,4 +285,3 @@ export default function Home() {
     </div>
   );
 }
-
