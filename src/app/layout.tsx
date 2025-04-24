@@ -13,7 +13,7 @@ const shareTechMono = Share_Tech_Mono({
 
 export const metadata: Metadata = {
   title: 'Alchemy Automate',
-  description: 'Tehcfusion Alchemy - Automation Agency',
+  description: 'TechFusion Alchemy - Automation Agency',
 };
 
 export default function RootLayout({
@@ -32,4 +32,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
