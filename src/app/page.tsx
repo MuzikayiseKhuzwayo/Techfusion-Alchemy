@@ -6,8 +6,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
 
 export default function Home() {
+  const offeringsRef = useRef(null);
+
+  const scrollToOfferings = () => {
+    offeringsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
@@ -24,10 +31,10 @@ export default function Home() {
           operations, enhance productivity, and drive growth for our clients.
         </p>
         <div className="flex justify-center mt-8 space-x-4">
-          <Button variant="accent" className="border-2 border-accent text-accent">
+          <Button variant="accent" className="border-2 border-accent text-accent" onClick={scrollToOfferings}>
             Find Out More
           </Button>
-          <Button variant="primary" className="bg-primary text-primary-foreground">
+          <Button variant="accent" className="border-2 border-accent text-secondary-foreground bg-accent">
             Book a Consultation
           </Button>
         </div>
@@ -49,7 +56,7 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-16">
+      <section className="mb-16" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
