@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
+import Image from 'next/image';
 
 export default function Home() {
   const offeringsRef = useRef(null);
@@ -42,23 +43,50 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="mb-12 pb-39">
+      <section className="mb-32 pb-59">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
         <div className="section-title-divider"></div>
-        <p className="text-md text-foreground mb-4 text-center">
-          TechFusion Alchemy was born from a vision to help businesses thrive in
-          the digital age. We leverage the power of AI and automation to create
-          bespoke solutions that drive efficiency and innovation.
-        </p>
-        <p className="text-md text-foreground mb-4 text-center">
-          Our expertise lies in crafting intelligent systems that adapt to your
-          unique needs. We value innovation, reliability, and a relentless focus
-          on customer success.
-        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Our Story */}
+          <div className="md:col-span-1">
+            <p className="text-md text-foreground mb-4 text-center">
+              TechFusion Alchemy was born from a vision to help businesses thrive in
+              the digital age. We leverage the power of AI and automation to create
+              bespoke solutions that drive efficiency and innovation.
+            </p>
+          </div>
+          <div className="md:col-span-1">
+            <Image
+              src="https://picsum.photos/500/300?random=1"
+              alt="Our Story"
+              width={500}
+              height={300}
+              className="rounded-lg shadow-md"
+            />
+          </div>
+
+          {/* Our Expertise */}
+          <div className="md:col-span-1">
+            <Image
+              src="https://picsum.photos/500/300?random=2"
+              alt="Our Expertise"
+              width={500}
+              height={300}
+              className="rounded-lg shadow-md"
+            />
+          </div>
+          <div className="md:col-span-1">
+            <p className="text-md text-foreground mb-4 text-center">
+              Our expertise lies in crafting intelligent systems that adapt to your
+              unique needs. We value innovation, reliability, and a relentless focus
+              on customer success.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-12 pb-39" ref={offeringsRef}>
+      <section className="mb-32 pb-59" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -150,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="mb-12 pb-39">
+      <section className="mb-32 pb-59">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Pricing</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -209,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="mb-12 pb-39">
+      <section className="mb-32 pb-59">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
@@ -233,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="mb-12 pb-39">
+      <section className="mb-32 pb-59">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -273,7 +301,7 @@ export default function Home() {
       </section>
 
       {/* Engagement Section */}
-      <section className="mb-12 pb-39">
+      <section className="mb-32 pb-59">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -284,7 +312,7 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="pb-39">
+      <section className="pb-59">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -316,5 +344,4 @@ export default function Home() {
     </div>
   );
 }
-
 
