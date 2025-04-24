@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
-      <section className="text-center mb-16 pb-20">
+      <section className="text-center mb-20 pb-20">
         <h1 className="text-4xl font-bold text-primary mb-4">
           Revolutionising Productivity Through Intelligent Automation
         </h1>
@@ -43,39 +43,39 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="mb-32 pb-59">
+      <section className="mb-32 pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-8 mt-20">
           {/* Our Story */}
-          <div className="md:col-span-1">
+          <div className="flex items-center justify-center">
             <p className="text-md text-foreground mb-4 text-center">
               TechFusion Alchemy was born from a vision to help businesses thrive in
               the digital age. We leverage the power of AI and automation to create
               bespoke solutions that drive efficiency and innovation.
             </p>
           </div>
-          <div className="md:col-span-1">
+          <div className="flex items-center justify-center">
             <Image
               src="https://picsum.photos/500/300?random=1"
               alt="Our Story"
               width={500}
               height={300}
-              className="rounded-lg shadow-md"
+              className="rounded-[50px] shadow-md"
             />
           </div>
 
           {/* Our Expertise */}
-          <div className="md:col-span-1">
+          <div className="flex items-center justify-center">
             <Image
               src="https://picsum.photos/500/300?random=2"
               alt="Our Expertise"
               width={500}
               height={300}
-              className="rounded-lg shadow-md"
+              className="rounded-[50px] shadow-md"
             />
           </div>
-          <div className="md:col-span-1">
+          <div className="flex items-center justify-center">
             <p className="text-md text-foreground mb-4 text-center">
               Our expertise lies in crafting intelligent systems that adapt to your
               unique needs. We value innovation, reliability, and a relentless focus
@@ -86,10 +86,10 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-32 pb-59" ref={offeringsRef}>
+      <section className="mb-32 pb-79" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>AI System Development</CardTitle>
@@ -178,10 +178,10 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="mb-32 pb-59">
+      <section className="mb-32 pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Pricing</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
           <Card>
             <CardHeader>
               <CardTitle>Starter</CardTitle>
@@ -237,12 +237,12 @@ export default function Home() {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="mb-32 pb-59">
+      <section className="mb-32 pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
         <div className="section-title-divider"></div>
-        <Card>
+        <Card className="mt-20">
           <CardHeader>
             <CardTitle>Increased Efficiency by 40%</CardTitle>
             <CardDescription>
@@ -261,10 +261,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="mb-32 pb-59">
+      <section className="mb-32 pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>Innovative Approach</CardTitle>
@@ -301,10 +301,10 @@ export default function Home() {
       </section>
 
       {/* Engagement Section */}
-      <section className="mb-32 pb-59">
+      <section className="mb-32 pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-20">
           <Button variant="accent">Book a Consultation</Button>
           <Button variant="secondary">Sign Up for Newsletter</Button>
           <Button variant="ghost"><Link href="/demo">View Demo</Link></Button>
@@ -312,10 +312,10 @@ export default function Home() {
       </section>
 
       {/* Contact Us Section */}
-      <section className="pb-59">
+      <section className="pb-79">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
           <div>
             <form className="space-y-4">
               <div>
