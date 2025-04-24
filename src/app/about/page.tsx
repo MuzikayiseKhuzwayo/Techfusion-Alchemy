@@ -35,7 +35,7 @@ const AboutPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-center">Innovation</CardTitle>
+              <CardTitle className="text-center text-[#8A0000]">Innovation</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col justify-between">
               <Image
@@ -52,7 +52,7 @@ const AboutPage = () => {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-center">Reliability</CardTitle>
+              <CardTitle className="text-center text-[#8A0000]">Reliability</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col justify-between">
               <Image
@@ -69,7 +69,7 @@ const AboutPage = () => {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-center">Customer Focus</CardTitle>
+              <CardTitle className="text-center text-[#8A0000]">Customer Focus</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col justify-between">
               <Image
@@ -91,3 +91,4 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
