@@ -26,13 +26,13 @@ const Header = () => {
       ${isSticky ? 'bg-secondary/75 backdrop-blur-sm' : ''}
       transition-all duration-300
     `}>
-      <Link href="/" className="text-xl font-bold">Tehcfusion Alchemy</Link>
+      <Link href="/" className="text-xl font-bold text-foreground">TechFusion Alchemy</Link>
       <nav>
         <ul className="flex space-x-4 items-center">
-          <li><Link href="/about" className="hover:underline">About</Link></li>
-          <li><Link href="/detailed-offerings" className="hover:underline">Offerings</Link></li>
-          <li><Link href="/pricing" className="hover:underline">Pricing</Link></li>
-          <li><Link href="/contact" className="hover:underline">Contact</Link></li>
+          <li><Link href="/about" className="hover:underline text-foreground px-4 py-2 hover:text-accent">About</Link></li>
+          <li><Link href="/detailed-offerings" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Offerings</Link></li>
+          <li><Link href="/pricing" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Pricing</Link></li>
+          <li><Link href="/contact" className="hover:underline text-foreground px-4 py-2 hover:text-accent">Contact</Link></li>
           <li>
             <Button variant="accent" size="sm" className="border-2 border-accent text-accent hover:bg-accent/20 transition-colors duration-300">
               <Link href="/book-consultation">Book Consultation</Link>
@@ -45,4 +45,5 @@ const Header = () => {
 };
 
 export default Header;
+
 
