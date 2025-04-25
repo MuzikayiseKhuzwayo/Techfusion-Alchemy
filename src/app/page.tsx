@@ -218,6 +218,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Explore Our Stack Section */}
+      <section className="mb-20">
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Explore Our Stack</h2>
+        <p className="text-md text-foreground mb-4 text-center">
+          {/* Insert Engaging subtitle posed to show how in the know we are about tending things. */}
+        </p>
+        <div className="section-title-divider"></div>
+        <Carousel
+          opts={{
+            loop: true,
+            dragFree: true,
+            slidesToScroll: 1,
+          }}
+          className="w-full max-w-2xl mx-auto"
+        >
+          <CarouselContent className="-ml-1 pl-1">
+            {logos.map((logo) => (
+              <CarouselItem key={logo.id} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Image
+                    src={logo.src}
+                    width={100}
+                    height={50}
+                    alt={logo.name}
+                    className="aspect-video rounded-md object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-2" />
+          <CarouselNext className="right-2" />
+        </Carousel>
+      </section>
+
       {/* Client Success Stories Section */}
       <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
@@ -240,47 +275,6 @@ export default function Home() {
             </p>
           </CardContent>
         </Card>
-      </section>
-
-      {/* Explore Our Stack Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Explore Our Stack</h2>
-        <p className="text-md text-foreground mb-4 text-center">
-          {/* Insert Engaging subtitle posed to show how in the know we are about tending things. */}
-        </p>
-        <div className="section-title-divider"></div>
-        <Carousel
-          opts={{
-            loop: true,
-            dragFree: true,
-            slidesToScroll: 1,
-          }}
-          plugins={[
-            // Autoplay({
-            //   delay: 2000,
-            //   stopOnInteraction: false,
-            // }),
-          ]}
-          className="w-full max-w-2xl mx-auto"
-        >
-          <CarouselContent className="-ml-1 pl-1">
-            {logos.map((logo) => (
-              <CarouselItem key={logo.id} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Image
-                    src={logo.src}
-                    width={100}
-                    height={50}
-                    alt={logo.name}
-                    className="aspect-video rounded-md object-cover"
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
-        </Carousel>
       </section>
 
       {/* Engagement Section */}
@@ -336,4 +330,3 @@ export default function Home() {
     </div>
   );
 }
-
