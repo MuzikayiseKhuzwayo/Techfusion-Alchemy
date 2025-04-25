@@ -7,6 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useRef } from "react";
 import Image from 'next/image';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Autoplay from 'embla-carousel-autoplay'
+import React from "react";
 
 export default function Home() {
   const offeringsRef = useRef(null);
@@ -46,6 +49,31 @@ export default function Home() {
       subtitle: "Integrated systems automating orders, onboarding, and task distribution upon deal closure.",
       textContent: "Orders, onboarding, task distribution — all handled by integrated systems the moment a deal closes.",
     },
+  ];
+
+  const logos = [
+    { id: 1, name: 'n8n', src: 'https://picsum.photos/100/50' },
+    { id: 2, name: 'Make', src: 'https://picsum.photos/100/50' },
+    { id: 3, name: 'ChatGPT API', src: 'https://picsum.photos/100/50' },
+    { id: 4, name: 'ElevenLabs', src: 'https://picsum.photos/100/50' },
+    { id: 5, name: 'HeyGen', src: 'https://picsum.photos/100/50' },
+    { id: 6, name: 'Synthesia', src: 'https://picsum.photos/100/50' },
+    { id: 7, name: 'Notion', src: 'https://picsum.photos/100/50' },
+    { id: 8, name: 'Airtable', src: 'https://picsum.photos/100/50' },
+    { id: 9, name: 'Twilio', src: 'https://picsum.photos/100/50' },
+    { id: 10, name: 'Puppeteer', src: 'https://picsum.photos/100/50' },
+    { id: 11, name: 'Playwright', src: 'https://picsum.photos/100/50' },
+    { id: 12, name: 'LinkedIn Scraper', src: 'https://picsum.photos/100/50' },
+    { id: 13, name: 'Calendly', src: 'https://picsum.photos/100/50' },
+    { id: 14, name: 'Custom CRMs', src: 'https://picsum.photos/100/50' },
+    { id: 15, name: 'Firebase', src: 'https://picsum.photos/100/50' },
+    { id: 16, name: 'Supabase', src: 'https://picsum.photos/100/50' },
+    { id: 17, name: 'Stripe', src: 'https://picsum.photos/100/50' },
+    { id: 18, name: 'Paystack', src: 'https://picsum.photos/100/50' },
+    { id: 19, name: 'PayPal', src: 'https://picsum.photos/100/50' },
+    { id: 20, name: 'Hubspot', src: 'https://picsum.photos/100/50' },
+    { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50' },
+    { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50' },
   ];
 
   return (
@@ -214,6 +242,47 @@ export default function Home() {
         </Card>
       </section>
 
+      {/* Explore Our Stack Section */}
+      <section className="mb-20">
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Explore Our Stack</h2>
+        <p className="text-md text-foreground mb-4 text-center">
+          {/* Insert Engaging subtitle posed to show how in the know we are about tending things. */}
+        </p>
+        <div className="section-title-divider"></div>
+        <Carousel
+          opts={{
+            loop: true,
+            dragFree: true,
+            slidesToScroll: 1,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 2000,
+              stopOnInteraction: false,
+            }),
+          ]}
+          className="w-full max-w-2xl mx-auto"
+        >
+          <CarouselContent className="-ml-1 pl-1">
+            {logos.map((logo) => (
+              <CarouselItem key={logo.id} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Image
+                    src={logo.src}
+                    width={100}
+                    height={50}
+                    alt={logo.name}
+                    className="aspect-video rounded-md object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-2" />
+          <CarouselNext className="right-2" />
+        </Carousel>
+      </section>
+
       {/* Engagement Section */}
       <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
@@ -267,4 +336,3 @@ export default function Home() {
     </div>
   );
 }
-
