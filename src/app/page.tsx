@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import Autoplay from 'embla-carousel-autoplay'
+// import Autoplay from 'embla-carousel-autoplay'
 import React from "react";
 
 export default function Home() {
@@ -256,10 +256,10 @@ export default function Home() {
             slidesToScroll: 1,
           }}
           plugins={[
-            Autoplay({
-              delay: 2000,
-              stopOnInteraction: false,
-            }),
+            // Autoplay({
+            //   delay: 2000,
+            //   stopOnInteraction: false,
+            // }),
           ]}
           className="w-full max-w-2xl mx-auto"
         >
@@ -336,3 +336,4 @@ export default function Home() {
     </div>
   );
 }
+
