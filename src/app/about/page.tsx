@@ -10,7 +10,7 @@ const AboutPage = () => {
       <h1 className="text-3xl font-bold mb-4 text-center text-[#F2C72C]">About Us</h1>
       <div className="section-title-divider"></div>
       <section className="mb-6 mt-10">
-        <h2 className="text-2xl font-semibold mb-2 text-center text-[#F2C72C]">Our Story</h2>
+        <h2 className="text-2xl font-semibold mb-2 text-center text-[#B66B19]">Our Story</h2>
         <div className="section-title-divider"></div>
         <p className="text-center mt-10">
           TechFusion Alchemy was founded with a vision to transform businesses through the power of automation.
@@ -20,7 +20,7 @@ const AboutPage = () => {
       </section>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2 text-center text-[#F2C72C]">Our Vision</h2>
+        <h2 className="text-2xl font-semibold mb-2 text-center text-[#B66B19]">Our Vision</h2>
         <div className="section-title-divider"></div>
         <p className="text-center mt-10">
           Our vision is to be the leading automation agency, empowering businesses to achieve their full potential
@@ -30,7 +30,7 @@ const AboutPage = () => {
       </section>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2 text-center text-[#F2C72C]">Our Values</h2>
+        <h2 className="text-2xl font-semibold mb-2 text-center text-[#B66B19]">Our Values</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
