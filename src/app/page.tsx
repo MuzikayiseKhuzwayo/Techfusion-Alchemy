@@ -43,15 +43,14 @@ export default function Home() {
 
       {/* About Us Section */}
       <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">About Us</h2>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">You're Losing Time, Leads, and Sales Every Day.</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-2 gap-8 mt-10">
           {/* Our Story */}
           <div className="flex items-center justify-center">
             <p className="text-md text-foreground mb-4 text-center">
-              TechFusion Alchemy was born from a vision to help businesses thrive in
-              the digital age. We leverage the power of AI and automation to create
-              bespoke solutions that drive efficiency and innovation.
+              Most businesses still run on manual effort, missed follow-ups, and messy sales funnels.
+              Speed to lead? Too slow. Follow-ups? Forgotten. Closing? Chaotic. Fulfillment? Overwhelming.
             </p>
           </div>
           <div className="flex items-center justify-center">
@@ -76,9 +75,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-center">
             <p className="text-md text-foreground mb-4 text-center">
-              Our expertise lies in crafting intelligent systems that adapt to your
-              unique needs. We value innovation, reliability, and a relentless focus
-              on customer success.
+              You're bleeding potential — but the tools to fix it already exist.
             </p>
           </div>
         </div>
@@ -293,4 +290,5 @@ export default function Home() {
     </div>
   );
 }
+
 
