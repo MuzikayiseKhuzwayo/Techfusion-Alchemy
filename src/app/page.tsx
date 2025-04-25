@@ -53,28 +53,28 @@ export default function Home() {
   ];
 
   const logos = [
-    { id: 1, name: 'n8n', src: 'https://picsum.photos/100/50' },
-    { id: 2, name: 'Make', src: 'https://picsum.photos/100/50' },
-    { id: 3, name: 'ChatGPT API', src: 'https://picsum.photos/100/50' },
-    { id: 4, name: 'ElevenLabs', src: 'https://picsum.photos/100/50' },
-    { id: 5, name: 'HeyGen', src: 'https://picsum.photos/100/50' },
-    { id: 6, name: 'Synthesia', src: 'https://picsum.photos/100/50' },
-    { id: 7, name: 'Notion', src: 'https://picsum.photos/100/50' },
-    { id: 8, name: 'Airtable', src: 'https://picsum.photos/100/50' },
-    { id: 9, name: 'Twilio', src: 'https://picsum.photos/100/50' },
-    { id: 10, name: 'Puppeteer', src: 'https://picsum.photos/100/50' },
-    { id: 11, name: 'Playwright', src: 'https://picsum.photos/100/50' },
-    { id: 12, name: 'LinkedIn Scraper', src: 'https://picsum.photos/100/50' },
-    { id: 13, name: 'Calendly', src: 'https://picsum.photos/100/50' },
-    { id: 14, name: 'Custom CRMs', src: 'https://picsum.photos/100/50' },
-    { id: 15, name: 'Firebase', src: 'https://picsum.photos/100/50' },
-    { id: 16, name: 'Supabase', src: 'https://picsum.photos/100/50' },
-    { id: 17, name: 'Stripe', src: 'https://picsum.photos/100/50' },
-    { id: 18, name: 'Paystack', src: 'https://picsum.photos/100/50' },
-    { id: 19, name: 'PayPal', src: 'https://picsum.photos/100/50' },
-    { id: 20, name: 'Hubspot', src: 'https://picsum.photos/100/50' },
-    { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50' },
-    { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50' },
+    { id: 1, name: 'n8n', src: 'https://picsum.photos/100/50', description: 'Automate workflows with a visual interface.' },
+    { id: 2, name: 'Make', src: 'https://picsum.photos/100/50', description: 'Design, build, and automate anything.' },
+    { id: 3, name: 'ChatGPT API', src: 'https://picsum.photos/100/50', description: 'Access powerful language models for various tasks.' },
+    { id: 4, name: 'ElevenLabs', src: 'https://picsum.photos/100/50', description: 'Generate realistic and versatile AI speech.' },
+    { id: 5, name: 'HeyGen', src: 'https://picsum.photos/100/50', description: 'Create engaging video content with AI avatars.' },
+    { id: 6, name: 'Synthesia', src: 'https://picsum.photos/100/50', description: 'Generate AI videos from text-based scripts.' },
+    { id: 7, name: 'Notion', src: 'https://picsum.photos/100/50', description: 'Centralize your tasks, notes, and databases in one workspace.' },
+    { id: 8, name: 'Airtable', src: 'https://picsum.photos/100/50', description: 'Create flexible databases and collaborative workspaces.' },
+    { id: 9, name: 'Twilio', src: 'https://picsum.photos/100/50', description: 'Communicate with customers via SMS, voice, and more.' },
+    { id: 10, name: 'Puppeteer', src: 'https://picsum.photos/100/50', description: 'Automate browser actions for scraping and testing.' },
+    { id: 11, name: 'Playwright', src: 'https://picsum.photos/100/50', description: 'Enable reliable end-to-end testing for web apps.' },
+    { id: 12, name: 'LinkedIn Scraper', src: 'https://picsum.photos/100/50', description: 'Extract valuable data from LinkedIn profiles.' },
+    { id: 13, name: 'Calendly', src: 'https://picsum.photos/100/50', description: 'Streamline scheduling and appointment booking.' },
+    { id: 14, name: 'Custom CRMs', src: 'https://picsum.photos/100/50', description: 'Manage customer relationships with tailor-made systems.' },
+    { id: 15, name: 'Firebase', src: 'https://picsum.photos/100/50', description: 'Build scalable web and mobile apps with backend services.' },
+    { id: 16, name: 'Supabase', src: 'https://picsum.photos/100/50', description: 'Build secure and scalable apps with open-source backend.' },
+    { id: 17, name: 'Stripe', src: 'https://picsum.photos/100/50', description: 'Process online payments securely and efficiently.' },
+    { id: 18, name: 'Paystack', src: 'https://picsum.photos/100/50', description: 'Accept payments from multiple channels in Africa.' },
+    { id: 19, name: 'PayPal', src: 'https://picsum.photos/100/50', description: 'Process payments online with a trusted global platform.' },
+    { id: 20, name: 'Hubspot', src: 'https://picsum.photos/100/50', description: 'Manage marketing, sales, and customer service efforts.' },
+    { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50', description: 'Manage your sales pipeline and track deals efficiently.' },
+    { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50', description: 'Manage projects, tasks, and workflows in one platform.' },
   ];
 
   return (
@@ -263,10 +263,11 @@ export default function Home() {
                       alt={logo.name}
                       className="aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
                     />
+                    <p className="text-center">{logo.name}</p>
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="top" align="center">
-                  {logo.name}
+                  {logo.description}
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -327,4 +328,3 @@ export default function Home() {
     </div>
   );
 }
-
