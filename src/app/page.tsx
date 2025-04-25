@@ -217,6 +217,30 @@ export default function Home() {
           </Card>
         </div>
       </section>
+      
+      {/* Client Success Stories Section */}
+      <section className="mb-20">
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
+          Client Success Stories
+        </h2>
+        <div className="section-title-divider"></div>
+        <Card className="mt-10">
+          <CardHeader>
+            <CardTitle>Increased Efficiency by 40%</CardTitle>
+            <CardDescription>
+              AI-driven automation transforms client operations.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-md text-foreground">
+              "Thanks to TechFusion Alchemy, we've seen a remarkable improvement
+              in our operational efficiency. Their AI solutions have saved us
+              time and resources, allowing us to focus on growth." - John Smith,
+              CEO
+            </p>
+          </CardContent>
+        </Card>
+      </section>
 
       {/* Explore Our Stack Section */}
       <section className="mb-20">
@@ -251,30 +275,6 @@ export default function Home() {
           <CarouselPrevious className="left-2" />
           <CarouselNext className="right-2" />
         </Carousel>
-      </section>
-
-      {/* Client Success Stories Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
-          Client Success Stories
-        </h2>
-        <div className="section-title-divider"></div>
-        <Card className="mt-10">
-          <CardHeader>
-            <CardTitle>Increased Efficiency by 40%</CardTitle>
-            <CardDescription>
-              AI-driven automation transforms client operations.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-md text-foreground">
-              "Thanks to TechFusion Alchemy, we've seen a remarkable improvement
-              in our operational efficiency. Their AI solutions have saved us
-              time and resources, allowing us to focus on growth." - John Smith,
-              CEO
-            </p>
-          </CardContent>
-        </Card>
       </section>
 
       {/* Engagement Section */}
