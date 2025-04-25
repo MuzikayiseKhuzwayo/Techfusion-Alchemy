@@ -6,7 +6,7 @@ import {
   EmblaOptionsType,
   EmblaPluginType,
 } from "embla-carousel";
-import { useEmblaCarousel } from 'embla-carousel-react'
+import useEmblaCarousel from 'embla-carousel-react'
 
 import { cn } from "@/lib/utils";
 
@@ -112,4 +112,3 @@ const CarouselNext = React.forwardRef<
 CarouselNext.displayName = "CarouselNext";
 
 export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext };
-
