@@ -7,9 +7,10 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useRef } from "react";
 import Image from 'next/image';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 // import Autoplay from 'embla-carousel-autoplay'
 import React from "react";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 
 export default function Home() {
   const offeringsRef = useRef(null);
@@ -249,32 +250,28 @@ export default function Home() {
           {/* Insert Engaging subtitle posed to show how in the know we are about tending things. */}
         </p>
         <div className="section-title-divider"></div>
-        <Carousel
-          opts={{
-            loop: true,
-            dragFree: true,
-            slidesToScroll: 1,
-          }}
-          className="w-full max-w-2xl mx-auto"
-        >
-          <CarouselContent className="-ml-1 pl-1">
-            {logos.map((logo) => (
-              <CarouselItem key={logo.id} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Image
-                    src={logo.src}
-                    width={100}
-                    height={50}
-                    alt={logo.name}
-                    className="aspect-video rounded-md object-cover"
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
-        </Carousel>
+        <div className="grid grid-cols-4 gap-4 mt-10">
+          {logos.map((logo) => (
+            <TooltipProvider key={logo.id}>
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <div className="relative group overflow-hidden rounded-md">
+                    <Image
+                      src={logo.src}
+                      width={100}
+                      height={50}
+                      alt={logo.name}
+                      className="aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent side="top" align="center">
+                  {logo.name}
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ))}
+        </div>
       </section>
 
       {/* Engagement Section */}
