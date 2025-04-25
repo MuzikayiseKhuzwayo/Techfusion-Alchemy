@@ -15,6 +15,39 @@ export default function Home() {
     offeringsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const offerings = [
+    {
+      title: "Lead Generation",
+      subtitle: "AI-powered lead scraping for targeted and precise audience engagement.",
+      textContent: "AI scrapes targeted leads from social media and online platforms using custom filters and precision targeting.",
+    },
+    {
+      title: "Lead Qualification",
+      subtitle: "Automated smart forms combined with enriched data profiles for instant scoring and segmentation.",
+      textContent: "Automated smart forms + enriched data profiles. Every lead is scored, segmented, and sorted instantly.",
+    },
+    {
+      title: "Lead Nurturing",
+      subtitle: "Personalized automated emails and dynamic AI avatars for engaging follow-up flows.",
+      textContent: "Automated personalized emails, dynamic AI avatars in Loom-style videos, and intelligent follow-up flows.",
+    },
+    {
+      title: "Lead Conversion",
+      subtitle: "AI voice bots handling calls with real-time objection handling and scheduling.",
+      textContent: "AI-powered voice bots handle inbound and outbound calls with real-time objection handling + scheduling.",
+    },
+    {
+      title: "Sales Automation",
+      subtitle: "Automated call routing, CRM updates, and pipeline triggers for seamless sales processes.",
+      textContent: "Call routing, CRM updates, pipeline triggers — all automated. Human reps only step in to close.",
+    },
+    {
+      title: "Fulfillment",
+      subtitle: "Integrated systems automating orders, onboarding, and task distribution upon deal closure.",
+      textContent: "Orders, onboarding, task distribution — all handled by integrated systems the moment a deal closes.",
+    },
+  ];
+
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
@@ -86,90 +119,28 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="section-title-divider"></div>
         <div className="flex flex-col gap-8 mt-10">
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#8A0000]">AI System Development</CardTitle>
-              <CardDescription>
-                Customised automation workflows to optimise business processes.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col justify-between">
-              <p className="text-md text-foreground mb-4">
-                We create AI-driven systems tailored to your specific needs,
-                automating repetitive tasks and enhancing overall efficiency.
-              </p>
-              <div className="flex justify-center">
-                <Button variant="link" asChild>
-                  <Link href="/detailed-offerings" className="text-accent">
-                    Learn More
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#8A0000]">Workflow Optimisation</CardTitle>
-              <CardDescription>
-                Streamlining tasks for maximum productivity.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col justify-between">
-              <p className="text-md text-foreground mb-4">
-                Our workflow optimisation service identifies bottlenecks and
-                implements AI solutions to streamline your operations.
-              </p>
-              <div className="flex justify-center">
-                <Button variant="link" asChild>
-                  <Link href="/detailed-offerings" className="text-accent">
-                    Learn More
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#8A0000]">AR and Digital Integration</CardTitle>
-              <CardDescription>
-                Augmented Reality solutions for enhanced customer engagement.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col justify-between">
-              <p className="text-md text-foreground mb-4">
-                We offer AR solutions that integrate seamlessly with your digital
-                presence, creating immersive experiences for your customers.
-              </p>
-              <div className="flex justify-center">
-                <Button variant="link" asChild>
-                  <Link href="/detailed-offerings" className="text-accent">
-                    Learn More
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#8A0000]">Consulting</CardTitle>
-              <CardDescription>
-                Expert advice on AI implementation tailored to business needs.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col justify-between">
-              <p className="text-md text-foreground mb-4">
-                Our consulting services provide you with the insights and strategies
-                needed to successfully implement AI in your business.
-              </p>
-              <div className="flex justify-center">
-                <Button variant="link" asChild>
-                  <Link href="/detailed-offerings" className="text-accent">
-                    Learn More
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          {offerings.map((offering, index) => (
+            <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="text-[#8A0000]">{offering.title}</CardTitle>
+                <CardDescription>
+                  {offering.subtitle}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col justify-between">
+                <p className="text-md text-foreground mb-4">
+                  {offering.textContent}
+                </p>
+                <div className="flex justify-center">
+                  <Button variant="link" asChild>
+                    <Link href="/detailed-offerings" className="text-accent">
+                      Learn More
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
@@ -290,4 +261,3 @@ export default function Home() {
     </div>
   );
 }
-
