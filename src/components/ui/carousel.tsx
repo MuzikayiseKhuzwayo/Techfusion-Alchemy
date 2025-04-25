@@ -2,21 +2,22 @@
 
 import * as React from "react";
 import {
-  useCarousel,
-  UseCarouselProps,
-  EmblaCarouselType,
-} from "embla-carousel-react";
+  EmblaCarousel,
+  EmblaOptionsType,
+  EmblaPluginType,
+} from "embla-carousel";
+import { useEmblaCarousel } from "embla-carousel-react";
 
 import { cn } from "@/lib/utils";
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
-    opts?: UseCarouselProps;
-    plugins?: EmblaCarouselType["plugins"];
+    opts?: EmblaOptionsType;
+    plugins?: EmblaPluginType[];
   }
 >(({ className, opts, plugins, children, ...props }, ref) => {
-  const [emblaRef, emblaApi] = useCarousel(opts, plugins);
+  const [emblaRef, emblaApi] = useEmblaCarousel(opts, plugins);
 
   return (
     <div className={cn("relative", className)} {...props}>
