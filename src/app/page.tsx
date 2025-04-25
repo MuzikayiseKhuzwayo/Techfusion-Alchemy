@@ -65,7 +65,7 @@ export default function Home() {
           operations, enhance productivity, and drive growth for our clients.
         </p>
         <div className="flex justify-center mt-8 space-x-4">
-          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToOfferings}>
+          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300" onClick={scrollToOfferings}>
             Find Out More
           </Button>
           <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
@@ -117,6 +117,9 @@ export default function Home() {
       {/* Offerings Section */}
       <section className="mb-20" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
+        <p className="text-md text-foreground mb-4 text-center">
+              Every piece of your business, fully integrated. Fully automated. Fully optimized.
+            </p>
         <div className="section-title-divider"></div>
         <div className="flex flex-col gap-8 mt-10">
           {offerings.map((offering, index) => (
@@ -261,3 +264,4 @@ export default function Home() {
     </div>
   );
 }
+
