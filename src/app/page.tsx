@@ -21,11 +21,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="text-center mb-20">
         <h1 className="text-4xl font-bold text-primary mb-4">
-          Revolutionising Productivity Through Intelligent Automation
+          Full-Stack AI Systems That Automate Your Entire Business — From First Click to Final Sale
         </h1>
         <div className="section-title-divider"></div>
         <p className="text-lg text-secondary mb-8">
-          Empowering Founders and Professionals with Tailor-Made AI Solutions
+          From scraping leads off social media to automated AI sales calls and fulfillment... We build smart systems that scale your business while you sleep.
         </p>
         <p className="text-md text-foreground">
           TechFusion Alchemy is an automation agency dedicated to transforming
@@ -37,7 +37,7 @@ export default function Home() {
             Find Out More
           </Button>
           <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
-            <Link href="/book-consultation">Book a Consultation</Link>
+            <Link href="/demo">Book a Demo</Link>
           </Button>
         </div>
       </section>
@@ -246,7 +246,7 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Consultation</Button>
+          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Demo</Button>
           <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
           <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300"><Link href="/demo">View Demo</Link></Button>
         </div>
@@ -294,5 +294,4 @@ export default function Home() {
     </div>
   );
 }
-
 

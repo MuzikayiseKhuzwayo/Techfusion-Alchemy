@@ -21,6 +21,7 @@ const Footer = () => {
               <li><Link href="/about" className="hover:underline text-foreground">About Us</Link></li>
               <li><Link href="/detailed-offerings" className="hover:underline text-foreground">Offerings</Link></li>
               <li><Link href="/contact" className="hover:underline text-foreground">Contact</Link></li>
+              <li><Link href="/demo" className="hover:underline">Book a Demo</Link></li>
             </ul>
           </nav>
 
@@ -30,9 +31,7 @@ const Footer = () => {
             <p>Phone: +44 1234 567890</p>
             <p>Email: info@techfusionalchemy.com</p>
             <br />
-            <p className="font-bold">Address</p>
-            <p>123 Alchemy Street</p>
-            <p>London, UK</p>
+
           </div>
 
           {/* Social Links */}

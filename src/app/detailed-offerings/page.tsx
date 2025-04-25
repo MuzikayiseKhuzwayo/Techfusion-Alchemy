@@ -22,7 +22,7 @@ const DetailedOfferingsPage = () => {
             <Link href="/contact">Contact Us</Link>
           </Button>
           <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">
-            <Link href="/book-consultation">Book a Consultation</Link>
+            <Link href="/demo">Book a Demo</Link>
           </Button>
         </div>
       </section>
@@ -39,7 +39,7 @@ const DetailedOfferingsPage = () => {
             <Link href="/contact">Contact Us</Link>
           </Button>
           <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">
-            <Link href="/book-consultation">Book a Consultation</Link>
+            <Link href="/demo">Book a Demo</Link>
           </Button>
         </div>
       </section>
@@ -56,7 +56,7 @@ const DetailedOfferingsPage = () => {
             <Link href="/contact">Contact Us</Link>
           </Button>
           <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">
-            <Link href="/book-consultation">Book a Consultation</Link>
+            <Link href="/demo">Book a Demo</Link>
           </Button>
         </div>
       </section>
@@ -73,7 +73,7 @@ const DetailedOfferingsPage = () => {
             <Link href="/contact">Contact Us</Link>
           </Button>
           <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">
-            <Link href="/book-consultation">Book a Consultation</Link>
+            <Link href="/demo">Book a Demo</Link>
           </Button>
         </div>
       </section>
@@ -82,3 +82,4 @@ const DetailedOfferingsPage = () => {
 };
 
 export default DetailedOfferingsPage;
+
