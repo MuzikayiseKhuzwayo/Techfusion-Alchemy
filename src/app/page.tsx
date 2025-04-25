@@ -147,6 +147,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why TechFusion Alchemy? Section */}
+      <section className="mb-20">
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why TechFusion Alchemy?</h2>
+        <p className="text-md text-foreground mb-4 text-center">
+          Stop the leaks, start the flood: Why smart founders choose our systems to convert at scale.
+        </p>
+        <div className="section-title-divider"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>End-to-End Integration</CardTitle>
+            </CardHeader>
+            <CardContent>
+              No random automations. We build full systems that talk to each other and scale with you.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Real AI, Not Just Zapier</CardTitle>
+            </CardHeader>
+            <CardContent>
+              We build with advanced AI agents, LLMs, voice bots, and visual avatars — not just simple workflows.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Custom-Built For Your Business</CardTitle>
+            </CardHeader>
+            <CardContent>
+              We don’t just give you templates. We build tailored systems for your offer, funnel, and sales process.
+            </CardContent>
+          </Card>
+          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Built to Convert, Not Just Save Time</CardTitle>
+            </CardHeader>
+            <CardContent>
+              Our automations aren’t just pretty—they close deals. Speed. Personalization. Follow-up. Done for you.
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Client Success Stories Section */}
       <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
@@ -169,46 +212,6 @@ export default function Home() {
             </p>
           </CardContent>
         </Card>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why Choose Us</h2>
-        <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle>Innovative Approach</CardTitle>
-            </CardHeader>
-            <CardContent>
-              We leverage the latest AI technologies to create innovative solutions that drive efficiency and growth.
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle>Personalised Solutions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              We tailor our solutions to meet your specific business needs, ensuring maximum impact and value.
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle>Measurable Results</CardTitle>
-            </CardHeader>
-            <CardContent>
-              We focus on delivering measurable results that demonstrate the value of our services and drive tangible outcomes.
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle>Expert Team</CardTitle>
-            </CardHeader>
-            <CardContent>
-              Our team of experts brings years of experience in AI and automation to deliver exceptional results for our clients.
-            </CardContent>
-          </Card>
-        </div>
       </section>
 
       {/* Engagement Section */}
