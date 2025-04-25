@@ -85,10 +85,10 @@ export default function Home() {
       <section className="mb-20" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+        <div className="flex flex-col gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>AI System Development</CardTitle>
+              <CardTitle className="text-[#8A0000]">AI System Development</CardTitle>
               <CardDescription>
                 Customised automation workflows to optimise business processes.
               </CardDescription>
@@ -109,7 +109,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>Workflow Optimisation</CardTitle>
+              <CardTitle className="text-[#8A0000]">Workflow Optimisation</CardTitle>
               <CardDescription>
                 Streamlining tasks for maximum productivity.
               </CardDescription>
@@ -130,7 +130,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>AR and Digital Integration</CardTitle>
+              <CardTitle className="text-[#8A0000]">AR and Digital Integration</CardTitle>
               <CardDescription>
                 Augmented Reality solutions for enhanced customer engagement.
               </CardDescription>
@@ -151,7 +151,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>Consulting</CardTitle>
+              <CardTitle className="text-[#8A0000]">Consulting</CardTitle>
               <CardDescription>
                 Expert advice on AI implementation tailored to business needs.
               </CardDescription>
@@ -290,5 +290,4 @@ export default function Home() {
     </div>
   );
 }
-
 
