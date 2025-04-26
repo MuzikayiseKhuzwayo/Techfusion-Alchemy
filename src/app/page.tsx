@@ -6,18 +6,44 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from 'next/image';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; // Added Select imports
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Autoplay from 'embla-carousel-autoplay'
 import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { submitContactForm } from "@/actions/contact";
+import { useToast } from "@/hooks/use-toast";
+import { ContactFormSchema } from "@/lib/validators/contactForm"; // Import the schema
+
+type ContactFormData = z.infer<typeof ContactFormSchema>;
 
 
 export default function Home() {
   const offeringsRef = useRef<HTMLDivElement>(null);
   const contactUsRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(ContactFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      businessName: "",
+      website: "",
+      services: "",
+      budget: undefined, // Set default to undefined or a placeholder value if needed
+      referral: "",
+    },
+  });
 
 
   const scrollToOfferings = () => {
@@ -85,6 +111,35 @@ export default function Home() {
     { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50?random=43', description: 'Automate sales pipeline management, deal tracking, and activity logging for increased sales team efficiency.' },
     { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50?random=44', description: 'Automate project management, task assignments, and workflow triggers within a unified productivity platform.' },
   ];
+
+  async function onSubmit(data: ContactFormData) {
+    setIsSubmitting(true);
+    try {
+      const result = await submitContactForm(data);
+      if (result.success) {
+        toast({
+          title: "Form Submitted",
+          description: "Thank you for contacting us! We'll be in touch soon.",
+        });
+        form.reset(); // Reset form fields after successful submission
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Submission Failed",
+          description: result.error || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        variant: "destructive",
+        title: "Submission Error",
+        description: "An unexpected error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
     <div className="container mx-auto p-8">
@@ -164,7 +219,7 @@ export default function Home() {
           {offerings.map((offering, index) => (
             <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <CardTitle className="text-[#0A2540]">{offering.title}</CardTitle>
+                <CardTitle className="text-blue-300">{offering.title}</CardTitle>
                  <CardDescription>
                   {offering.subtitle}
                 </CardDescription>
@@ -313,81 +368,148 @@ export default function Home() {
          </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <div className="border rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-            <form className="space-y-4">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <div>
-                   <label className="block text-sm font-medium text-foreground mb-1" htmlFor="firstName">
-                     First Name
-                   </label>
-                   <Input id="firstName" type="text" placeholder="First Name" />
-                 </div>
-                 <div>
-                   <label className="block text-sm font-medium text-foreground mb-1" htmlFor="lastName">
-                     Last Name
-                   </label>
-                   <Input id="lastName" type="text" placeholder="Last Name" />
-                 </div>
+                 <FormField
+                   control={form.control}
+                   name="firstName"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>First Name</FormLabel>
+                       <FormControl>
+                         <Input placeholder="First Name" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
+                 <FormField
+                   control={form.control}
+                   name="lastName"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>Last Name</FormLabel>
+                       <FormControl>
+                         <Input placeholder="Last Name" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="phone">
-                    Phone
-                  </label>
-                  <Input id="phone" type="tel" placeholder="Phone Number" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="email">
-                    Email
-                  </label>
-                  <Input id="email" type="email" placeholder="Your Email" />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="businessName">
-                    Business Name
-                  </label>
-                  <Input id="businessName" type="text" placeholder="Your Business Name" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="website">
-                    Website
-                  </label>
-                  <Input id="website" type="url" placeholder="https://yourwebsite.com" />
-                </div>
+                 <FormField
+                   control={form.control}
+                   name="phone"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>Phone</FormLabel>
+                       <FormControl>
+                         <Input type="tel" placeholder="Phone Number" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
+                 <FormField
+                   control={form.control}
+                   name="email"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>Email</FormLabel>
+                       <FormControl>
+                         <Input type="email" placeholder="Your Email" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
                </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="services">
-                  What Services Are You Interested In?
-                </label>
-                <Textarea id="services" placeholder="e.g., Lead Generation, Sales Automation" />
-              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <div>
-                   <label className="block text-sm font-medium text-foreground mb-1" htmlFor="budget">
-                     Budget
-                   </label>
-                   <Select>
-                     <SelectTrigger id="budget">
-                       <SelectValue placeholder="Select Budget Range" />
-                     </SelectTrigger>
-                     <SelectContent>
-                       <SelectItem value="2k-5k">$2k - $5k</SelectItem>
-                       <SelectItem value="5k-10k">$5k - $10k</SelectItem>
-                       <SelectItem value="10k-20k">$10k - $20k</SelectItem>
-                       <SelectItem value="20k+">$20k+</SelectItem>
-                     </SelectContent>
-                   </Select>
-                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="referral">
-                    How did you hear about us?
-                  </label>
-                  <Input id="referral" type="text" placeholder="e.g., LinkedIn, Referral" />
-                </div>
+                <FormField
+                   control={form.control}
+                   name="businessName"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>Business Name</FormLabel>
+                       <FormControl>
+                         <Input placeholder="Your Business Name" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
+                 <FormField
+                   control={form.control}
+                   name="website"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>Website</FormLabel>
+                       <FormControl>
+                         <Input type="url" placeholder="https://yourwebsite.com" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
                </div>
-              <Button variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300">Submit</Button>
+              <FormField
+                 control={form.control}
+                 name="services"
+                 render={({ field }) => (
+                   <FormItem>
+                     <FormLabel>What Services Are You Interested In?</FormLabel>
+                     <FormControl>
+                       <Textarea placeholder="e.g., Lead Generation, Sales Automation" {...field} />
+                     </FormControl>
+                     <FormMessage />
+                   </FormItem>
+                 )}
+               />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <FormField
+                    control={form.control}
+                    name="budget"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Budget</FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select Budget Range" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="2k-5k">$2k - $5k</SelectItem>
+                            <SelectItem value="5k-10k">$5k - $10k</SelectItem>
+                            <SelectItem value="10k-20k">$10k - $20k</SelectItem>
+                            <SelectItem value="20k+">$20k+</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                   control={form.control}
+                   name="referral"
+                   render={({ field }) => (
+                     <FormItem>
+                       <FormLabel>How did you hear about us?</FormLabel>
+                       <FormControl>
+                         <Input placeholder="e.g., LinkedIn, Referral" {...field} />
+                       </FormControl>
+                       <FormMessage />
+                     </FormItem>
+                   )}
+                 />
+               </div>
+              <Button type="submit" variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit'}
+              </Button>
             </form>
+           </Form>
           </div>
           <div>
             <Image
