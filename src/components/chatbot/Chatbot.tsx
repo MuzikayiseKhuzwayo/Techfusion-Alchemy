@@ -55,12 +55,17 @@ export function Chatbot() {
   // Scroll to bottom when messages change
   useEffect(() => {
     if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTo({
-        top: scrollAreaRef.current.scrollHeight,
-        behavior: 'smooth',
-      });
+      // Use the scroll area's viewport for scrolling
+      const viewport = scrollAreaRef.current.querySelector<HTMLDivElement>('[data-radix-scroll-area-viewport]');
+      if (viewport) {
+        viewport.scrollTo({
+          top: viewport.scrollHeight,
+          behavior: 'smooth',
+        });
+      }
     }
   }, [messages]);
+
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,10 +106,15 @@ export function Chatbot() {
          try {
            const responseData = await response.json();
            console.log("Received from webhook:", responseData); // For debugging
-           if (responseData && responseData.output) {
-             botResponseText = responseData.output;
+
+           // Adjust parsing based on the new structure
+           if (responseData && responseData.status === 'success' && responseData.data && responseData.data.response) {
+             botResponseText = responseData.data.response;
+           } else if (responseData && responseData.status !== 'success') {
+              console.error('Webhook returned non-success status:', responseData);
+              botResponseText = `Received an error status: ${responseData.status || 'Unknown error'}`;
            } else {
-             console.error('Webhook response missing "output" field:', responseData);
+             console.error('Webhook response missing expected fields (status: "success", data.response):', responseData);
              botResponseText = "Received an unexpected response format.";
            }
          } catch (jsonError) {
@@ -163,8 +173,8 @@ export function Chatbot() {
           </SheetClose>
         </SheetHeader>
         {/* Wrap ScrollArea content in a div to assign the ref */}
-        <ScrollArea className="flex-1 overflow-y-auto" >
-           <div ref={scrollAreaRef} className="p-4 space-y-4">
+        <ScrollArea className="flex-1 overflow-y-auto" ref={scrollAreaRef}>
+           <div className="p-4 space-y-4">
              {messages.map((message) => (
               <div
                 key={message.id}
