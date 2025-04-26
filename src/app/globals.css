@@ -52,6 +52,7 @@ html {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --header-background: 217 79% 15%; /* #0A2540 */
   }
 }
 
@@ -61,7 +62,11 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    /* Remove Grammarly attributes if they are injected */
+    &[data-new-gr-c-s-check-loaded], &[data-gr-ext-installed] {
+        /* You can add specific styles to counteract Grammarly if needed, */
+        /* but often just acknowledging the attribute is enough for hydration. */
+        /* Or, simply leave this block empty. */
+    }
   }
 }
-
-

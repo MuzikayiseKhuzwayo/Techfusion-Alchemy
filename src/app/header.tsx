@@ -21,9 +21,9 @@ const Header = () => {
   return (
     <header className={`
       sticky top-0 z-50
-      bg-secondary text-secondary-foreground
+      bg-header text-foreground
       p-4 flex justify-between items-center
-      ${isSticky ? 'bg-secondary/75 backdrop-blur-sm' : ''}
+      ${isSticky ? 'bg-header/75 backdrop-blur-sm' : ''}
       transition-all duration-300
     `}>
       <Link href="/" className="text-xl font-bold text-foreground">TechFusion Alchemy</Link>
@@ -33,8 +33,8 @@ const Header = () => {
           <li><Link href="/detailed-offerings" className="hover:underline text-foreground px-4 py-2 hover:text-[#F2C72C]">Offerings</Link></li>
           <li><Link href="/contact" className="hover:underline text-foreground px-4 py-2 hover:text-[#F2C72C]">Contact</Link></li>
           <li>
-            <Button variant="accent" size="sm" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
-              <Link href="/demo">Book a Demo</Link>
+             <Button variant="accent" size="sm" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
+               <Link href="/demo">Book a Demo</Link>
             </Button>
           </li>
         </ul>
@@ -44,4 +44,3 @@ const Header = () => {
 };
 
 export default Header;
-
