@@ -23,7 +23,8 @@ interface Message {
   sender: 'user' | 'bot';
 }
 
-const CHATBOT_WEBHOOK_URL = 'https://n8n.techfusion-ventures.xyz/webhook-test/e3b2f9f2-9c17-4bbc-a21a-63a309109f63';
+// Updated Webhook URL
+const CHATBOT_WEBHOOK_URL = 'https://n8n.techfusion-ventures.xyz/webhook/e3b2f9f2-9c17-4bbc-a21a-63a309109f63';
 const SESSION_ID_KEY = 'chatbot_session_id';
 
 // Helper function to generate a simple unique ID
