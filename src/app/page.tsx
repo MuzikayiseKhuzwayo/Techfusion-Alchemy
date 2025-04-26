@@ -8,10 +8,9 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useRef } from "react";
 import Image from 'next/image';
-import React from "react";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Autoplay from 'embla-carousel-autoplay';
+import Autoplay from 'embla-carousel-autoplay'
+import React from "react";
 
 
 export default function Home() {
@@ -163,7 +162,7 @@ export default function Home() {
           {offerings.map((offering, index) => (
             <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <CardTitle className="text-[#8A0000]">{offering.title}</CardTitle>
+                <CardTitle className="text-[#0A2540]">{offering.title}</CardTitle>
                  <CardDescription>
                   {offering.subtitle}
                 </CardDescription>
@@ -345,3 +344,4 @@ export default function Home() {
     </div>
   );
 }
+
