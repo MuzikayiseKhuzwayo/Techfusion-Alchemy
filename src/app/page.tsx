@@ -10,6 +10,9 @@ import { useRef } from "react";
 import Image from 'next/image';
 import React from "react";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from 'embla-carousel-autoplay';
+
 
 export default function Home() {
   const offeringsRef = useRef<HTMLDivElement>(null);
@@ -85,7 +88,7 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
-      <section className="text-center mb-5">
+      <section className="text-center mb-20">
         <h1 className="text-4xl font-bold text-primary mb-4">
           Full-Stack AI Systems That Automate Your Entire Business — From First Click to Final Sale
         </h1>
@@ -109,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="mb-5">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">You're Losing Time, Leads, and Sales Every Day.</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-2 gap-8 mt-10">
@@ -149,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-5" ref={offeringsRef}>
+      <section className="mb-20" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
          <div className="section-title-divider"></div>
         <p className="text-md text-foreground mb-4 text-center mt-10">
@@ -183,7 +186,7 @@ export default function Home() {
       </section>
 
       {/* Why TechFusion Alchemy? Section */}
-      <section className="mb-5">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why TechFusion Alchemy?</h2>
          <div className="section-title-divider"></div>
         <p className="text-md text-foreground mb-4 text-center mt-10">
@@ -227,32 +230,38 @@ export default function Home() {
       </section>
 
       {/* Client Success Stories Section */}
-      <section className="mb-5">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
         <div className="section-title-divider"></div>
-        <Card className="mt-10">
+        <Card className="mt-10 shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardHeader>
-            <CardTitle>Increased Efficiency by 40%</CardTitle>
+            <CardTitle>Strategic Monetisation for Social Media</CardTitle>
             <CardDescription>
-              AI-driven automation transforms client operations.
+              Empowering a client with a robust X and LinkedIn strategy.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-md text-foreground">
-              "Thanks to TechFusion Alchemy, we've seen a remarkable improvement
-              in our operational efficiency. Their AI solutions have saved us
-              time and resources, allowing us to focus on growth." - John Smith,
-              CEO
+            <p className="text-md text-foreground mb-4">
+              "TechFusion Alchemy didn't just automate tasks; they crafted a complete monetisation strategy for my presence on X and LinkedIn. This tailored approach has been instrumental in acquiring new clients and growing my business." - [Client Name/Business Name]
             </p>
+             <div className="flex justify-center">
+                  <Button variant="link" asChild>
+                    <Link href="#" className="text-accent">
+                      Read More
+                    </Link>
+                  </Button>
+                </div>
           </CardContent>
         </Card>
         {/* Merged Engagement Section */}
         <div className="mt-10 text-center">
           <p className="text-lg text-foreground mb-4">Ready to transform your business? Take the next step.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Demo</Button>
+            <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
+               <Link href="/demo">Book a Demo</Link>
+            </Button>
             <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
             <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToContactUs}>Contact Us</Button>
           </div>
@@ -260,7 +269,7 @@ export default function Home() {
       </section>
 
       {/* Explore Our Stack Section */}
-      <section className="mb-5">
+      <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Explore Our Stack</h2>
          <div className="section-title-divider"></div>
         <p className="text-md text-foreground mb-4 text-center mt-10">
@@ -295,29 +304,29 @@ export default function Home() {
 
 
       {/* Contact Us Section */}
-      <section className="mb-5" ref={contactUsRef}>
+      <section className="mb-20" ref={contactUsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <div className="border rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
             <form className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="name">
                   Name
                 </label>
-                <Input type="text" placeholder="Your Name" />
+                <Input id="name" type="text" placeholder="Your Name" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="email">
                   Email
                 </label>
-                <Input type="email" placeholder="Your Email" />
+                <Input id="email" type="email" placeholder="Your Email" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="message">
                   Message
                 </label>
-                <Textarea placeholder="Your Message" />
+                <Textarea id="message" placeholder="Your Message" />
               </div>
               <Button variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300">Submit</Button>
             </form>
