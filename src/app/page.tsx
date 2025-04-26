@@ -8,7 +8,9 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useRef } from "react";
 import Image from 'next/image';
-import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"; // Added Select imports
 import Autoplay from 'embla-carousel-autoplay'
 import React from "react";
 
@@ -114,7 +116,7 @@ export default function Home() {
       <section className="mb-20">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">You're Losing Time, Leads, and Sales Every Day.</h2>
         <div className="section-title-divider"></div>
-        <div className="grid grid-cols-2 gap-8 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           {/* Our Story */}
           <div className="flex items-center justify-center">
             <p className="text-md text-foreground mb-4 text-center">
@@ -125,7 +127,7 @@ export default function Home() {
           <div className="flex items-center justify-center">
             <Image
               src="https://picsum.photos/500/300?random=1"
-              alt="Our Story"
+              alt="Frustrated business process"
               width={500}
               height={300}
               className="rounded-[50px] shadow-md"
@@ -136,7 +138,7 @@ export default function Home() {
           <div className="flex items-center justify-center">
             <Image
               src="https://picsum.photos/500/300?random=2"
-              alt="Our Expertise"
+              alt="AI and Automation tools"
               width={500}
               height={300}
               className="rounded-[50px] shadow-md"
@@ -154,7 +156,7 @@ export default function Home() {
       <section className="mb-20" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
          <div className="section-title-divider"></div>
-        <p className="text-md text-foreground mb-4 text-center mt-10">
+        <p className="text-md text-foreground mb-8 text-center mt-10">
               Every piece of your business, fully integrated. Fully automated. Fully optimized.
             </p>
 
@@ -195,7 +197,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>End-to-End Integration</CardTitle>
+              <CardTitle className="text-[#0A2540]">End-to-End Integration</CardTitle>
             </CardHeader>
             <CardContent>
               No random automations. We build full systems that talk to each other and scale with you.
@@ -203,7 +205,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>Real AI, Not Just Zapier</CardTitle>
+              <CardTitle className="text-[#0A2540]">Real AI, Not Just Zapier</CardTitle>
             </CardHeader>
             <CardContent>
               We build with advanced AI agents, LLMs, voice bots, and visual avatars — not just simple workflows.
@@ -211,7 +213,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>Custom-Built For Your Business</CardTitle>
+              <CardTitle className="text-[#0A2540]">Custom-Built For Your Business</CardTitle>
             </CardHeader>
             <CardContent>
               We don’t just give you templates. We build tailored systems for your offer, funnel, and sales process.
@@ -219,7 +221,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>Built to Convert, Not Just Save Time</CardTitle>
+              <CardTitle className="text-[#0A2540]">Built to Convert, Not Just Save Time</CardTitle>
             </CardHeader>
             <CardContent>
               Our automations aren’t just pretty—they close deals. Speed. Personalization. Follow-up. Done for you.
@@ -236,7 +238,7 @@ export default function Home() {
         <div className="section-title-divider"></div>
         <Card className="mt-10 shadow-md hover:shadow-lg transition-shadow duration-300">
           <CardHeader>
-            <CardTitle>Strategic Monetisation for Social Media</CardTitle>
+            <CardTitle className="text-[#0A2540]">Strategic Monetisation for Social Media</CardTitle>
             <CardDescription>
               Empowering a client with a robust X and LinkedIn strategy.
             </CardDescription>
@@ -304,36 +306,93 @@ export default function Home() {
 
       {/* Contact Us Section */}
       <section className="mb-20" ref={contactUsRef}>
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
-        <div className="section-title-divider"></div>
+        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Let’s Design Your Fully Automated AI Business System</h2>
+         <div className="section-title-divider"></div>
+         <p className="text-md text-foreground mb-4 text-center mt-10">
+          Here's how we do things: Discovery Call → Proposal → Onboarding → Build!
+         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <div className="border rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
             <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="name">
-                  Name
-                </label>
-                <Input id="name" type="text" placeholder="Your Name" />
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <div>
+                   <label className="block text-sm font-medium text-foreground mb-1" htmlFor="firstName">
+                     First Name
+                   </label>
+                   <Input id="firstName" type="text" placeholder="First Name" />
+                 </div>
+                 <div>
+                   <label className="block text-sm font-medium text-foreground mb-1" htmlFor="lastName">
+                     Last Name
+                   </label>
+                   <Input id="lastName" type="text" placeholder="Last Name" />
+                 </div>
+               </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="phone">
+                    Phone
+                  </label>
+                  <Input id="phone" type="tel" placeholder="Phone Number" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="email">
+                    Email
+                  </label>
+                  <Input id="email" type="email" placeholder="Your Email" />
+                </div>
               </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="businessName">
+                    Business Name
+                  </label>
+                  <Input id="businessName" type="text" placeholder="Your Business Name" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="website">
+                    Website
+                  </label>
+                  <Input id="website" type="url" placeholder="https://yourwebsite.com" />
+                </div>
+               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="email">
-                  Email
+                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="services">
+                  What Services Are You Interested In?
                 </label>
-                <Input id="email" type="email" placeholder="Your Email" />
+                <Textarea id="services" placeholder="e.g., Lead Generation, Sales Automation" />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1" htmlFor="message">
-                  Message
-                </label>
-                <Textarea id="message" placeholder="Your Message" />
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <div>
+                   <label className="block text-sm font-medium text-foreground mb-1" htmlFor="budget">
+                     Budget
+                   </label>
+                   <Select>
+                     <SelectTrigger id="budget">
+                       <SelectValue placeholder="Select Budget Range" />
+                     </SelectTrigger>
+                     <SelectContent>
+                       <SelectItem value="2k-5k">$2k - $5k</SelectItem>
+                       <SelectItem value="5k-10k">$5k - $10k</SelectItem>
+                       <SelectItem value="10k-20k">$10k - $20k</SelectItem>
+                       <SelectItem value="20k+">$20k+</SelectItem>
+                     </SelectContent>
+                   </Select>
+                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1" htmlFor="referral">
+                    How did you hear about us?
+                  </label>
+                  <Input id="referral" type="text" placeholder="e.g., LinkedIn, Referral" />
+                </div>
+               </div>
               <Button variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300">Submit</Button>
             </form>
           </div>
           <div>
             <Image
               src="https://picsum.photos/500/300?random=45" // Replace with actual image
-              alt="Happy Business Person"
+              alt="Business meeting or planning"
               width={500}
               height={300}
               className="rounded-lg shadow-md"
