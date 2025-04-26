@@ -39,6 +39,7 @@ export function Chatbot() {
   const [inputValue, setInputValue] = useState('');
   const [isSending, setIsSending] = useState(false); // Add loading state
   const sessionIdRef = useRef<string | null>(null); // To store session ID
+  const scrollAreaRef = useRef<HTMLDivElement>(null); // Ref for scroll area viewport
 
   // Get or generate session ID on component mount
   useEffect(() => {
@@ -51,6 +52,15 @@ export function Chatbot() {
     console.log("Chatbot Session ID:", storedSessionId); // For debugging
   }, []);
 
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTo({
+        top: scrollAreaRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [messages]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,38 +94,45 @@ export function Chatbot() {
         body: JSON.stringify(payload), // Send payload with session ID
       });
 
-      if (!response.ok) {
-        console.error('Webhook error:', response.status, await response.text());
-        // Optionally display an error message to the user in the chat
-         const errorResponse: Message = {
-           id: Date.now() + 1,
-           text: `Sorry, I couldn't process that. Please try again.`,
-           sender: 'bot',
-         };
-         setMessages((prev) => [...prev, errorResponse]);
-      } else {
+      let botResponseText = "Sorry, I couldn't get a response. Please try again."; // Default error message
+
+      if (response.ok) {
          console.log('Message sent to webhook successfully.');
-         // TODO: Replace with actual Genkit flow call for AI response
-         // Simulate bot thinking response for now
-         const botResponse: Message = {
-           id: Date.now() + 1, // Ensure unique ID
-           text: `Thinking about "${userMessageText}"... (AI response pending)`,
-           sender: 'bot',
-         };
-          // Using setTimeout to simulate delay, replace when AI is integrated
-         setTimeout(() => {
-            setMessages((prev) => [...prev, botResponse]);
-         }, 500); // Short delay for the thinking message
+         try {
+           const responseData = await response.json();
+           console.log("Received from webhook:", responseData); // For debugging
+           if (responseData && responseData.output) {
+             botResponseText = responseData.output;
+           } else {
+             console.error('Webhook response missing "output" field:', responseData);
+             botResponseText = "Received an unexpected response format.";
+           }
+         } catch (jsonError) {
+           console.error('Error parsing webhook JSON response:', jsonError);
+           botResponseText = "Error reading the response. Please try again.";
+         }
+      } else {
+        const errorText = await response.text();
+        console.error('Webhook error:', response.status, errorText);
+        botResponseText = `Sorry, I couldn't process that (Error ${response.status}). Please try again.`;
       }
-    } catch (error) {
-      console.error('Error sending message to webhook:', error);
-      // Optionally display an error message to the user in the chat
-       const errorResponse: Message = {
-         id: Date.now() + 1,
-         text: `Sorry, there was an error connecting. Please try again later.`,
+
+       // Add bot response message
+       const botResponseMessage: Message = {
+         id: Date.now() + 1, // Ensure unique ID
+         text: botResponseText,
          sender: 'bot',
        };
-       setMessages((prev) => [...prev, errorResponse]);
+       setMessages((prev) => [...prev, botResponseMessage]);
+
+    } catch (error) {
+      console.error('Error sending message to webhook:', error);
+       const errorResponseMessage: Message = {
+         id: Date.now() + 1,
+         text: `Sorry, there was a connection error. Please try again later.`,
+         sender: 'bot',
+       };
+       setMessages((prev) => [...prev, errorResponseMessage]);
     } finally {
       setIsSending(false); // Reset loading state
     }
@@ -125,29 +142,30 @@ export function Chatbot() {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="primary" // Keep variant as primary for styling consistency if defined, otherwise consider 'accent'
+          variant="primary" // Consider using 'accent' for consistency
           size="icon"
           className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-lg bg-accent text-accent-foreground hover:bg-accent/80 transition-colors duration-300"
           aria-label="Open Chat"
           disabled={isSending} // Disable button while sending
         >
-          <MessageCircle className="h-6 w-6" />
+          {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="flex flex-col p-0">
-        <SheetHeader className="p-6 border-b">
+        <SheetHeader className="p-4 border-b relative"> {/* Reduced padding */}
           <SheetTitle>Alchemy Assistant</SheetTitle>
           <SheetDescription>
             Ask me anything about our services or automation!
           </SheetDescription>
-           <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+           <SheetClose className="absolute right-2 top-2 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
           </SheetClose>
         </SheetHeader>
-        <ScrollArea className="flex-1 overflow-y-auto p-4">
-          <div className="space-y-4">
-            {messages.map((message) => (
+        {/* Wrap ScrollArea content in a div to assign the ref */}
+        <ScrollArea className="flex-1 overflow-y-auto" >
+           <div ref={scrollAreaRef} className="p-4 space-y-4">
+             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${
@@ -155,7 +173,7 @@ export function Chatbot() {
                 }`}
               >
                 <div
-                  className={`max-w-[75%] rounded-lg p-3 text-sm ${
+                  className={`max-w-[75%] rounded-lg p-3 text-sm break-words ${ // Added break-words
                     message.sender === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted text-muted-foreground'
@@ -165,14 +183,14 @@ export function Chatbot() {
                 </div>
               </div>
             ))}
-             {isSending && messages[messages.length - 1]?.sender === 'user' && ( // Show typing indicator only if last message was user and sending
+             {isSending && messages[messages.length - 1]?.sender === 'user' && (
               <div className="flex justify-start">
                 <div className="max-w-[75%] rounded-lg p-3 text-sm bg-muted text-muted-foreground">
-                  <span className="italic">Sending...</span>
+                  <span className="italic">Bot is thinking...</span> {/* Updated indicator */}
                 </div>
               </div>
             )}
-          </div>
+           </div>
         </ScrollArea>
         <SheetFooter className="p-4 border-t">
           <form onSubmit={handleSendMessage} className="flex w-full space-x-2">
@@ -183,8 +201,9 @@ export function Chatbot() {
               onChange={(e) => setInputValue(e.target.value)}
               className="flex-1"
               disabled={isSending} // Disable input while sending
+              aria-label="Chat message input"
             />
-            <Button type="submit" size="icon" variant="primary" className="bg-accent text-accent-foreground hover:bg-accent/80" disabled={isSending || !sessionIdRef.current}>
+            <Button type="submit" size="icon" variant="primary" className="bg-accent text-accent-foreground hover:bg-accent/80" disabled={isSending || !sessionIdRef.current || inputValue.trim() === ''}>
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>
