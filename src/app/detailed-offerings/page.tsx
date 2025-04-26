@@ -54,7 +54,7 @@ const DetailedOfferingsPage = () => {
                 <Link href="/contact">Contact Us</Link>
               </Button>
               <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">
-                <Link href="/demo">Book a Demo</Link>
+                <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">Book a Demo</Link>
               </Button>
             </div>
           </div>

@@ -5,7 +5,7 @@ import {Facebook, Instagram, Twitter, Youtube} from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-header text-foreground p-8 mt-20">
+    <footer className="bg-header text-foreground p-8 mt-20"> {/* Changed bg-secondary to bg-header */}
       <div className="container mx-auto">
         {/* Top Section: 1x4 Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -21,7 +21,7 @@ const Footer = () => {
               <li><Link href="/about" className="hover:underline text-foreground">About Us</Link></li>
               <li><Link href="/detailed-offerings" className="hover:underline text-foreground">Offerings</Link></li>
               <li><Link href="/contact" className="hover:underline text-foreground">Contact</Link></li>
-              <li><Link href="/demo" className="hover:underline text-foreground">Book a Demo</Link></li>
+              <li><Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer" className="hover:underline text-foreground">Book a Demo</Link></li>
             </ul>
           </nav>
 
