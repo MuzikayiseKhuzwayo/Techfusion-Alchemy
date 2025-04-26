@@ -5,7 +5,7 @@ import {Facebook, Instagram, Twitter, Youtube} from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground p-8 mt-20">
+    <footer className="bg-header text-foreground p-8 mt-20">
       <div className="container mx-auto">
         {/* Top Section: 1x4 Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -21,7 +21,7 @@ const Footer = () => {
               <li><Link href="/about" className="hover:underline text-foreground">About Us</Link></li>
               <li><Link href="/detailed-offerings" className="hover:underline text-foreground">Offerings</Link></li>
               <li><Link href="/contact" className="hover:underline text-foreground">Contact</Link></li>
-              <li><Link href="/demo" className="hover:underline">Book a Demo</Link></li>
+              <li><Link href="/demo" className="hover:underline text-foreground">Book a Demo</Link></li>
             </ul>
           </nav>
 
@@ -31,23 +31,23 @@ const Footer = () => {
             <p>Phone: +44 1234 567890</p>
             <p>Email: info@techfusionalchemy.com</p>
             <br />
-
+            {/* Removed Address section as per previous request */}
           </div>
 
           {/* Social Links */}
           <div className="flex flex-col items-center">
             <p className="font-bold">Follow Us</p>
-            <div className="flex flex-col space-y-4">
-              <Link href="#" className="hover:text-accent">
+            <div className="flex flex-col space-y-4 mt-2"> {/* Added mt-2 for spacing */}
+              <Link href="#" className="hover:text-accent text-foreground">
                 <Facebook size={20} />
               </Link>
-              <Link href="#" className="hover:text-accent">
+              <Link href="#" className="hover:text-accent text-foreground">
                 <Instagram size={20} />
               </Link>
-              <Link href="#" className="hover:text-accent">
+              <Link href="#" className="hover:text-accent text-foreground">
                 <Twitter size={20} />
               </Link>
-              <Link href="#" className="hover:text-accent">
+              <Link href="#" className="hover:text-accent text-foreground">
                 <Youtube size={20} />
               </Link>
             </div>
@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section: Copyright and Links */}
-        <div className="flex justify-between items-center border-t pt-4">
+        <div className="flex justify-between items-center border-t border-border pt-4"> {/* Added border-border for consistency */}
           <div>
             <p>&copy; {new Date().getFullYear()} TechFusion Alchemy. All rights reserved.</p>
           </div>
@@ -72,4 +72,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
