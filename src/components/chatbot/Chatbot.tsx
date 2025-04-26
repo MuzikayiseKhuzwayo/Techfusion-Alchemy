@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -24,6 +24,12 @@ interface Message {
 }
 
 const CHATBOT_WEBHOOK_URL = 'https://n8n.techfusion-ventures.xyz/webhook-test/e3b2f9f2-9c17-4bbc-a21a-63a309109f63';
+const SESSION_ID_KEY = 'chatbot_session_id';
+
+// Helper function to generate a simple unique ID
+const generateSessionId = (): string => {
+  return `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+};
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +38,23 @@ export function Chatbot() {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isSending, setIsSending] = useState(false); // Add loading state
+  const sessionIdRef = useRef<string | null>(null); // To store session ID
+
+  // Get or generate session ID on component mount
+  useEffect(() => {
+    let storedSessionId = localStorage.getItem(SESSION_ID_KEY);
+    if (!storedSessionId) {
+      storedSessionId = generateSessionId();
+      localStorage.setItem(SESSION_ID_KEY, storedSessionId);
+    }
+    sessionIdRef.current = storedSessionId;
+    console.log("Chatbot Session ID:", storedSessionId); // For debugging
+  }, []);
+
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputValue.trim() === '' || isSending) return;
+    if (inputValue.trim() === '' || isSending || !sessionIdRef.current) return; // Ensure session ID exists
 
     const userMessageText = inputValue;
     const newUserMessage: Message = {
@@ -49,14 +68,20 @@ export function Chatbot() {
     setInputValue(''); // Clear input after getting the value
     setIsSending(true); // Set loading state
 
+    const payload = {
+      message: userMessageText,
+      sessionId: sessionIdRef.current, // Include the session ID
+    };
+
     try {
-      // Send user message to the webhook
+      // Send user message and session ID to the webhook
+      console.log("Sending to webhook:", payload); // For debugging
       const response = await fetch(CHATBOT_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessageText }),
+        body: JSON.stringify(payload), // Send payload with session ID
       });
 
       if (!response.ok) {
@@ -159,7 +184,7 @@ export function Chatbot() {
               className="flex-1"
               disabled={isSending} // Disable input while sending
             />
-            <Button type="submit" size="icon" variant="primary" className="bg-accent text-accent-foreground hover:bg-accent/80" disabled={isSending}>
+            <Button type="submit" size="icon" variant="primary" className="bg-accent text-accent-foreground hover:bg-accent/80" disabled={isSending || !sessionIdRef.current}>
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>
