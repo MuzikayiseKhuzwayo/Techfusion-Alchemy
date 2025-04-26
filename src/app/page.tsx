@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -7,17 +8,21 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useRef } from "react";
 import Image from 'next/image';
-// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-// import Autoplay from 'embla-carousel-autoplay'
 import React from "react";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 
 export default function Home() {
-  const offeringsRef = useRef(null);
+  const offeringsRef = useRef<HTMLDivElement>(null);
+  const contactUsRef = useRef<HTMLDivElement>(null);
+
 
   const scrollToOfferings = () => {
     offeringsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const scrollToContactUs = () => {
+    contactUsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }
 
   const offerings = [
     {
@@ -53,39 +58,39 @@ export default function Home() {
   ];
 
   const logos = [
-    { id: 1, name: 'n8n', src: 'https://picsum.photos/100/50', description: 'Automate workflows with a visual interface.' },
-    { id: 2, name: 'Make', src: 'https://picsum.photos/100/50', description: 'Design, build, and automate anything.' },
-    { id: 3, name: 'ChatGPT API', src: 'https://picsum.photos/100/50', description: 'Access powerful language models for various tasks.' },
-    { id: 4, name: 'ElevenLabs', src: 'https://picsum.photos/100/50', description: 'Generate realistic and versatile AI speech.' },
-    { id: 5, name: 'HeyGen', src: 'https://picsum.photos/100/50', description: 'Create engaging video content with AI avatars.' },
-    { id: 6, name: 'Synthesia', src: 'https://picsum.photos/100/50', description: 'Generate AI videos from text-based scripts.' },
-    { id: 7, name: 'Notion', src: 'https://picsum.photos/100/50', description: 'Centralize your tasks, notes, and databases in one workspace.' },
-    { id: 8, name: 'Airtable', src: 'https://picsum.photos/100/50', description: 'Create flexible databases and collaborative workspaces.' },
-    { id: 9, name: 'Twilio', src: 'https://picsum.photos/100/50', description: 'Communicate with customers via SMS, voice, and more.' },
-    { id: 10, name: 'Puppeteer', src: 'https://picsum.photos/100/50', description: 'Automate browser actions for scraping and testing.' },
-    { id: 11, name: 'Playwright', src: 'https://picsum.photos/100/50', description: 'Enable reliable end-to-end testing for web apps.' },
-    { id: 12, name: 'LinkedIn Scraper', src: 'https://picsum.photos/100/50', description: 'Extract valuable data from LinkedIn profiles.' },
-    { id: 13, name: 'Calendly', src: 'https://picsum.photos/100/50', description: 'Streamline scheduling and appointment booking.' },
-    { id: 14, name: 'Custom CRMs', src: 'https://picsum.photos/100/50', description: 'Manage customer relationships with tailor-made systems.' },
-    { id: 15, name: 'Firebase', src: 'https://picsum.photos/100/50', description: 'Build scalable web and mobile apps with backend services.' },
-    { id: 16, name: 'Supabase', src: 'https://picsum.photos/100/50', description: 'Build secure and scalable apps with open-source backend.' },
-    { id: 17, name: 'Stripe', src: 'https://picsum.photos/100/50', description: 'Process online payments securely and efficiently.' },
-    { id: 18, name: 'Paystack', src: 'https://picsum.photos/100/50', description: 'Accept payments from multiple channels in Africa.' },
-    { id: 19, name: 'PayPal', src: 'https://picsum.photos/100/50', description: 'Process payments online with a trusted global platform.' },
-    { id: 20, name: 'Hubspot', src: 'https://picsum.photos/100/50', description: 'Manage marketing, sales, and customer service efforts.' },
-    { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50', description: 'Manage your sales pipeline and track deals efficiently.' },
-    { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50', description: 'Manage projects, tasks, and workflows in one platform.' },
+    { id: 1, name: 'n8n', src: 'https://picsum.photos/100/50?random=23', description: 'Automate complex workflows with a visual, node-based interface. Perfect for connecting disparate APIs and services without extensive coding.' },
+    { id: 2, name: 'Make', src: 'https://picsum.photos/100/50?random=24', description: 'Design, build, and automate visually. Link apps and services seamlessly to streamline repetitive tasks and processes.' },
+    { id: 3, name: 'ChatGPT API', src: 'https://picsum.photos/100/50?random=25', description: 'Integrate powerful language models for content generation, chatbots, text analysis, and personalized communication automation.' },
+    { id: 4, name: 'ElevenLabs', src: 'https://picsum.photos/100/50?random=26', description: 'Generate hyper-realistic, versatile AI speech. Ideal for automated voiceovers, personalized audio messages, and voice bots.' },
+    { id: 5, name: 'HeyGen', src: 'https://picsum.photos/100/50?random=27', description: 'Create engaging AI avatar videos from scripts. Perfect for scalable video marketing, training materials, and automated client updates.' },
+    { id: 6, name: 'Synthesia', src: 'https://picsum.photos/100/50?random=28', description: 'Produce professional AI videos with avatars from text. Automate video content creation for various business needs.' },
+    { id: 7, name: 'Notion', src: 'https://picsum.photos/100/50?random=29', description: 'Centralise tasks, notes, and project management. Automate documentation, knowledge base updates, and team workflows.' },
+    { id: 8, name: 'Airtable', src: 'https://picsum.photos/100/50?random=30', description: 'Build flexible databases and automate data handling. Ideal for custom CRM extensions, project tracking, and content management.' },
+    { id: 9, name: 'Twilio', src: 'https://picsum.photos/100/50?random=31', description: 'Automate customer communications via SMS, voice, and WhatsApp. Integrate for automated reminders, notifications, and support.' },
+    { id: 10, name: 'Puppeteer', src: 'https://picsum.photos/100/50?random=32', description: 'Automate browser actions for web scraping, testing, and form submissions. Essential for gathering data or interacting with non-API sites.' },
+    { id: 11, name: 'Playwright', src: 'https://picsum.photos/100/50?random=33', description: 'Enable reliable end-to-end web automation and testing across multiple browsers. Great for robust scraping and interaction tasks.' },
+    { id: 12, name: 'LinkedIn Scraper', src: 'https://picsum.photos/100/50?random=34', description: 'Automate the extraction of valuable lead data and profiles from LinkedIn for targeted outreach and market research.' },
+    { id: 13, name: 'Calendly', src: 'https://picsum.photos/100/50?random=35', description: 'Streamline meeting scheduling by automating booking and reminders. Integrates with calendars and CRMs for efficiency.' },
+    { id: 14, name: 'Custom CRMs', src: 'https://picsum.photos/100/50?random=36', description: 'Develop tailor-made CRM systems or automate existing ones to manage customer relationships, track interactions, and trigger sales actions.' },
+    { id: 15, name: 'Firebase', src: 'https://picsum.photos/100/50?random=37', description: 'Leverage backend services to build scalable web/mobile apps. Automate database updates, authentication flows, and cloud functions.' },
+    { id: 16, name: 'Supabase', src: 'https://picsum.photos/100/50?random=38', description: 'Utilise an open-source Firebase alternative for building secure apps. Automate database interactions, user management, and real-time features.' },
+    { id: 17, name: 'Stripe', src: 'https://picsum.photos/100/50?random=39', description: 'Automate online payment processing, invoicing, and subscription management securely and efficiently.' },
+    { id: 18, name: 'Paystack', src: 'https://picsum.photos/100/50?random=40', description: 'Automate payment acceptance across multiple channels in Africa, streamlining sales and revenue collection.' },
+    { id: 19, name: 'PayPal', src: 'https://picsum.photos/100/50?random=41', description: 'Automate global online payment processing through a trusted platform, simplifying e-commerce transactions.' },
+    { id: 20, name: 'Hubspot', src: 'https://picsum.photos/100/50?random=42', description: 'Automate marketing, sales, and customer service workflows. Integrate lead nurturing, email sequences, and CRM updates.' },
+    { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50?random=43', description: 'Automate sales pipeline management, deal tracking, and activity logging for increased sales team efficiency.' },
+    { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50?random=44', description: 'Automate project management, task assignments, and workflow triggers within a unified productivity platform.' },
   ];
 
   return (
     <div className="container mx-auto p-8">
       {/* Hero Section */}
-      <section className="text-center mb-20">
+      <section className="text-center mb-5">
         <h1 className="text-4xl font-bold text-primary mb-4">
           Full-Stack AI Systems That Automate Your Entire Business — From First Click to Final Sale
         </h1>
         <div className="section-title-divider"></div>
-        <p className="text-lg text-secondary mb-8">
+        <p className="text-lg text-secondary mb-8 mt-10">
           From scraping leads off social media to automated AI sales calls and fulfillment... We build smart systems that scale your business while you sleep.
         </p>
         <p className="text-md text-foreground">
@@ -97,14 +102,14 @@ export default function Home() {
           <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300" onClick={scrollToOfferings}>
             Find Out More
           </Button>
-          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
-            <Link href="/demo">Book a Demo</Link>
+          <Button variant="accent" className="border-2 border-accent text-accent-foreground bg-accent hover:bg-opacity-0 transition-colors duration-300">
+             <Link href="/demo">Book a Demo</Link>
           </Button>
         </div>
       </section>
 
       {/* About Us Section */}
-      <section className="mb-20">
+      <section className="mb-5">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">You're Losing Time, Leads, and Sales Every Day.</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-2 gap-8 mt-10">
@@ -144,18 +149,19 @@ export default function Home() {
       </section>
 
       {/* Offerings Section */}
-      <section className="mb-20" ref={offeringsRef}>
+      <section className="mb-5" ref={offeringsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
-        <p className="text-md text-foreground mb-4 text-center">
+         <div className="section-title-divider"></div>
+        <p className="text-md text-foreground mb-4 text-center mt-10">
               Every piece of your business, fully integrated. Fully automated. Fully optimized.
             </p>
-        <div className="section-title-divider"></div>
+
         <div className="flex flex-col gap-8 mt-10">
           {offerings.map((offering, index) => (
             <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
                 <CardTitle className="text-[#8A0000]">{offering.title}</CardTitle>
-                <CardDescription>
+                 <CardDescription>
                   {offering.subtitle}
                 </CardDescription>
               </CardHeader>
@@ -177,12 +183,13 @@ export default function Home() {
       </section>
 
       {/* Why TechFusion Alchemy? Section */}
-      <section className="mb-20">
+      <section className="mb-5">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why TechFusion Alchemy?</h2>
-        <p className="text-md text-foreground mb-4 text-center">
+         <div className="section-title-divider"></div>
+        <p className="text-md text-foreground mb-4 text-center mt-10">
           Stop the leaks, start the flood: Why smart founders choose our systems to convert at scale.
         </p>
-        <div className="section-title-divider"></div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
@@ -218,9 +225,9 @@ export default function Home() {
           </Card>
         </div>
       </section>
-      
+
       {/* Client Success Stories Section */}
-      <section className="mb-20">
+      <section className="mb-5">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
           Client Success Stories
         </h2>
@@ -241,29 +248,39 @@ export default function Home() {
             </p>
           </CardContent>
         </Card>
+        {/* Merged Engagement Section */}
+        <div className="mt-10 text-center">
+          <p className="text-lg text-foreground mb-4">Ready to transform your business? Take the next step.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Demo</Button>
+            <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
+            <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToContactUs}>Contact Us</Button>
+          </div>
+        </div>
       </section>
 
       {/* Explore Our Stack Section */}
-      <section className="mb-20">
+      <section className="mb-5">
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Explore Our Stack</h2>
-        <p className="text-md text-foreground mb-4 text-center">
-          {/* Insert Engaging subtitle posed to show how in the know we are about tending things. */}
+         <div className="section-title-divider"></div>
+        <p className="text-md text-foreground mb-4 text-center mt-10">
+           Leveraging cutting-edge tools to build powerful, bespoke automation solutions.
         </p>
-        <div className="section-title-divider"></div>
-        <div className="grid grid-cols-4 gap-4 mt-10">
+
+        <div className="grid grid-cols-4 md:grid-cols-6 gap-4 mt-10">
           {logos.map((logo) => (
             <TooltipProvider key={logo.id}>
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <div className="relative group overflow-hidden rounded-md">
+                  <div className="relative group overflow-hidden rounded-md border p-4 hover:shadow-lg transition-shadow duration-300 flex flex-col items-center justify-center aspect-square">
                     <Image
                       src={logo.src}
-                      width={100}
-                      height={50}
+                      width={60}
+                      height={30}
                       alt={logo.name}
-                      className="aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="object-contain transition-transform duration-300 group-hover:scale-110 mb-2"
                     />
-                    <p className="text-center">{logo.name}</p>
+                    <p className="text-center text-xs font-medium">{logo.name}</p>
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="top" align="center">
@@ -275,23 +292,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Engagement Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Get Started</h2>
-        <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Book a Demo</Button>
-          <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
-          <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300"><Link href="/demo">View Demo</Link></Button>
-        </div>
-      </section>
+
 
       {/* Contact Us Section */}
-      <section className="mb-20">
+      <section className="mb-5" ref={contactUsRef}>
         <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Contact Us</h2>
         <div className="section-title-divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <div className="border rounded-lg p-8 shadow-md">
+          <div className="border rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
             <form className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1">
@@ -316,7 +324,7 @@ export default function Home() {
           </div>
           <div>
             <Image
-              src="https://picsum.photos/500/300" // Replace with actual image
+              src="https://picsum.photos/500/300?random=45" // Replace with actual image
               alt="Happy Business Person"
               width={500}
               height={300}
