@@ -4,6 +4,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import {TypingIndicator} from './typing-indicator';
 import {
   Sheet,
   SheetContent,
@@ -38,9 +39,9 @@ export function Chatbot() {
     { id: 1, text: 'Hello! How can I help you today?', sender: 'bot' },
   ]);
   const [inputValue, setInputValue] = useState('');
-  const [isSending, setIsSending] = useState(false); // Add loading state
-  const sessionIdRef = useRef<string | null>(null); // To store session ID
-  const scrollAreaRef = useRef<HTMLDivElement>(null); // Ref for scroll area viewport
+  const [isSending, setIsSending] = useState(false);
+  const sessionIdRef = useRef<string | null>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   // Get or generate session ID on component mount
   useEffect(() => {
@@ -153,7 +154,7 @@ export function Chatbot() {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="primary" // Consider using 'accent' for consistency
+          variant="default" // Consider using 'accent' for consistency
           size="icon"
           className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-lg bg-accent text-accent-foreground hover:bg-accent/80 transition-colors duration-300"
           aria-label="Open Chat"
@@ -174,8 +175,8 @@ export function Chatbot() {
           </SheetClose>
         </SheetHeader>
         {/* Wrap ScrollArea content in a div to assign the ref */}
-        <ScrollArea className="flex-1 overflow-y-auto" ref={scrollAreaRef}>
-           <div className="p-4 space-y-4">
+        <ScrollArea className="flex-1 h-[calc(100vh-200px)] overflow-y-auto" ref={scrollAreaRef}>
+          <div className="p-4 space-y-4">
              {messages.map((message) => (
               <div
                 key={message.id}
@@ -195,12 +196,12 @@ export function Chatbot() {
               </div>
             ))}
              {isSending && messages[messages.length - 1]?.sender === 'user' && (
-              <div className="flex justify-start">
-                <div className="max-w-[75%] rounded-lg p-3 text-sm bg-muted text-muted-foreground">
-                  <span className="italic">Bot is thinking...</span> {/* Updated indicator */}
+                <div className="flex justify-start">
+                  <div className="max-w-[75%] rounded-lg p-3 text-sm bg-muted text-muted-foreground flex items-center justify-center h-10">
+                    <TypingIndicator />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
            </div>
         </ScrollArea>
         <SheetFooter className="p-4 border-t">
@@ -214,7 +215,7 @@ export function Chatbot() {
               disabled={isSending} // Disable input while sending
               aria-label="Chat message input"
             />
-            <Button type="submit" size="icon" variant="primary" className="bg-accent text-accent-foreground hover:bg-accent/80" disabled={isSending || !sessionIdRef.current || inputValue.trim() === ''}>
+            <Button type="submit" size="icon" variant="default" className="bg-accent text-accent-foreground hover:bg-accent/80" disabled={isSending || !sessionIdRef.current || inputValue.trim() === ''}>
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>
             </Button>

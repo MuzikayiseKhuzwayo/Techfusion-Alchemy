@@ -1,527 +1,268 @@
-
+// app/page.tsx
 "use client";
 
+import { useRef } from "react";
+import Link from "next/link";
+import {
+  BrainCircuit,
+  Bot,
+  Users,
+  Target,
+  Rocket,
+  Wand2,
+  PackageCheck,
+  Zap,
+  LayoutGrid,
+  HeartHandshake,
+  Scaling,
+} from "lucide-react";
+
+// Import our new magic components
+import { HeroSection } from "@/components/magic/hero-section";
+import { AnimatedSection } from "@/components/magic/animated-section";
+import { InfiniteMovingLogos } from "@/components/magic/infinite-moving-logos";
+import { AnimatedBentoGrid } from "@/components/magic/animated-bento-grid";
+import { ContactSection } from "@/components/magic/contact-section";
+
+// Keep existing imports for shared components if needed elsewhere
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import Link from "next/link";
-import { useRef, useState } from "react";
-import Image from 'next/image';
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import Autoplay from 'embla-carousel-autoplay'
-import React from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { submitContactForm } from "@/actions/contact";
-import { useToast } from "@/hooks/use-toast";
-import { ContactFormSchema } from "@/lib/validators/contactForm"; // Import the schema
-
-type ContactFormData = z.infer<typeof ContactFormSchema>;
-
 
 export default function Home() {
   const offeringsRef = useRef<HTMLDivElement>(null);
   const contactUsRef = useRef<HTMLDivElement>(null);
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<ContactFormData>({
-    resolver: zodResolver(ContactFormSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      businessName: "",
-      website: "",
-      services: "",
-      budget: undefined, // Set default to undefined or a placeholder value if needed
-      referral: "",
-    },
-  });
-
-
-  const scrollToOfferings = () => {
-    offeringsRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToContactUs = () => {
-    contactUsRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }
+  const scrollToOfferings = () => offeringsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToContactUs = () => contactUsRef.current?.scrollIntoView({ behavior: 'smooth' });
 
   const offerings = [
-    {
-      title: "Lead Generation",
-      subtitle: "AI-powered lead scraping for targeted and precise audience engagement.",
-      textContent: "AI scrapes targeted leads from social media and online platforms using custom filters and precision targeting.",
-    },
-    {
-      title: "Lead Qualification",
-      subtitle: "Automated smart forms combined with enriched data profiles for instant scoring and segmentation.",
-      textContent: "Automated smart forms + enriched data profiles. Every lead is scored, segmented, and sorted instantly.",
-    },
-    {
-      title: "Lead Nurturing",
-      subtitle: "Personalized automated emails and dynamic AI avatars for engaging follow-up flows.",
-      textContent: "Automated personalized emails, dynamic AI avatars in Loom-style videos, and intelligent follow-up flows.",
-    },
-    {
-      title: "Lead Conversion",
-      subtitle: "AI voice bots handling calls with real-time objection handling and scheduling.",
-      textContent: "AI-powered voice bots handle inbound and outbound calls with real-time objection handling + scheduling.",
-    },
-    {
-      title: "Sales Automation",
-      subtitle: "Automated call routing, CRM updates, and pipeline triggers for seamless sales processes.",
-      textContent: "Call routing, CRM updates, pipeline triggers — all automated. Human reps only step in to close.",
-    },
-    {
-      title: "Fulfillment",
-      subtitle: "Integrated systems automating orders, onboarding, and task distribution upon deal closure.",
-      textContent: "Orders, onboarding, task distribution — all handled by integrated systems the moment a deal closes.",
-    },
+    { icon: <Target className="w-8 h-8 text-cyan-400" />, title: "Lead Generation", textContent: "AI scrapes targeted leads from social media and online platforms using custom filters and precision targeting." },
+    { icon: <Users className="w-8 h-8 text-cyan-400" />, title: "Lead Qualification", textContent: "Automated smart forms + enriched data profiles. Every lead is scored, segmented, and sorted instantly." },
+    { icon: <HeartHandshake className="w-8 h-8 text-cyan-400" />, title: "Lead Nurturing", textContent: "Automated personalized emails, dynamic AI avatars in Loom-style videos, and intelligent follow-up flows." },
+    { icon: <Bot className="w-8 h-8 text-cyan-400" />, title: "Lead Conversion", textContent: "AI-powered voice bots handle inbound and outbound calls with real-time objection handling + scheduling." },
+    { icon: <Zap className="w-8 h-8 text-cyan-400" />, title: "Sales Automation", textContent: "Call routing, CRM updates, pipeline triggers — all automated. Human reps only step in to close." },
+    { icon: <PackageCheck className="w-8 h-8 text-cyan-400" />, title: "Fulfillment", textContent: "Orders, onboarding, task distribution — all handled by integrated systems the moment a deal closes." },
   ];
 
+  const whyUsItems = [
+    { icon: <Wand2 className="h-6 w-6" />, title: "End-to-End Integration", description: "No random automations. We build full systems that talk to each other and scale with you.", className: "md:col-span-2" },
+    { icon: <BrainCircuit className="h-6 w-6" />, title: "Real AI Integration", description: "We build with advanced AI agents, LLMs, voice bots, and visual avatars — not just simple workflows." },
+    { icon: <LayoutGrid className="h-6 w-6" />, title: "Custom-Built For You", description: "We don’t just give you templates. We build tailored systems for your offer, funnel, and sales process." },
+    { icon: <Scaling className="h-6 w-6" />, title: "Built to Convert", description: "Our automations aren’t just pretty—they close deals. Speed. Personalization. Follow-up. Done for you.", className: "md:col-span-2" },
+  ];
+  
   const logos = [
-    { id: 1, name: 'n8n', src: 'https://picsum.photos/100/50?random=23', description: 'Automate complex workflows with a visual, node-based interface. Perfect for connecting disparate APIs and services without extensive coding.' },
-    { id: 2, name: 'Make', src: 'https://picsum.photos/100/50?random=24', description: 'Design, build, and automate visually. Link apps and services seamlessly to streamline repetitive tasks and processes.' },
-    { id: 3, name: 'ChatGPT API', src: 'https://picsum.photos/100/50?random=25', description: 'Integrate powerful language models for content generation, chatbots, text analysis, and personalized communication automation.' },
-    { id: 4, name: 'ElevenLabs', src: 'https://picsum.photos/100/50?random=26', description: 'Generate hyper-realistic, versatile AI speech. Ideal for automated voiceovers, personalized audio messages, and voice bots.' },
-    { id: 5, name: 'HeyGen', src: 'https://picsum.photos/100/50?random=27', description: 'Create engaging AI avatar videos from scripts. Perfect for scalable video marketing, training materials, and automated client updates.' },
-    { id: 6, name: 'Synthesia', src: 'https://picsum.photos/100/50?random=28', description: 'Produce professional AI videos with avatars from text. Automate video content creation for various business needs.' },
-    { id: 7, name: 'Notion', src: 'https://picsum.photos/100/50?random=29', description: 'Centralise tasks, notes, and project management. Automate documentation, knowledge base updates, and team workflows.' },
-    { id: 8, name: 'Airtable', src: 'https://picsum.photos/100/50?random=30', description: 'Build flexible databases and automate data handling. Ideal for custom CRM extensions, project tracking, and content management.' },
-    { id: 9, name: 'Twilio', src: 'https://picsum.photos/100/50?random=31', description: 'Automate customer communications via SMS, voice, and WhatsApp. Integrate for automated reminders, notifications, and support.' },
-    { id: 10, name: 'Puppeteer', src: 'https://picsum.photos/100/50?random=32', description: 'Automate browser actions for web scraping, testing, and form submissions. Essential for gathering data or interacting with non-API sites.' },
-    { id: 11, name: 'Playwright', src: 'https://picsum.photos/100/50?random=33', description: 'Enable reliable end-to-end web automation and testing across multiple browsers. Great for robust scraping and interaction tasks.' },
-    { id: 12, name: 'LinkedIn Scraper', src: 'https://picsum.photos/100/50?random=34', description: 'Automate the extraction of valuable lead data and profiles from LinkedIn for targeted outreach and market research.' },
-    { id: 13, name: 'Calendly', src: 'https://picsum.photos/100/50?random=35', description: 'Streamline meeting scheduling by automating booking and reminders. Integrates with calendars and CRMs for efficiency.' },
-    { id: 14, name: 'Custom CRMs', src: 'https://picsum.photos/100/50?random=36', description: 'Develop tailor-made CRM systems or automate existing ones to manage customer relationships, track interactions, and trigger sales actions.' },
-    { id: 15, name: 'Firebase', src: 'https://picsum.photos/100/50?random=37', description: 'Leverage backend services to build scalable web/mobile apps. Automate database updates, authentication flows, and cloud functions.' },
-    { id: 16, name: 'Supabase', src: 'https://picsum.photos/100/50?random=38', description: 'Utilise an open-source Firebase alternative for building secure apps. Automate database interactions, user management, and real-time features.' },
-    { id: 17, name: 'Stripe', src: 'https://picsum.photos/100/50?random=39', description: 'Automate online payment processing, invoicing, and subscription management securely and efficiently.' },
-    { id: 18, name: 'Paystack', src: 'https://picsum.photos/100/50?random=40', description: 'Automate payment acceptance across multiple channels in Africa, streamlining sales and revenue collection.' },
-    { id: 19, name: 'PayPal', src: 'https://picsum.photos/100/50?random=41', description: 'Automate global online payment processing through a trusted platform, simplifying e-commerce transactions.' },
-    { id: 20, name: 'Hubspot', src: 'https://picsum.photos/100/50?random=42', description: 'Automate marketing, sales, and customer service workflows. Integrate lead nurturing, email sequences, and CRM updates.' },
-    { id: 21, name: 'Pipedrive', src: 'https://picsum.photos/100/50?random=43', description: 'Automate sales pipeline management, deal tracking, and activity logging for increased sales team efficiency.' },
-    { id: 22, name: 'Clickup', src: 'https://picsum.photos/100/50?random=44', description: 'Automate project management, task assignments, and workflow triggers within a unified productivity platform.' },
+    {
+      id: 1,
+      name: 'n8n',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/n8n.avif',
+      description: 'We’ll turn your scattered tools into a symphony of automation—n8n lets us build custom workflows that think, act, and scale with your business.',
+    },
+    {
+      id: 2,
+      name: 'Make',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/make.png',
+      description: 'Imagine your entire business running on autopilot—Make helps us link your apps into seamless flows that eliminate manual work.',
+    },
+    {
+      id: 3,
+      name: 'ChatGPT',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/openai.png',
+      description: 'We’ll give your brand a voice that never sleeps—ChatGPT powers intelligent agents that write, respond, and adapt to your audience.',
+    },
+    {
+      id: 4,
+      name: 'ElevenLabs',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/elevenlabs.png',
+      description: 'Want your automations to speak with emotion? ElevenLabs lets us generate lifelike voiceovers that connect, convert, and guide.',
+    },
+    {
+      id: 5,
+      name: 'HeyGen',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/heygen.png',
+      description: 'We’ll turn your scripts into avatar-led videos—HeyGen helps you scale client updates, training, and marketing with a human touch.',
+    },
+    {
+      id: 6,
+      name: 'GoHighLevel',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/highlevel.jpg',
+      description: 'From lead capture to automated follow-ups—GoHighLevel lets us build full-stack funnels that run while you sleep.',
+    },
+    {
+      id: 7,
+      name: 'Notion',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/notion.png',
+      description: 'We’ll turn your chaos into clarity—Notion becomes your living workspace, updated by agents that document, organize, and sync your knowledge.',
+    },
+    {
+      id: 8,
+      name: 'QuickBooks',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/quickbooks.svg',
+      description: 'No more chasing invoices—QuickBooks automations keep your finances flowing, synced, and stress-free.',
+    },
+    {
+      id: 9,
+      name: 'Twilio',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/twilio.png',
+      description: 'We’ll help you speak to your customers at scale—Twilio powers automated SMS, voice, and WhatsApp flows that feel personal.',
+    },
+    {
+      id: 10,
+      name: 'Airtable',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/airtable.png',
+      description: 'We’ll build you a custom backend without the dev overhead—Airtable lets us track, trigger, and transform your data in real time.',
+    },
+    {
+      id: 11,
+      name: 'Google Apps',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/google.jpg',
+      description: 'Your inbox, calendar, and docs—automated. We use Google Apps to streamline your daily grind into intelligent workflows.',
+    },
+    {
+      id: 12,
+      name: 'LinkedIn',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/linkedin.png',
+      description: 'We’ll help you extract leads while you sleep—LinkedIn automations surface high-value profiles and trigger outreach at scale.',
+    },
+    {
+      id: 13,
+      name: 'Calendly',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/calendly.png',
+      description: 'No more back-and-forth—Calendly automations handle bookings, reminders, and CRM syncs so you can focus on the meeting, not the scheduling.',
+    },
+    {
+      id: 14,
+      name: 'Monday',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/monday.png',
+      description: 'We’ll build you a CRM that works like a team member—Monday lets us automate sales actions, track interactions, and trigger follow-ups.',
+    },
+    {
+      id: 15,
+      name: 'Microsoft',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/microsoft.avif',
+      description: 'From backend logic to cloud functions—Microsoft tools help us scale your systems with enterprise-grade reliability.',
+    },
+    {
+      id: 16,
+      name: 'Supabase',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/supabase.webp',
+      description: 'We’ll build your app’s brain—Supabase gives us secure, scalable databases with real-time sync and user auth baked in.',
+    },
+    {
+      id: 17,
+      name: 'Stripe',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/stripe.png',
+      description: 'We’ll automate your revenue engine—Stripe handles payments, subscriptions, and invoicing with zero friction.',
+    },
+    {
+      id: 18,
+      name: 'Paystack',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/paystack.png',
+      description: 'Sell across Africa with ease—Paystack automations help you accept payments, track revenue, and grow without borders.',
+    },
+    {
+      id: 19,
+      name: 'PayPal',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/paypal.png',
+      description: 'We’ll simplify your global transactions—PayPal lets us automate checkout, refunds, and recurring payments with trust.',
+    },
+    {
+      id: 20,
+      name: 'Hubspot',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/hubspot.png',
+      description: 'We’ll turn cold leads into loyal clients—Hubspot automations nurture, convert, and update your CRM without lifting a finger.',
+    },
+    {
+      id: 21,
+      name: 'Pipedrive',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/pipedrive.jpg',
+      description: 'We’ll help you close deals faster—Pipedrive automates pipeline updates, activity logging, and sales nudges.',
+    },
+    {
+      id: 22,
+      name: 'Clickup',
+      src: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/clickup.jpg',
+      description: 'We’ll make your projects run themselves—Clickup automations assign tasks, track progress, and keep your team aligned.',
+    },
   ];
-
-  async function onSubmit(data: ContactFormData) {
-    setIsSubmitting(true);
-    try {
-      const result = await submitContactForm(data);
-      if (result.success) {
-        toast({
-          title: "Form Submitted",
-          description: "Thank you for contacting us! We'll be in touch soon.",
-        });
-        form.reset(); // Reset form fields after successful submission
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Submission Failed",
-          description: result.error || "Something went wrong. Please try again.",
-        });
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      toast({
-        variant: "destructive",
-        title: "Submission Error",
-        description: "An unexpected error occurred. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
+  
 
   return (
-    <div className="container mx-auto p-8">
-      {/* Hero Section */}
-      <section className="text-center mb-20">
-        <h1 className="text-4xl font-bold text-primary mb-4">
-          Full-Stack AI Systems That Automate Your Entire Business — From First Click to Final Sale
-        </h1>
-        <div className="section-title-divider"></div>
-        <p className="text-lg text-secondary mb-8 mt-10">
-          From scraping leads off social media to automated AI sales calls and fulfillment... We build smart systems that scale your business while you sleep.
-        </p>
-        <p className="text-md text-foreground">
-          TechFusion Alchemy is an automation agency dedicated to transforming
-          businesses through innovative AI solutions. Our mission is to streamline
-          operations, enhance productivity, and drive growth for our clients.
-        </p>
-        <div className="flex justify-center mt-8 space-x-4">
-          <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300" onClick={scrollToOfferings}>
-            Find Out More
-          </Button>
-          <Button variant="accent" className="border-2 border-accent text-accent-foreground bg-accent hover:bg-opacity-0 transition-colors duration-300">
-             <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">Book a Demo</Link>
-          </Button>
-        </div>
-      </section>
+    <main className="bg-[#000010] text-gray-200 overflow-x-hidden">
+      <HeroSection scrollToOfferings={scrollToOfferings} />
 
-      {/* About Us Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">You're Losing Time, Leads, and Sales Every Day.</h2>
-        <div className="section-title-divider"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          {/* Our Story */}
-          <div className="flex items-center justify-center">
-            <p className="text-md text-foreground mb-4 text-center">
-              Most businesses still run on manual effort, missed follow-ups, and messy sales funnels.
-              Speed to lead? Too slow. Follow-ups? Forgotten. Closing? Chaotic. Fulfillment? Overwhelming.
-            </p>
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              src="https://picsum.photos/500/300?random=1"
-              alt="Frustrated business process"
-              width={500}
-              height={300}
-              className="rounded-[50px] shadow-md"
-            />
-          </div>
-
-          {/* Our Expertise */}
-          <div className="flex items-center justify-center">
-            <Image
-              src="https://picsum.photos/500/300?random=2"
-              alt="AI and Automation tools"
-              width={500}
-              height={300}
-              className="rounded-[50px] shadow-md"
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <p className="text-md text-foreground mb-4 text-center">
-              You're bleeding potential — but the tools to fix it already exist.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Offerings Section */}
-      <section className="mb-20" ref={offeringsRef}>
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Our Offerings</h2>
-         <div className="section-title-divider"></div>
-        <p className="text-md text-foreground mb-8 text-center mt-10">
-              Every piece of your business, fully integrated. Fully automated. Fully optimized.
-            </p>
-
-        <div className="flex flex-col gap-8 mt-10">
-          {offerings.map((offering, index) => (
-            <Card key={index} className="shadow-md hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-blue-300">{offering.title}</CardTitle>
-                 <CardDescription>
-                  {offering.subtitle}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col justify-between">
-                <p className="text-md text-foreground mb-4">
-                  {offering.textContent}
-                </p>
-                <div className="flex justify-center">
-                  <Button variant="link" asChild>
-                    <Link href="/detailed-offerings" className="text-accent">
-                      Learn More
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Why TechFusion Alchemy? Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Why TechFusion Alchemy?</h2>
-         <div className="section-title-divider"></div>
-        <p className="text-md text-foreground mb-4 text-center mt-10">
-          Stop the leaks, start the flood: Why smart founders choose our systems to convert at scale.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#0A2540]">End-to-End Integration</CardTitle>
-            </CardHeader>
-            <CardContent>
-              No random automations. We build full systems that talk to each other and scale with you.
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#0A2540]">Real AI, Not Just Zapier</CardTitle>
-            </CardHeader>
-            <CardContent>
-              We build with advanced AI agents, LLMs, voice bots, and visual avatars — not just simple workflows.
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#0A2540]">Custom-Built For Your Business</CardTitle>
-            </CardHeader>
-            <CardContent>
-              We don’t just give you templates. We build tailored systems for your offer, funnel, and sales process.
-            </CardContent>
-          </Card>
-          <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-[#0A2540]">Built to Convert, Not Just Save Time</CardTitle>
-            </CardHeader>
-            <CardContent>
-              Our automations aren’t just pretty—they close deals. Speed. Personalization. Follow-up. Done for you.
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Client Success Stories Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">
-          Client Success Stories
+      <AnimatedSection className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-4">
+          You're Losing Time, Leads, and Sales.
         </h2>
-        <div className="section-title-divider"></div>
-        <Card className="mt-10 shadow-md hover:shadow-lg transition-shadow duration-300">
-          <CardHeader>
-            <CardTitle className="text-[#0A2540]">Strategic Monetisation for Social Media</CardTitle>
-            <CardDescription>
-              Empowering a client with a robust X and LinkedIn strategy.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-md text-foreground mb-4">
-              "TechFusion Alchemy didn't just automate tasks; they crafted a complete monetisation strategy for my presence on X and LinkedIn. This tailored approach has been instrumental in acquiring new clients and growing my business." - [Client Name/Business Name]
-            </p>
-             <div className="flex justify-center">
-                  <Button variant="link" asChild>
-                    <Link href="#" className="text-accent">
-                      Read More
-                    </Link>
-                  </Button>
-                </div>
-          </CardContent>
-        </Card>
-        {/* Merged Engagement Section */}
-        <div className="mt-10 text-center">
-          <p className="text-lg text-foreground mb-4">Ready to transform your business? Take the next step.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button variant="accent" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/0 transition-colors duration-300">
-               <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">Book a Demo</Link>
-            </Button>
-            <Button variant="secondary" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300">Sign Up for Newsletter</Button>
-            <Button variant="ghost" className="border-2 border-accent text-foreground bg-accent hover:bg-accent/20 transition-colors duration-300" onClick={scrollToContactUs}>Contact Us</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Explore Our Stack Section */}
-      <section className="mb-20">
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Explore Our Stack</h2>
-         <div className="section-title-divider"></div>
-        <p className="text-md text-foreground mb-4 text-center mt-10">
-           Leveraging cutting-edge tools to build powerful, bespoke automation solutions.
+        <p className="max-w-3xl mx-auto text-lg text-gray-400">
+          Most businesses run on manual effort, missed follow-ups, and leaky funnels. You're bleeding potential, but the tools to fix it already exist. We build the systems that stop the leaks and start the flood.
         </p>
+      </AnimatedSection>
 
-        <div className="grid grid-cols-4 md:grid-cols-6 gap-4 mt-10">
-          {logos.map((logo) => (
-            <TooltipProvider key={logo.id}>
-              <Tooltip delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <div className="relative group overflow-hidden rounded-md border p-4 hover:shadow-lg transition-shadow duration-300 flex flex-col items-center justify-center aspect-square">
-                    <Image
-                      src={logo.src}
-                      width={60}
-                      height={30}
-                      alt={logo.name}
-                      className="object-contain transition-transform duration-300 group-hover:scale-110 mb-2"
-                    />
-                    <p className="text-center text-xs font-medium">{logo.name}</p>
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent side="top" align="center">
-                  {logo.description}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
-        </div>
-      </section>
-
-
-
-      {/* Contact Us Section */}
-      <section className="mb-20" ref={contactUsRef}>
-        <h2 className="text-3xl font-semibold text-primary mb-4 text-center">Let’s Design Your Fully Automated AI Business System</h2>
-         <div className="section-title-divider"></div>
-         <p className="text-md text-foreground mb-4 text-center mt-10">
-          Here's how we do things: Discovery Call → Proposal → Onboarding → Build!
-         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <div className="border rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <FormField
-                   control={form.control}
-                   name="firstName"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>First Name</FormLabel>
-                       <FormControl>
-                         <Input placeholder="First Name" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="lastName"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Last Name</FormLabel>
-                       <FormControl>
-                         <Input placeholder="Last Name" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <FormField
-                   control={form.control}
-                   name="phone"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Phone</FormLabel>
-                       <FormControl>
-                         <Input type="tel" placeholder="Phone Number" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="email"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Email</FormLabel>
-                       <FormControl>
-                         <Input type="email" placeholder="Your Email" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                   control={form.control}
-                   name="businessName"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Business Name</FormLabel>
-                       <FormControl>
-                         <Input placeholder="Your Business Name" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="website"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Website</FormLabel>
-                       <FormControl>
-                         <Input type="url" placeholder="https://yourwebsite.com" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-              <FormField
-                 control={form.control}
-                 name="services"
-                 render={({ field }) => (
-                   <FormItem>
-                     <FormLabel>What Services Are You Interested In?</FormLabel>
-                     <FormControl>
-                       <Textarea placeholder="e.g., Lead Generation, Sales Automation" {...field} />
-                     </FormControl>
-                     <FormMessage />
-                   </FormItem>
-                 )}
-               />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <FormField
-                    control={form.control}
-                    name="budget"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Budget</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select Budget Range" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="2k-5k">$2k - $5k</SelectItem>
-                            <SelectItem value="5k-10k">$5k - $10k</SelectItem>
-                            <SelectItem value="10k-20k">$10k - $20k</SelectItem>
-                            <SelectItem value="20k+">$20k+</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                   control={form.control}
-                   name="referral"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>How did you hear about us?</FormLabel>
-                       <FormControl>
-                         <Input placeholder="e.g., LinkedIn, Referral" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-              <Button type="submit" variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300" disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </Button>
-            </form>
-           </Form>
+      <div ref={offeringsRef}>
+        <AnimatedSection className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-4 text-white">Our Offerings</h2>
+          <p className="text-lg text-gray-400 text-center mb-12">Every piece of your business, fully integrated and optimized.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {offerings.map((offering) => (
+              <Card key={offering.title} className="bg-gray-900/50 border border-cyan-400/20 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-cyan-400/20 hover:-translate-y-2 transition-all duration-300">
+                <CardHeader className="flex flex-row items-center gap-4">
+                  {offering.icon}
+                  <CardTitle className="text-xl font-semibold text-white">{offering.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-400">{offering.textContent}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-          <div>
-            <Image
-              src="https://picsum.photos/500/300?random=45" // Replace with actual image
-              alt="Business meeting or planning"
-              width={500}
-              height={300}
-              className="rounded-lg shadow-md"
-            />
-          </div>
+        </AnimatedSection>
+      </div>
+
+      <AnimatedSection className="py-20 text-center">
+        <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold tracking-tight text-white mb-4">Ready to Make Your Workflows Agentic?</h2>
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Let's discuss how our automated systems can transform your business from the ground up.</p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <Button asChild size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:shadow-cyan-500/50">
+                  <Link href="/contact">Start the Conversation</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="bg-transparent border-gray-600 text-gray-300 rounded-full hover:bg-gray-800 hover:text-white transition-colors duration-300">
+                  <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+                    Book a Free Demo
+                  </Link>
+                </Button>
+              </div>
         </div>
-      </section>
-    </div>
+      </AnimatedSection>
+      
+      <AnimatedSection className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-12 text-white">Why TechFusion Alchemy?</h2>
+        <AnimatedBentoGrid items={whyUsItems} />
+      </AnimatedSection>
+
+      <AnimatedSection className="py-20 sm:py-28">
+         <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-12 text-white">Our Technology Stack</h2>
+         <InfiniteMovingLogos items={logos} direction="right" speed="slow" />
+      </AnimatedSection>
+      
+      <AnimatedSection className="py-20 text-center">
+          <div className="container mx-auto px-4">
+              <h2 className="text-3xl font-bold tracking-tight text-white mb-4">Position Yourself for the Future of AI.</h2>
+              <p className="text-gray-400 mb-8 max-w-2xl mx-auto">Let's discuss how our automated systems can transform your business from the ground up.</p>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <Button asChild size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:shadow-cyan-500/50">
+                  <Link href="/contact">Start the Conversation</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="bg-transparent border-gray-600 text-gray-300 rounded-full hover:bg-gray-800 hover:text-white transition-colors duration-300">
+                  <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+                    Book a Free Demo
+                  </Link>
+                </Button>
+              </div>
+          </div>
+      </AnimatedSection>
+    </main>
   );
 }

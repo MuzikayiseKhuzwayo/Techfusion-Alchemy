@@ -1,231 +1,123 @@
-
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import Image from 'next/image';
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { submitContactForm } from "@/actions/contact"; // Assuming the action is reusable
-import { useToast } from "@/hooks/use-toast";
-import React, { useState } from "react"; // Import useState
-import { ContactFormSchema } from "@/lib/validators/contactForm"; // Import the schema
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useFormStore, FormData } from '@/lib/store';
+import { FormProgress } from '@/components/contact-form/form-progress';
+import { QuestionStep } from '@/components/contact-form/question-step';
+import { SummaryStep } from '@/components/contact-form/summary-step';
 
-type ContactFormData = z.infer<typeof ContactFormSchema>;
+const questions = [
+  { id: 'name', question: "Let's start with your name.", type: 'text' },
+  { id: 'companyName', question: "What's the name of your company?", type: 'text' },
+  { id: 'primaryGoal', question: 'What is your primary goal with automation?', type: 'text' },
+  { id: 'biggestChallenge', question: 'Describe your biggest operational challenge right now.', type: 'textarea' },
+  { id: 'estimatedLosses', question: 'How much money are you losing because of this one problem?', type: 'text' },
+  { id: 'estimatedBudget', question: 'How much would you be willing to spend to solve it?', type: 'text' },
+  { id: 'contactEmail', question: 'Finally, what’s the best email to reach you at?', type: 'email' },
+];
 
-const ContactPage = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<ContactFormData>({
-    resolver: zodResolver(ContactFormSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      businessName: "",
-      website: "",
-      services: "",
-      budget: undefined, // Set default to undefined or a placeholder value if needed
-      referral: "",
-    },
-  });
-
-  async function onSubmit(data: ContactFormData) {
-    setIsSubmitting(true);
-    try {
-      const result = await submitContactForm(data);
-      if (result.success) {
-        toast({
-          title: "Form Submitted",
-          description: "Thank you for contacting us! We'll be in touch soon.",
-        });
-        form.reset(); // Reset form fields after successful submission
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Submission Failed",
-          description: result.error || "Something went wrong. Please try again.",
-        });
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      toast({
-        variant: "destructive",
-        title: "Submission Error",
-        description: "An unexpected error occurred. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
-  return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4 text-center text-[#F2C72C]">Contact Us</h1>
-      <div className="section-title-divider"></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-        <div>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 border rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <FormField
-                   control={form.control}
-                   name="firstName"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>First Name</FormLabel>
-                       <FormControl>
-                         <Input placeholder="First Name" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="lastName"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Last Name</FormLabel>
-                       <FormControl>
-                         <Input placeholder="Last Name" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                   control={form.control}
-                   name="phone"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Phone</FormLabel>
-                       <FormControl>
-                         <Input type="tel" placeholder="Phone Number" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="email"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Email</FormLabel>
-                       <FormControl>
-                         <Input type="email" placeholder="Your Email" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                   control={form.control}
-                   name="businessName"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Business Name</FormLabel>
-                       <FormControl>
-                         <Input placeholder="Your Business Name" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-                 <FormField
-                   control={form.control}
-                   name="website"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>Website</FormLabel>
-                       <FormControl>
-                         <Input type="url" placeholder="https://yourwebsite.com" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-              <FormField
-                 control={form.control}
-                 name="services"
-                 render={({ field }) => (
-                   <FormItem>
-                     <FormLabel>What Services Are You Interested In?</FormLabel>
-                     <FormControl>
-                       <Textarea placeholder="e.g., Lead Generation, Sales Automation" {...field} />
-                     </FormControl>
-                     <FormMessage />
-                   </FormItem>
-                 )}
-               />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <FormField
-                    control={form.control}
-                    name="budget"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Budget</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger id="budget">
-                              <SelectValue placeholder="Select Budget Range" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="2k-5k">$2k - $5k</SelectItem>
-                            <SelectItem value="5k-10k">$5k - $10k</SelectItem>
-                            <SelectItem value="10k-20k">$10k - $20k</SelectItem>
-                            <SelectItem value="20k+">$20k+</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                <FormField
-                   control={form.control}
-                   name="referral"
-                   render={({ field }) => (
-                     <FormItem>
-                       <FormLabel>How did you hear about us?</FormLabel>
-                       <FormControl>
-                         <Input placeholder="e.g., LinkedIn, Referral" {...field} />
-                       </FormControl>
-                       <FormMessage />
-                     </FormItem>
-                   )}
-                 />
-               </div>
-              <Button type="submit" variant="primary" className="bg-accent text-foreground border-2 border-accent hover:bg-opacity-0 transition-colors duration-300" disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </Button>
-            </form>
-          </Form>
-        </div>
-        <div>
-          <Image
-            src="https://picsum.photos/500/300?random=6" // Kept the random image for now
-            alt="Happy Business Person"
-            width={500}
-            height={300}
-            className="rounded-lg shadow-md"
-          />
-        </div>
-      </div>
-    </div>
-  );
+const formVariants = {
+  enter: { opacity: 0, y: 50 },
+  center: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -50 },
 };
 
-export default ContactPage;
+export default function ContactPage() {
+  const router = useRouter();
+  const { step, formData, setFormData, nextStep, goToStep, reset } = useFormStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Reset form state on component mount to ensure a fresh start
+  useEffect(() => {
+    reset();
+  }, [reset]);
+
+  const handleNext = () => {
+    nextStep();
+  };
+  
+  const handleUpdateAndNext = (field: keyof FormData, value: string) => {
+    setFormData({ [field]: value });
+    // For a better UX, you might not auto-advance on textarea
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+      const result = await response.json();
+      console.log("Webhook response:", result);
+
+      router.push('/contact/thank-you');
+    } catch (error) {
+      console.error('An error occurred:', error);
+      alert('There was an error submitting your form. Please try again.');
+      setIsSubmitting(false);
+    }
+  };
+
+  const currentQuestion = questions[step];
+  const isSummaryStep = step >= questions.length;
+
+  return (
+    <main className="bg-[#000010] text-gray-200 min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+      <div className="w-full max-w-4xl">
+        {!isSummaryStep && <FormProgress currentStep={step} totalSteps={questions.length} />}
+        
+        <div className="relative h-[450px] sm:h-[400px]">
+          <AnimatePresence mode="wait">
+            {isSummaryStep ? (
+              <motion.div
+                key="summary"
+                variants={formVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="absolute w-full"
+              >
+                <SummaryStep
+                  formData={formData}
+                  onEdit={goToStep}
+                  onSubmit={handleSubmit}
+                  isSubmitting={isSubmitting}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key={step}
+                variants={formVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="absolute w-full"
+              >
+                <QuestionStep
+                  question={currentQuestion.question}
+                  type={currentQuestion.type as 'text' | 'textarea' | 'email'}
+                  value={formData[currentQuestion.id as keyof FormData]}
+                  onChange={(value) => setFormData({ [currentQuestion.id]: value })}
+                  onNext={handleNext}
+                  isLastQuestion={step === questions.length - 1}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+      <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500"></footer>
+      <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500"></footer>
+    </main>
+  );
+}
