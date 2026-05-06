@@ -16,7 +16,7 @@ interface Message {
   sender: 'user' | 'bot';
 }
 
-const CHATBOT_WEBHOOK_URL = 'https://n8n.techfusion-ventures.xyz/webhook/e3b2f9f2-9c17-4bbc-a21a-63a309109f63';
+const CHATBOT_WEBHOOK_URL = '/api/assistant';
 const SESSION_ID_KEY = 'chatbot_session_id';
 const generateSessionId = (): string => `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 
@@ -121,13 +121,16 @@ export function AlchemyChatbot() {
       const response = await fetch(CHATBOT_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: messageToSend, sessionId: sessionIdRef.current }),
+        body: JSON.stringify({ 
+            message: messageToSend, 
+            history: messages.map(m => ({ role: m.sender, text: m.text })) 
+        }),
       });
 
       let botResponseText = "I seem to be having trouble connecting. Please try again shortly.";
       if (response.ok) {
         const data = await response.json();
-        botResponseText = data?.data?.response || "I received a response I couldn't understand. Can you try rephrasing?";
+        botResponseText = data?.response || "I received a response I couldn't understand. Can you try rephrasing?";
       }
 
       const botMessage: Message = { id: Date.now() + 1, text: botResponseText, sender: 'bot' };
@@ -190,7 +193,7 @@ export function AlchemyChatbot() {
           </SheetClose>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-4">
+        <div className="flex-1 min-h-0 overflow-y-auto p-4">
           <div className="space-y-6">
             <AnimatePresence>
               {messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}

@@ -3,7 +3,7 @@ import { LegalPageLayout, LegalSection, PlainEnglishSummary } from "@/components
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPageLayout title="Privacy Policy" lastUpdated="August 1, 2024">
+    <LegalPageLayout title="Privacy Policy" lastUpdated="May 5, 2026">
 
       <LegalSection title="1. Introduction">
         <p>TechFusion Alchemy ("we", "us", "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (techfusionalchemy.com) and use our Services. By using our site and services, you consent to the data practices described in this policy.</p>
@@ -25,12 +25,12 @@ export default function PrivacyPolicyPage() {
       </LegalSection>
       
       <LegalSection title="3. How We Use Your Information">
-        <p>Having accurate information permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you to:</p>
+        <p>Having accurate information permits us to provide you with a smooth, efficient, and customised experience. Specifically, we may use information collected about you to:</p>
          <ul className="list-disc pl-6 space-y-2 mt-4">
             <li>Create and manage your account and projects.</li>
             <li>Deliver the Services you have requested.</li>
             <li>Email you regarding your account or order.</li>
-            <li>Monitor and analyze usage and trends to improve our website and Services.</li>
+            <li>Monitor and analyse usage and trends to improve our website and Services.</li>
             <li>Comply with legal and regulatory requirements.</li>
         </ul>
         <PlainEnglishSummary>

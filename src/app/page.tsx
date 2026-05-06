@@ -38,7 +38,7 @@ export default function Home() {
   const offerings = [
     { icon: <Target className="w-8 h-8 text-cyan-400" />, title: "Lead Generation", textContent: "AI scrapes targeted leads from social media and online platforms using custom filters and precision targeting." },
     { icon: <Users className="w-8 h-8 text-cyan-400" />, title: "Lead Qualification", textContent: "Automated smart forms + enriched data profiles. Every lead is scored, segmented, and sorted instantly." },
-    { icon: <HeartHandshake className="w-8 h-8 text-cyan-400" />, title: "Lead Nurturing", textContent: "Automated personalized emails, dynamic AI avatars in Loom-style videos, and intelligent follow-up flows." },
+    { icon: <HeartHandshake className="w-8 h-8 text-cyan-400" />, title: "Lead Nurturing", textContent: "Automated personalised emails, dynamic AI avatars in Loom-style videos, and intelligent follow-up flows." },
     { icon: <Bot className="w-8 h-8 text-cyan-400" />, title: "Lead Conversion", textContent: "AI-powered voice bots handle inbound and outbound calls with real-time objection handling + scheduling." },
     { icon: <Zap className="w-8 h-8 text-cyan-400" />, title: "Sales Automation", textContent: "Call routing, CRM updates, pipeline triggers — all automated. Human reps only step in to close." },
     { icon: <PackageCheck className="w-8 h-8 text-cyan-400" />, title: "Fulfillment", textContent: "Orders, onboarding, task distribution — all handled by integrated systems the moment a deal closes." },
@@ -200,10 +200,10 @@ export default function Home() {
         </p>
       </AnimatedSection>
 
-      <div ref={offeringsRef}>
+      <div ref={offeringsRef} id="offerings">
         <AnimatedSection className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-4 text-white">Our Offerings</h2>
-          <p className="text-lg text-gray-400 text-center mb-12">Every piece of your business, fully integrated and optimized.</p>
+          <p className="text-lg text-gray-400 text-center mb-12">Every piece of your business, fully integrated and optimised.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {offerings.map((offering) => (
               <Card key={offering.title} className="bg-gray-900/50 border border-cyan-400/20 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-cyan-400/20 hover:-translate-y-2 transition-all duration-300">
@@ -242,7 +242,7 @@ export default function Home() {
         <AnimatedBentoGrid items={whyUsItems} />
       </AnimatedSection>
 
-      <AnimatedSection className="py-20 sm:py-28">
+      <AnimatedSection className="py-20 sm:py-28" id="why-us">
          <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-12 text-white">Our Technology Stack</h2>
          <InfiniteMovingLogos items={logos} direction="right" speed="slow" />
       </AnimatedSection>

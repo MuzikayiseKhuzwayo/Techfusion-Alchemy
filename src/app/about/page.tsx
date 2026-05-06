@@ -51,7 +51,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter text-white mb-4">Our Genesis & Trajectory</h2>
               <p className="text-gray-400 mb-4">
-                TechFusion Alchemy was founded with a singular vision: to dismantle the inefficiencies that stifle business growth. We saw countless companies shackled by manual processes and untapped data. Our mission became to forge bespoke AI and automation systems that not only streamline operations but fundamentally revolutionize how businesses acquire clients and scale.
+                TechFusion Alchemy was founded with a singular vision: to dismantle the inefficiencies that stifle business growth. We saw countless companies shackled by manual processes and untapped data. Our mission became to forge bespoke AI and automation systems that not only streamline operations but fundamentally revolutionise how businesses acquire clients and scale.
               </p>
               <p className="text-gray-400">
                 Our trajectory is aimed at being the definitive leader in full-stack automation, continuously pushing the boundaries of what's possible with AI agents, intelligent workflows, and predictive analytics to empower our clients' futures.

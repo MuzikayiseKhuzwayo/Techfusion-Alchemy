@@ -19,8 +19,8 @@ const inputVariants = {
   visible: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.5 } },
 };
 
-export const QuestionStep = ({ question, type, value, onChange, onNext }: QuestionStepProps) => {
-  const isInputValid = value.trim() !== '';
+export const QuestionStep = ({ question, type, value = '', onChange, onNext }: QuestionStepProps) => {
+  const isInputValid = (value || '').trim() !== '';
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && type !== 'textarea' && isInputValid) {
@@ -44,7 +44,7 @@ export const QuestionStep = ({ question, type, value, onChange, onNext }: Questi
       <motion.div variants={inputVariants}>
         <InputComponent
           type={type}
-          value={value}
+          value={value || ''}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={handleKeyDown}
           className="bg-gray-900/50 border border-cyan-400/30 text-lg p-4 rounded-lg focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 h-auto"

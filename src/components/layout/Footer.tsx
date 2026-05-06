@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Youtube, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { AnimatedSection } from '../magic/animated-section';
 
 export const Footer = () => {
@@ -28,9 +28,9 @@ export const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/#hero" className="hover:text-cyan-400 transition-colors">Your Full-Stack AI Automation Partner</Link></li>
-              <li><Link href="/#hero" className="hover:text-cyan-400 transition-colors">Our Offerings</Link></li>
-              <li><Link href="/#hero" className="hover:text-cyan-400 transition-colors">Why You Need Us</Link></li>
+              <li><Link href="/about" className="hover:text-cyan-400 transition-colors">About Us</Link></li>
+              <li><Link href="/#offerings" className="hover:text-cyan-400 transition-colors">Our Offerings</Link></li>
+              <li><Link href="/#why-us" className="hover:text-cyan-400 transition-colors">Why Choose Us</Link></li>
             </ul>
           </div>
 
@@ -48,7 +48,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-sm">
-          <p>© {new Date().getFullYear()} TechFusion Alchemy. All rights reserved.</p>
+          <p suppressHydrationWarning>© {new Date().getFullYear()} TechFusion Alchemy. All rights reserved.</p>
           <div className="flex items-center gap-6 mt-4 sm:mt-0">
             <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

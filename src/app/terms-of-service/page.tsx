@@ -3,7 +3,7 @@ import { LegalPageLayout, LegalSection, PlainEnglishSummary } from "@/components
 
 export default function TermsOfServicePage() {
   return (
-    <LegalPageLayout title="Terms of Service" lastUpdated="August 1, 2024">
+    <LegalPageLayout title="Terms of Service" lastUpdated="May 5, 2026">
 
       <LegalSection title="1. Agreement to Terms">
         <p>By accessing our website, engaging our services, or signing a Statement of Work ("SOW"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, you may not access our services.</p>

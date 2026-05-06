@@ -74,7 +74,7 @@ export default function ContactPage() {
       <div className="w-full max-w-4xl">
         {!isSummaryStep && <FormProgress currentStep={step} totalSteps={questions.length} />}
         
-        <div className="relative h-[450px] sm:h-[400px]">
+        <div className="relative min-h-[450px] sm:min-h-[400px] w-full">
           <AnimatePresence mode="wait">
             {isSummaryStep ? (
               <motion.div
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="absolute w-full"
+                className="w-full"
               >
                 <SummaryStep
                   formData={formData}
@@ -101,7 +101,7 @@ export default function ContactPage() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="absolute w-full"
+                className="w-full"
               >
                 <QuestionStep
                   question={currentQuestion.question}
