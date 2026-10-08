@@ -2,57 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Force dark mode */
-html {
-  color-scheme: dark;
-}
-
-/* Custom Section Title Divider */
-.section-title-divider {
-  width: 100px;
-  margin: 10px auto;
-  border-bottom: 2px solid #F2C72C; /* Match the yellow accent */
-}
-
 @layer base {
   :root {
-    --background: 210 10% 10%; /* Dark Gray */
-    --foreground: 210 20% 98%; /* Light Gray */
-    --card: 0 0% 3.9%;
+    --background: 0 0% 0%; /* Pure Black #000000 */
+    --foreground: 0 0% 98%; /* Crisp White #FAFAFA */
+    
+    --card: 240 10% 3.9%; /* Deep Obsidian #0A0A0C */
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    
+    --popover: 0 0% 2%;
     --popover-foreground: 0 0% 98%;
-    --primary: 47 88% 56%; /* Metallic Gold */
-    --primary-foreground: 210 20% 98%; /* Light Gray */
-    --secondary: 0 100% 27%; /* Flame-Inspired Red */
-    --secondary-foreground: 210 20% 98%; /* Light Gray */
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 181 98% 15%; /* Teal */
-    --accent-foreground: 210 20% 98%; /* Light Gray */
+    
+    --primary: 0 0% 100%; /* Pure Silver / White */
+    --primary-foreground: 0 0% 0%; /* Pure Black */
+    
+    --secondary: 240 3.7% 15.9%; /* Dark Graphite */
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 3.7% 12%;
+    --muted-foreground: 240 5% 64.9%; /* Metallic Silver-Gray #A1A1AA */
+    
+    --accent: 240 4.8% 22%; /* Brushed Chrome Accent */
+    --accent-foreground: 0 0% 98%;
+    
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
+    
+    --border: 240 3.7% 15.9%; /* Hairline Border */
+    --input: 240 3.7% 15.9%;
     --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-    --header-background: 217 79% 15%; /* #0A2540 */
+    
+    --radius: 0.75rem;
   }
 }
 
@@ -60,13 +40,45 @@ html {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-    /* Remove Grammarly attributes if they are injected */
-    &[data-new-gr-c-s-check-loaded], &[data-gr-ext-installed] {
-        /* You can add specific styles to counteract Grammarly if needed, */
-        /* but often just acknowledging the attribute is enough for hydration. */
-        /* Or, simply leave this block empty. */
-    }
+  html {
+    color-scheme: dark;
+    background-color: #000000;
   }
+  body {
+    @apply bg-black text-foreground antialiased selection:bg-zinc-800 selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Metallic Silver Gradient Text */
+.text-silver-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E4E4E7 45%, #A1A1AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-silver-subtle {
+  background: linear-gradient(180deg, #F4F4F5 0%, #71717A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Frosted Silver Glass Panel */
+.glass-panel-silver {
+  background: rgba(18, 18, 20, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-silver:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Hairline Grid Overlay */
+.hairline-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }

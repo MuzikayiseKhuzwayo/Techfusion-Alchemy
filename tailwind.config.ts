@@ -10,7 +10,9 @@ export default {
   theme: {
   	extend: {
       fontFamily: {
-        'share-tech': ['var(--font-share-tech-mono)'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
+        'share-tech': ['var(--font-mono)', 'monospace'],
       },
   		colors: {
   			background: 'hsl(var(--background))',

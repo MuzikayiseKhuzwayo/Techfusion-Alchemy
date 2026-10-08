@@ -1,44 +1,60 @@
 
 import type {Metadata} from 'next';
-import {Share_Tech_Mono} from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import {Toaster} from "@/components/ui/toaster";
 import {Header} from '@/components/layout/Header';
 import {Footer} from '@/components/layout/Footer';
 import { AlchemyChatbot } from '@/components/magic/alchemy-chatbot';
 
-const shareTechMono = Share_Tech_Mono({
-  weight: '400',
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-share-tech-mono',
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'TechFusion Alchemy | AI Business Automation',
-  description: 'Full-stack AI systems that automate your entire business — from first click to final sale.',
-  keywords: ['AI automation', 'business automation', 'Data Science', 'Agentic Systems', 'Custom AI Agents'],
-  authors: [{ name: 'Muzikayise Khuzwayo' }],
+  title: 'Techfusion Automata | Custom AI & Backend Automation by Muzikayise Khuzwayo',
+  description: 'Custom, reliable AI & backend automation pipelines for high-growth businesses. Inbound lead triage, PO/document AI parsing, and resilient n8n backends by senior specialist Muzikayise Khuzwayo. CIPC Reg: 2026/399837/07.',
+  keywords: [
+    'Muzikayise Khuzwayo',
+    'Techfusion Automata',
+    'Techfusion Ventures',
+    'AI automation engineer',
+    'n8n custom workflows',
+    'lead triage CRM sync',
+    'purchase order AI parsing',
+    'South Africa AI automation',
+    'agentic systems',
+    'POPIA compliant AI'
+  ],
+  authors: [{ name: 'Muzikayise Khuzwayo', url: 'https://techfusion-ventures.xyz' }],
   openGraph: {
-    title: 'TechFusion Alchemy | AI Business Automation',
-    description: 'Full-stack AI systems that automate your entire business — from first click to final sale.',
-    url: 'https://techfusionalchemy.com',
-    siteName: 'TechFusion Alchemy',
+    title: 'Techfusion Automata | Custom AI & Backend Automation by Muzikayise Khuzwayo',
+    description: 'Custom, reliable AI & backend automation pipelines. No agency bloat, no junior handoffs. CIPC Reg: 2026/399837/07.',
+    url: 'https://techfusion-ventures.xyz',
+    siteName: 'Techfusion Automata',
     images: [
       {
-        url: 'https://techfusionalchemy.com/og-image.jpg', // Placeholder for actual OG image
+        url: 'https://storage.googleapis.com/techfusion-alchemy-bucket/alchemy/alchemy/og-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'TechFusion Alchemy Banner',
+        alt: 'Techfusion Automata Banner',
       },
     ],
-    locale: 'en_GB',
+    locale: 'en_ZA',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TechFusion Alchemy | AI Business Automation',
-    description: 'Full-stack AI systems that automate your entire business — from first click to final sale.',
-    images: ['https://techfusionalchemy.com/og-image.jpg'], // Placeholder for actual OG image
+    title: 'Techfusion Automata | Custom AI & Backend Automation',
+    description: 'Boutique AI & backend automation engineering by Muzikayise Khuzwayo.',
   },
   robots: {
     index: true,
@@ -52,7 +68,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/techfusion_automata_ico.ico' },
+      { url: '/techfusion_automata_jpg_nobg.png', type: 'image/png' },
+    ],
+    shortcut: '/techfusion_automata_ico.ico',
+    apple: '/techfusion_automata_jpg_nobg.png',
   },
 };
 
@@ -63,11 +84,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body data-new-gr-c-s-check-loaded="14.1101.0"
-        data-gr-ext-installed="" className={`${shareTechMono.variable} antialiased bg-background text-foreground overscroll-none`}>
-        {/* Remove Grammarly attributes if they are injected */}
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-black text-foreground selection:bg-zinc-800 selection:text-white overscroll-none`}>
         <Header />
-        <main className="flex-grow"> {/* Ensure main content takes available space */}
+        <main className="flex-grow">
            {children}
         </main>
         <AlchemyChatbot />

@@ -90,13 +90,13 @@ export const InfiniteMovingLogos = ({
             {/* The Animated Card that appears on hover */}
             <div
               className={cn(
-                "absolute top-full mt-3 w-[280px] p-4 bg-[#0a0a1f]/80 backdrop-blur-lg border border-cyan-400/20 rounded-lg shadow-2xl shadow-cyan-500/10",
+                "absolute top-full mt-3 w-[280px] p-4 bg-zinc-950/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl shadow-black",
                 "opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100",
                 "transition-all duration-300 ease-in-out origin-top",
                 "pointer-events-none group-hover:pointer-events-auto z-10" // Appears behind the logo
               )}
             >
-              <p className="text-white font-bold text-center text-sm leading-relaxed">
+              <p className="text-zinc-300 font-sans text-xs text-center leading-relaxed font-normal">
                 {item.description}
               </p>
             </div>

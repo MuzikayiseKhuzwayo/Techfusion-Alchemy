@@ -10,9 +10,9 @@ export const FormProgress = ({ currentStep, totalSteps }: FormProgressProps) => 
   const progressPercentage = (currentStep / totalSteps) * 100;
 
   return (
-    <div className="w-full bg-gray-700/50 rounded-full h-2 my-8">
+    <div className="w-full bg-zinc-900 rounded-full h-1.5 my-8 border border-zinc-800">
       <motion.div
-        className="bg-gradient-to-r from-cyan-400 to-purple-500 h-2 rounded-full"
+        className="bg-white h-1.5 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
         initial={{ width: 0 }}
         animate={{ width: `${progressPercentage}%` }}
         transition={{ duration: 0.5, ease: 'easeInOut' }}

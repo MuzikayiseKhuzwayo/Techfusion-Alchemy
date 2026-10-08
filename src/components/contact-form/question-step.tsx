@@ -47,7 +47,7 @@ export const QuestionStep = ({ question, type, value = '', onChange, onNext }: Q
           value={value || ''}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="bg-gray-900/50 border border-cyan-400/30 text-lg p-4 rounded-lg focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 h-auto"
+          className="bg-zinc-950 border border-zinc-800 text-lg p-4 rounded-xl focus:ring-zinc-400 focus:border-zinc-400 text-white placeholder-zinc-500 transition-all duration-300 h-auto"
           placeholder="Type your answer here..."
           rows={5}
         />
@@ -58,8 +58,8 @@ export const QuestionStep = ({ question, type, value = '', onChange, onNext }: Q
         animate={{ opacity: isInputValid ? 1 : 0.5 }}
         transition={{ duration: 0.3 }}
       >
-        <Button onClick={onNext} disabled={!isInputValid} size="lg">
-          Next <ArrowRight className="ml-2 h-5 w-5" />
+        <Button onClick={onNext} disabled={!isInputValid} size="lg" className="bg-white hover:bg-zinc-200 text-black rounded-full font-semibold px-6 shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all">
+          Next <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </motion.div>
     </div>

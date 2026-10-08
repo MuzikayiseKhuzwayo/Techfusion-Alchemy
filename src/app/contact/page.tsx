@@ -37,7 +37,7 @@ export default function ContactPage() {
   const handleNext = () => {
     nextStep();
   };
-  
+
   const handleUpdateAndNext = (field: keyof FormData, value: string) => {
     setFormData({ [field]: value });
     // For a better UX, you might not auto-advance on textarea
@@ -70,11 +70,28 @@ export default function ContactPage() {
   const isSummaryStep = step >= questions.length;
 
   return (
-    <main className="bg-[#000010] text-gray-200 min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+    <main className="bg-black text-zinc-200 min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 pt-32 pb-24">
       <div className="w-full max-w-4xl">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white">
+            Describe Your Automation Bottleneck
+          </h1>
+          <p className="text-xs sm:text-sm text-zinc-400 mt-3 max-w-lg mx-auto font-sans leading-relaxed">
+            Need an immediate technical review? You can also{" "}
+            <a
+              href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white underline font-medium hover:text-zinc-300"
+            >
+              book a 30-min Architecture Session directly with Muzi
+            </a>.
+          </p>
+        </div>
+
         {!isSummaryStep && <FormProgress currentStep={step} totalSteps={questions.length} />}
-        
-        <div className="relative min-h-[450px] sm:min-h-[400px] w-full">
+
+        <div className="relative min-h-[450px] sm:min-h-[400px] w-full mt-4">
           <AnimatePresence mode="wait">
             {isSummaryStep ? (
               <motion.div
@@ -116,8 +133,6 @@ export default function ContactPage() {
           </AnimatePresence>
         </div>
       </div>
-      <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500"></footer>
-      <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500"></footer>
     </main>
   );
 }

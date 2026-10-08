@@ -1,54 +1,32 @@
 import { NextResponse } from 'next/server';
-import { google } from 'googleapis';
+import { appendLeadToSheet } from '@/lib/lead-storage';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
 
-    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-    const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
-    const sheetId = process.env.GOOGLE_SHEET_ID;
+    const result = await appendLeadToSheet({
+      name: data.name,
+      companyName: data.companyName,
+      primaryGoal: data.primaryGoal,
+      biggestChallenge: data.biggestChallenge,
+      estimatedLosses: data.estimatedLosses,
+      estimatedBudget: data.estimatedBudget,
+      contactEmail: data.contactEmail,
+      source: 'Contact Form Wizard',
+    });
 
-    if (!clientEmail || !privateKey || !sheetId) {
-      console.error('Missing Google API credentials in environment variables.');
-      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+    if (!result.success) {
+      console.error('Failed to append lead to Google Sheet:', result.error);
+      return NextResponse.json([
+        {
+          status: 'error',
+          data: {
+            response: result.error || 'Failed to process request',
+          },
+        },
+      ], { status: 500 });
     }
-
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: clientEmail,
-        private_key: privateKey,
-      },
-      scopes: [
-        'https://www.googleapis.com/auth/drive',
-        'https://www.googleapis.com/auth/drive.file',
-        'https://www.googleapis.com/auth/spreadsheets',
-      ],
-    });
-
-    const sheets = google.sheets({ version: 'v4', auth });
-
-    // Map the formData into an array representing a row.
-    // Order: Name, Company, Goal, Challenge, Losses, Budget, Email, Date
-    const rowData = [
-      data.name || 'N/A',
-      data.companyName || 'N/A',
-      data.primaryGoal || 'N/A',
-      data.biggestChallenge || 'N/A',
-      data.estimatedLosses || 'N/A',
-      data.estimatedBudget || 'N/A',
-      data.contactEmail || 'N/A',
-      new Date().toISOString()
-    ];
-
-    const response = await sheets.spreadsheets.values.append({
-      spreadsheetId: sheetId,
-      range: 'Sheet1!A:H', // Make sure the sheet is named "Sheet1" and columns A to H are used
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [rowData],
-      },
-    });
 
     return NextResponse.json([
       {
@@ -71,3 +49,4 @@ export async function POST(request: Request) {
     ], { status: 500 });
   }
 }
+

@@ -13,13 +13,12 @@ interface LegalPageProps {
 
 export const LegalPageLayout = ({ title, lastUpdated, children }: LegalPageProps) => {
   return (
-    <main className="bg-[#000010] text-gray-200 overflow-x-hidden">
+    <main className="bg-black text-zinc-200 overflow-x-hidden min-h-screen">
       {/* Page Hero */}
-      <div className="pt-32 pb-16 text-center relative bg-grid-white/[0.05]">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-[#000010] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="pt-32 pb-16 text-center relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 mb-4"
+            className="text-4xl md:text-6xl font-semibold tracking-tighter text-silver-gradient mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -27,7 +26,7 @@ export const LegalPageLayout = ({ title, lastUpdated, children }: LegalPageProps
             {title}
           </motion.h1>
           <motion.p 
-            className="text-gray-500 text-sm"
+            className="text-zinc-500 font-mono text-xs"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -38,20 +37,20 @@ export const LegalPageLayout = ({ title, lastUpdated, children }: LegalPageProps
       </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-4xl mx-auto">
             {/* Disclaimer */}
-            <div className="mb-12 p-4 border border-amber-500/30 bg-amber-900/20 rounded-lg flex items-start gap-4">
-                <ShieldAlert className="h-6 w-6 text-amber-400 mt-1 flex-shrink-0" />
+            <div className="mb-12 p-5 border border-zinc-800 bg-zinc-950 rounded-xl flex items-start gap-4">
+                <ShieldAlert className="h-5 w-5 text-zinc-300 mt-0.5 flex-shrink-0" />
                 <div>
-                    <h3 className="font-semibold text-amber-300">Not Legal Advice</h3>
-                    <p className="text-amber-400/80 text-sm">
-                        This document is provided for informational purposes only. It is a template and does not constitute legal advice. Please consult with a qualified legal professional to ensure compliance with all applicable laws and regulations for your specific business.
+                    <h3 className="font-semibold text-white text-sm">Regulatory Notice</h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed mt-1 font-sans">
+                        This document details the operational and legal policies of Techfusion Automata (Pty) Ltd. For full interactive subtabs including POPIA compliance and PAIA manual, visit the <a href="/legal" className="text-white underline">Legal Hub</a>.
                     </p>
                 </div>
             </div>
 
-            <div className="prose prose-invert prose-headings:text-white prose-a:text-cyan-400 hover:prose-a:text-cyan-300 max-w-none space-y-8">
+            <div className="prose prose-invert prose-headings:text-white prose-headings:tracking-tight prose-a:text-white hover:prose-a:text-zinc-300 max-w-none space-y-8 font-sans">
                 {children}
             </div>
         </div>
@@ -62,14 +61,14 @@ export const LegalPageLayout = ({ title, lastUpdated, children }: LegalPageProps
 
 export const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
     <AnimatedSection>
-        <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
+        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-white mb-3">{title}</h2>
         {children}
     </AnimatedSection>
 );
 
 export const PlainEnglishSummary = ({ children }: { children: React.ReactNode }) => (
-    <div className="my-6 p-4 border-l-4 border-cyan-400 bg-gray-900/50 rounded-r-lg">
-        <p className="font-semibold text-cyan-300 text-sm uppercase tracking-wider">In Plain English</p>
-        <p className="mt-2 text-gray-300 italic">{children}</p>
+    <div className="my-5 p-4 border-l-2 border-white bg-zinc-950 border border-zinc-800/80 rounded-r-xl">
+        <p className="font-semibold text-zinc-400 font-mono text-[11px] uppercase tracking-wider">In Plain English</p>
+        <p className="mt-1.5 text-zinc-300 italic text-sm font-sans leading-relaxed">{children}</p>
     </div>
 );
