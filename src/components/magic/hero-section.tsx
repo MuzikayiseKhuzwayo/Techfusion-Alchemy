@@ -4,12 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { fadeIn, staggerContainer } from "@/lib/motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const HeroSection = ({ scrollToOfferings }: { scrollToOfferings: () => void }) => {
-  const currentYear = new Date().getFullYear();
-  const currentQuarter = Math.floor(new Date().getMonth() / 3) + 1;
-
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Grid */}
@@ -26,12 +23,6 @@ export const HeroSection = ({ scrollToOfferings }: { scrollToOfferings: () => vo
         animate="visible"
         className="relative z-10 container mx-auto px-4"
       >
-        <motion.div variants={fadeIn('down')} className="mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium text-cyan-300 bg-cyan-900/50 border border-cyan-300/30 rounded-full">
-            <Zap className="h-4 w-4 text-cyan-300" />
-            <span suppressHydrationWarning>Now Accepting New Projects for Q{currentQuarter} {currentYear}</span>
-          </div>
-        </motion.div>
 
         <motion.h1 
           variants={fadeIn('down', 0.2)}

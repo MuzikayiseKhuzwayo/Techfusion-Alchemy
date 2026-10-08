@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils";
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
-export const AnimatedSection = ({ children, className }: AnimatedSectionProps) => {
+export const AnimatedSection = ({ children, className, id }: AnimatedSectionProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const controls = useAnimation();
@@ -23,6 +24,7 @@ export const AnimatedSection = ({ children, className }: AnimatedSectionProps) =
   return (
     <motion.section
       ref={ref}
+      id={id}
       className={cn("relative", className)}
       initial="hidden"
       animate={controls}
