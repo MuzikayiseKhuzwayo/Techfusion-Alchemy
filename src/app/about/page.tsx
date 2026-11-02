@@ -59,14 +59,14 @@ export default function AboutPage() {
             <span className="text-zinc-600">•</span>
             <span className="text-zinc-400">Techfusion Automata</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-white mb-6">
-            Accelerating Towards the Future: <br />
-            <span className="text-silver-gradient">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.15] text-white mb-6 text-balance">
+            Accelerating Towards the Future:{" "}
+            <span className="text-silver-gradient block sm:inline">
               Muzikayise Khuzwayo
             </span>
           </h1>
-          <p className="max-w-2xl mx-auto text-base sm:text-lg text-zinc-400 leading-relaxed font-normal">
-            From growing up in Soweto to studying Electrical & Computer Engineering at UCT and publishing quantitative causal AI research—the journey behind Techfusion Automata and its Alchemy division.
+          <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-zinc-400 leading-relaxed font-normal text-pretty">
+            From growing up in Soweto to studying Electrical &amp; Computer Engineering at UCT and publishing quantitative causal AI research—the journey behind Techfusion Automata and its Alchemy division.
           </p>
         </div>
       </AnimatedSection>
@@ -74,14 +74,14 @@ export default function AboutPage() {
       {/* Main Narrative Story (Sourced from techfusion-ventures.xyz/founder) */}
       <AnimatedSection className="py-16 bg-black border-y border-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="grid md:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Story text */}
-            <div className="md:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6">
               <div>
                 <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest block mb-1">
                   The Genesis
                 </span>
-                <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight leading-snug">
                   My Story: The Power to Change Everything
                 </h2>
               </div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
             </div>
 
             {/* Profile & Credentials Sidebar */}
-            <div className="md:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-6">
               <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 space-y-5">
                 <div className="flex items-center gap-3 pb-4 border-b border-zinc-800">
                   <TechfusionLogo variant="iconOnly" className="w-10 h-10" />
@@ -225,7 +225,7 @@ export default function AboutPage() {
             <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest block mb-2">
               Core Principles
             </span>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-white text-balance">
               Why We Refuse Generic Agency Templates
             </h2>
             <p className="text-sm text-zinc-400 mt-2 font-normal font-sans">

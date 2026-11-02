@@ -67,14 +67,14 @@ export const Header = () => {
       isScrolled ? "bg-black/90 backdrop-blur-xl border-b border-zinc-800" : "bg-transparent border-b border-white/[0.04]"
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between gap-3 h-20">
           {/* Redesigned Parent-Aligned Logo */}
           <TechfusionLogo variant="navbar" />
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 shrink-0">
             {navLinks.map(link => <NavLink key={link.href} {...link} />)}
-            <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 text-xs px-5 py-2">
+            <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 text-xs px-4 xl:px-5 py-2 shrink-0">
               <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
                 Architecture Session →
               </Link>
@@ -82,20 +82,20 @@ export const Header = () => {
           </nav>
 
           {/* Medium Screen CTA */}
-          <div className="hidden md:flex xl:hidden items-center gap-4">
+          <div className="hidden md:flex lg:hidden items-center gap-4 shrink-0">
             <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 text-xs px-4">
               <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
                 Architecture Session →
               </Link>
             </Button>
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-zinc-400 hover:text-white" aria-label="Toggle Menu">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-zinc-400 hover:text-white p-1" aria-label="Toggle Menu">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-zinc-400 hover:text-white" aria-label="Toggle Menu">
+          <div className="md:hidden shrink-0">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-zinc-400 hover:text-white p-1" aria-label="Toggle Menu">
               <AnimatePresence mode="wait">
                 {isMenuOpen ? (
                   <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>

@@ -25,7 +25,7 @@ const generateSessionId = (): string => `session_${Date.now()}_${Math.random().t
 const QUICK_STARTERS = [
   "Automate Inbound Leads (<45s Speed)",
   "Vision Document & Invoice Parsing",
-  "How does the $850 Pilot Sprint work?",
+  "How does the 5-Day Pilot Sprint work?",
   "Book a 30-min Architecture Session"
 ];
 
@@ -98,7 +98,7 @@ export function AlchemyChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       id: 1, 
-      text: "Hey there! 👋 I'm the Techfusion Automata Assistant.\n\nWhat's the biggest operational bottleneck or repetitive manual task slowing down your team right now? Tell me about your workflow—I can outline an immediate technical architecture, calculate your ROI on a 5-day Pilot Sprint ($850), or connect you with Muzikayise.", 
+      text: "Hey there! 👋 I'm the Techfusion Automata Assistant.\n\nWhat's the biggest operational bottleneck or repetitive manual task slowing down your team right now? Tell me about your workflow—I can outline an immediate technical architecture, calculate your ROI on a 5-day Pilot Sprint, or connect you with Muzikayise.", 
       sender: 'bot' 
     },
   ]);

@@ -64,26 +64,26 @@ export const TechfusionLogo = ({
   }
 
   return (
-    <Link href="/" className={cn("flex items-center gap-3 group", className)}>
+    <Link href="/" className={cn("flex items-center gap-2.5 sm:gap-3 group min-w-0", className)}>
       <AutomataIcon 
         className={variant === "footer" ? "w-9 h-9" : "w-8 h-8 sm:w-9 sm:h-9"} 
         priority={variant === "navbar"} 
       />
-      <div className="flex flex-col">
-        <div className="flex items-center gap-1.5 leading-none">
-          <span className="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-zinc-200 transition-colors">
+      <div className="flex flex-col min-w-0">
+        <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5 leading-none">
+          <span className="font-bold text-base sm:text-lg md:text-xl tracking-tight text-white group-hover:text-zinc-200 transition-colors">
             TECHFUSION
           </span>
-          <span className="font-light text-lg sm:text-xl tracking-wide text-zinc-400">
+          <span className="font-light text-base sm:text-lg md:text-xl tracking-wide text-zinc-400">
             AUTOMATA
           </span>
         </div>
         {showDivisionBadge && (
-          <div className="flex items-center gap-2 mt-1">
-            <span className="text-[9px] font-mono tracking-widest text-zinc-400 uppercase">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1">
+            <span className="text-[9px] font-mono tracking-widest text-zinc-400 uppercase whitespace-nowrap">
               Alchemy Division
             </span>
-            <span className="text-[8px] font-mono text-zinc-300 px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800">
+            <span className="hidden xs:inline-block sm:inline-block text-[8px] font-mono text-zinc-300 px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 whitespace-nowrap">
               AI & Automation
             </span>
           </div>

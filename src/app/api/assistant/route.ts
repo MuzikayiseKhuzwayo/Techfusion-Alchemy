@@ -28,9 +28,9 @@ PROVEN TRACK RECORD:
 - Levatus i Norden AB: Real-estate CRM & document workflows.
 - Research & Testing: Dubstrata & Simulacra autonomous agent testing, SSRN research papers.
 
-OFFERINGS & PRICING:
+OFFERINGS & ENGAGEMENT MODELS:
 1. The 5-Day Pilot Sprint:
-   - Cost: $850 (approx. R15,500).
+   - Pricing: Custom fixed-scope quote tailored to the workflow complexity (do not quote fixed prices; direct the client to an architecture session for scoping).
    - Delivery: 5 business days.
    - Guarantee: Solves a single mission-critical bottleneck with a 14-day edge-case warranty.
 2. 30-Minute Free Architecture Session with Muzi:
@@ -65,7 +65,7 @@ const TOOL_DECLARATION = {
           goal: { type: 'STRING', description: 'Primary automation goal or system requested' },
           challenge: { type: 'STRING', description: 'Core operational bottleneck or problem described' },
           losses: { type: 'STRING', description: 'Estimated financial loss or hours wasted per week/month' },
-          budget: { type: 'STRING', description: 'Budget tier or willingness to invest (e.g. $850 Pilot Sprint)' }
+          budget: { type: 'STRING', description: 'Budget tier or willingness to invest (e.g. Pilot Sprint or Full System Build)' }
         },
         required: ['email']
       }
@@ -223,7 +223,7 @@ export async function POST(request: Request) {
       if (leadSaved) {
         botText = `Thank you! I've logged your contact details and project details into our architecture review queue. Muzikayise Khuzwayo will review this and follow up directly. If you want an immediate priority review, you can book a free 30-minute session here: https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes`;
       } else if (lower.includes('price') || lower.includes('cost') || lower.includes('pilot') || lower.includes('fee')) {
-        botText = "Our primary entry point is **The Pilot Sprint** at $850 (approx. R15,500). In 5 business days, we build and deploy a single production-grade automated workflow (e.g. Lead triage, PO invoice parsing, or CRM sync) with deterministic schema guarantees and a 14-day edge-case warranty. You can book a 30-minute architecture session with Muzi here: https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes";
+        botText = "Our primary entry point is **The Pilot Sprint**—a fixed-scope 5-day sprint where we build and deploy a single production-grade automated workflow (e.g. Lead triage, PO invoice parsing, or CRM sync) with deterministic schema guarantees and a 14-day edge-case warranty. Pricing is scoped to your workflow requirements during a 30-minute architecture session with Muzi: https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes";
       } else if (lower.includes('case') || lower.includes('henry') || lower.includes('levatus') || lower.includes('dap') || lower.includes('proof')) {
         botText = "We have engineered production pipelines for global partners including Henry Cumines / Ulysses Group (Vision OMS document parser), Digital Authority Partners (client intake & manager analytics), and Levatus i Norden AB (real-estate CRM sync). We focus on zero data loss and concrete ROI.";
       } else if (lower.includes('popia') || lower.includes('gdpr') || lower.includes('security') || lower.includes('privacy')) {

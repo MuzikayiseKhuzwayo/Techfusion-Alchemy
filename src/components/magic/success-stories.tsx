@@ -102,22 +102,22 @@ export const SuccessStories = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-white text-balance">
               Engineering Proof of Work
             </h2>
-            <p className="text-base text-zinc-400 max-w-2xl mt-2 font-normal">
+            <p className="text-sm sm:text-base text-zinc-400 max-w-2xl mt-3 leading-relaxed font-normal text-pretty">
               Concrete implementations sourced directly from verified client engagements. Real bottlenecks, resilient architectures, and measurable operational outcomes.
             </p>
           </div>
 
-          <Button asChild variant="outline" className="border-zinc-700 bg-zinc-900/80 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-500 hover:text-white rounded-full text-xs font-mono self-start md:self-auto">
+          <Button asChild variant="outline" className="border-zinc-700 bg-zinc-900/80 text-zinc-300 hover:bg-zinc-800 hover:border-zinc-500 hover:text-white rounded-full text-xs font-mono self-start md:self-auto shrink-0">
             <a
               href="https://www.upwork.com/freelancers/~01690494e012631bd1"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5"
             >
-              Verify On Upwork Profile <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+              Verify On Upwork Profile <ExternalLink className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
             </a>
           </Button>
         </div>
@@ -137,12 +137,12 @@ export const SuccessStories = () => {
                       : "bg-zinc-950/80 border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-900/60"
                     }`}
                 >
-                  <div className="flex items-center justify-between text-xs font-mono text-zinc-400 mb-1">
+                  <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-xs font-mono text-zinc-400 mb-1">
                     <span>{study.badge}</span>
                     <span className="text-zinc-500">{study.timeframe.split('–')[0]}</span>
                   </div>
-                  <div className="font-semibold text-white text-sm line-clamp-1">{study.client}</div>
-                  <div className="text-xs text-zinc-400 line-clamp-1 mt-1">{study.tagline}</div>
+                  <div className="font-semibold text-white text-sm leading-snug">{study.client}</div>
+                  <div className="text-xs text-zinc-400 leading-snug mt-1">{study.tagline}</div>
                   <div className="mt-3 text-xs font-mono text-white font-medium">{study.metric}</div>
                 </button>
               );
@@ -150,16 +150,16 @@ export const SuccessStories = () => {
           </div>
 
           {/* Deep-Dive Spec Card */}
-          <div className="lg:col-span-8 bg-zinc-950 border border-zinc-800/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-8 bg-zinc-950 border border-zinc-800/80 rounded-2xl p-5 sm:p-8 flex flex-col justify-between">
             <div>
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-zinc-800 mb-6">
+              <div className="flex flex-wrap items-start sm:items-center justify-between gap-3 pb-4 border-b border-zinc-800 mb-6">
                 <div>
                   <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{selectedStudy.badge}</span>
-                  <h3 className="text-2xl font-semibold tracking-tight text-white mt-1">{selectedStudy.client}</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold tracking-tight leading-snug text-white mt-1">{selectedStudy.client}</h3>
                   <p className="text-xs font-mono text-zinc-500 mt-0.5">{selectedStudy.role} • {selectedStudy.timeframe}</p>
                 </div>
-                <div className="text-right">
-                  <div className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white font-mono text-xs font-semibold">
+                <div className="text-left sm:text-right">
+                  <div className="inline-block px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white font-mono text-xs font-semibold">
                     {selectedStudy.metric}
                   </div>
                 </div>

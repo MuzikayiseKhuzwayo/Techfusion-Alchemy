@@ -11,9 +11,9 @@ const engagementModels = [
     name: "The Pilot Sprint",
     badge: "Low-Risk Entry • 5-Day Delivery",
     description: "Validate code quality and engineering rigor on a single mission-critical bottleneck before committing to larger infrastructure.",
-    price: "R15,000",
-    localPrice: "approx. $850",
-    cadence: "fixed sprint",
+    price: "Fixed-Scope",
+    localPrice: "scoped per workflow",
+    cadence: "5-day sprint",
     features: [
       "1 self-contained production workflow (e.g. Lead triage, PO parsing, CRM sync)",
       "Structured LLM parsing (deterministic JSON schemas)",
@@ -30,8 +30,8 @@ const engagementModels = [
     name: "Core Pipeline Build",
     badge: "End-to-End System Overhaul",
     description: "Comprehensive multi-step automation infrastructure connecting multiple platforms, relational databases, and AI agents.",
-    price: "R50,000+",
-    localPrice: "from $2,800+",
+    price: "Custom Build",
+    localPrice: "scoped to architecture",
     cadence: "milestone-based",
     features: [
       "Multi-stage orchestration across n8n, Supabase, and APIs",
@@ -49,7 +49,7 @@ const engagementModels = [
     name: "Fractional Automation Lead",
     badge: "Dedicated Senior Bandwidth",
     description: "Ongoing partnership for businesses scaling fast that require ML & backend automation engineering on demand.",
-    price: "R?????",
+    price: "Retainer",
     localPrice: "subject to discussion",
     cadence: "per month",
     features: [
@@ -70,27 +70,27 @@ export const PricingSection = () => {
   return (
     <AnimatedSection className="py-20 sm:py-28 bg-black" id="pricing">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white mb-4">
+        <div className="text-center mb-14 sm:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-white mb-4 text-balance">
             Start Small with a 5-Day Paid Pilot
           </h2>
-          <p className="text-base text-zinc-400 leading-relaxed font-normal">
-            You don&apos;t need a bloated $15,000 agency contract to start automating. Test our speed, code resilience, and communication on a single high-ROI bottleneck first.
+          <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal text-pretty">
+            You don&apos;t need a bloated multi-month agency contract to start automating. Test our speed, code resilience, and communication on a single high-ROI bottleneck first.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8 items-stretch max-w-xl mx-auto lg:max-w-none">
           {engagementModels.map((plan) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col p-7 sm:p-8 rounded-2xl border transition-all duration-300 ${plan.highlighted
-                ? "bg-zinc-950 border-zinc-400 shadow-[0_0_35px_rgba(255,255,255,0.08)] md:-translate-y-2 z-10"
+              className={`relative flex flex-col p-6 sm:p-8 rounded-2xl border transition-all duration-300 ${plan.highlighted
+                ? "bg-zinc-950 border-zinc-400 shadow-[0_0_35px_rgba(255,255,255,0.08)] lg:-translate-y-2 z-10"
                 : "bg-zinc-950/60 border-zinc-800/80 hover:border-zinc-700"
                 }`}
             >
               {plan.highlighted && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <span className="bg-white text-black text-[11px] font-mono font-bold px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.3)] uppercase tracking-wider">
+                  <span className="bg-white text-black text-[11px] font-mono font-bold px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.3)] uppercase tracking-wider whitespace-nowrap">
                     Recommended
                   </span>
                 </div>
@@ -105,8 +105,8 @@ export const PricingSection = () => {
               </div>
 
               <div className="mb-6 pb-6 border-b border-zinc-800">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl sm:text-5xl font-semibold tracking-tight text-white">{plan.price}</span>
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                  <span className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">{plan.price}</span>
                   <span className="text-zinc-400 text-xs font-mono">/{plan.cadence}</span>
                 </div>
                 <div className="text-[11px] text-zinc-500 font-mono mt-1">{plan.localPrice}</div>
@@ -123,7 +123,7 @@ export const PricingSection = () => {
 
               <Button
                 asChild
-                className={`w-full rounded-full text-xs font-semibold py-5 transition-all ${plan.highlighted
+                className={`w-full h-auto whitespace-normal text-center rounded-full text-xs font-semibold py-4 px-5 transition-all ${plan.highlighted
                   ? "bg-white text-black hover:bg-zinc-200 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                   : "bg-zinc-900 border border-zinc-700 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 hover:text-white"
                   }`}
@@ -134,8 +134,8 @@ export const PricingSection = () => {
                   rel={plan.ctaLink.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="inline-flex items-center justify-center gap-1.5"
                 >
-                  {plan.ctaText}
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>{plan.ctaText}</span>
+                  <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                 </Link>
               </Button>
             </div>

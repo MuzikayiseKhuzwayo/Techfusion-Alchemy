@@ -186,12 +186,12 @@ const pillars: PillarConfig[] = [
         outcomeBadge: "Zero Wasted Ad Spend",
         capabilities: [
           "Removes guesswork: Only organic posts validated by genuine audience engagement are selected for advertising",
-          "Triggers Meta & LinkedIn Ads API with an autonomous micro-budget ($10–$25/day) targeting verified decision-makers",
+          "Triggers Meta & LinkedIn Ads API with an autonomous micro-budget targeting verified decision-makers",
           "Automated guardrails: Scales daily budget if Cost-Per-Lead (CPL) is low; pauses automatically if CAC deviates"
         ],
         imageSrc: "/images/architecture/mkt_boost.jpg",
         imageAlt: "Precision mechanical calipers and booster ring locking around a winning asset",
-        businessOutcome: "Eliminate wasted ad spend by letting algorithms automatically inject micro-budgets ($10–$25/day) only behind proven organic winners, scaling ROAS while protecting cash flow."
+        businessOutcome: "Eliminate wasted ad spend by letting algorithms automatically inject micro-budgets only behind proven organic winners, scaling ROAS while protecting cash flow."
       },
       {
         id: "mkt-iteration",
@@ -335,20 +335,20 @@ export const ArchitectureFlow = () => {
   return (
     <div className="w-full max-w-6xl mx-auto mt-6">
       {/* 1. Pillar Switcher Tabs */}
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mb-10">
+      <div className="flex flex-col md:flex-row flex-wrap justify-center items-stretch md:items-center gap-3 mb-10">
         {pillars.map((pillar) => {
           const isSelected = pillar.id === activePillarId;
           return (
             <button
               key={pillar.id}
               onClick={() => handlePillarChange(pillar.id)}
-              className={`w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full border text-sm font-medium transition-all duration-300 relative ${
+              className={`w-full md:w-auto flex items-center justify-center gap-2.5 px-5 py-3 rounded-full border text-xs sm:text-sm font-medium transition-all duration-300 relative ${
                 isSelected
                   ? "bg-white text-black border-white shadow-[0_0_25px_rgba(255,255,255,0.25)] font-semibold"
                   : "bg-zinc-950/80 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white hover:bg-zinc-900/60"
               }`}
             >
-              <span className={`p-1 rounded-full ${isSelected ? "bg-black text-white" : "bg-zinc-900 text-zinc-400"}`}>
+              <span className={`p-1 rounded-full shrink-0 ${isSelected ? "bg-black text-white" : "bg-zinc-900 text-zinc-400"}`}>
                 {pillar.icon}
               </span>
               <span>{pillar.name}</span>
@@ -365,7 +365,7 @@ export const ArchitectureFlow = () => {
       </div>
 
       {/* 2. Interactive Stages Navigation */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
         {activePillar.stages.map((stage) => {
           const isActive = stage.id === activeStage.id;
           return (
@@ -380,12 +380,12 @@ export const ArchitectureFlow = () => {
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[11px] font-mono text-zinc-400">{stage.step}</span>
-                <div className={`p-1.5 rounded-lg border ${isActive ? "bg-zinc-800 border-zinc-600 text-white" : "bg-zinc-900 border-zinc-800 text-zinc-400"}`}>
+                <div className={`p-1.5 rounded-lg border shrink-0 ${isActive ? "bg-zinc-800 border-zinc-600 text-white" : "bg-zinc-900 border-zinc-800 text-zinc-400"}`}>
                   {stage.icon}
                 </div>
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-white truncate">{stage.title}</div>
-              <div className="text-[11px] text-zinc-400 truncate mt-0.5">{stage.subtitle}</div>
+              <div className="text-xs sm:text-sm font-semibold text-white leading-snug line-clamp-2">{stage.title}</div>
+              <div className="text-[11px] text-zinc-400 leading-snug line-clamp-1 mt-1">{stage.subtitle}</div>
 
               {isActive && (
                 <motion.div 
@@ -406,7 +406,7 @@ export const ArchitectureFlow = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-zinc-950 border border-zinc-800/90 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-zinc-950 border border-zinc-800/90 rounded-2xl p-5 sm:p-8 relative overflow-hidden shadow-2xl items-stretch"
         >
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-zinc-800/20 rounded-full blur-3xl pointer-events-none" />
@@ -414,16 +414,16 @@ export const ArchitectureFlow = () => {
           {/* Left Column: Business Outcome & Capabilities */}
           <div className="lg:col-span-6 flex flex-col justify-between z-10">
             <div>
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
                 <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">
                   Step {activeStage.step} • {activeStage.subtitle}
                 </span>
-                <span className="text-[11px] font-mono text-white bg-zinc-900 border border-zinc-700 px-2.5 py-0.5 rounded-full">
+                <span className="text-[11px] font-mono text-white bg-zinc-900 border border-zinc-700 px-2.5 py-0.5 rounded-full shrink-0">
                   {activeStage.outcomeBadge}
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white mb-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-snug text-white mb-4">
                 {activeStage.title}
               </h3>
 
@@ -431,16 +431,16 @@ export const ArchitectureFlow = () => {
                 {activeStage.capabilities.map((detail, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 text-zinc-200 shrink-0 mt-0.5" />
-                    <span className="text-sm text-zinc-300 leading-relaxed font-sans">{detail}</span>
+                    <span className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans">{detail}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-zinc-800/80 flex flex-wrap items-center justify-between text-xs text-zinc-400 font-mono gap-y-2">
+            <div className="mt-8 pt-6 border-t border-zinc-800/80 flex flex-wrap items-center justify-between text-xs text-zinc-400 font-mono gap-x-4 gap-y-2">
               <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
-                POPIA & Enterprise Data Compliant
+                <ShieldCheck className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                POPIA &amp; Enterprise Data Compliant
               </span>
               <span className="text-white font-medium">Deterministic Automation Guarantee</span>
             </div>
@@ -450,20 +450,20 @@ export const ArchitectureFlow = () => {
           <div className="lg:col-span-6 flex flex-col z-10 justify-center">
             <div className="rounded-xl border border-zinc-800 bg-black overflow-hidden flex flex-col h-full shadow-2xl group relative">
               {/* Header Bar */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-900/90 border-b border-zinc-800 text-zinc-400">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block"></span>
-                  <span className="ml-2 text-zinc-300 font-mono text-[11px] tracking-wide">{activeStage.id}.render</span>
+              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-zinc-900/90 border-b border-zinc-800 text-zinc-400">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block shrink-0"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block shrink-0"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block shrink-0"></span>
+                  <span className="ml-1 sm:ml-2 text-zinc-300 font-mono text-[11px] tracking-wide truncate">{activeStage.id}.render</span>
                 </div>
-                <span className="text-[10px] font-mono text-zinc-300 font-semibold uppercase tracking-wider bg-zinc-800 px-2 py-0.5 rounded border border-zinc-700/80">
+                <span className="text-[10px] font-mono text-zinc-300 font-semibold uppercase tracking-wider bg-zinc-800 px-2 py-0.5 rounded border border-zinc-700/80 shrink-0">
                   Future State Model
                 </span>
               </div>
               
               {/* Image Frame with Aspect Ratio */}
-              <div className="relative w-full aspect-video sm:aspect-[16/10] overflow-hidden bg-zinc-950 flex-1 min-h-[260px]">
+              <div className="relative w-full aspect-video sm:aspect-[16/10] overflow-hidden bg-zinc-950 flex-1 sm:min-h-[280px]">
                 <Image
                   src={activeStage.imageSrc}
                   alt={activeStage.imageAlt}
@@ -472,13 +472,13 @@ export const ArchitectureFlow = () => {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+                <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
                 
-                {/* Future-Oriented Possibility / Business Outcome Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 text-left">
+                {/* Future-Oriented Possibility / Business Outcome Overlay (Desktop / Tablet) */}
+                <div className="hidden sm:block absolute bottom-3 left-3 right-3 text-left">
                   <div className="bg-zinc-950/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-zinc-800/80 shadow-2xl">
                     <div className="flex items-center gap-1.5 mb-1">
-                      <Sparkles className="w-3 h-3 text-white" />
+                      <Sparkles className="w-3 h-3 text-white shrink-0" />
                       <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-300 font-semibold">
                         What This Unlocks For You
                       </span>
@@ -490,10 +490,23 @@ export const ArchitectureFlow = () => {
                 </div>
               </div>
 
+              {/* Mobile Business Outcome Box (Stacked cleanly below image on narrow screens) */}
+              <div className="sm:hidden p-3.5 bg-zinc-950 border-t border-zinc-800/80 text-left">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Sparkles className="w-3 h-3 text-white shrink-0" />
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+                    What This Unlocks For You
+                  </span>
+                </div>
+                <p className="text-xs font-sans text-zinc-200 leading-relaxed font-normal">
+                  {activeStage.businessOutcome}
+                </p>
+              </div>
+
               {/* Status Footer */}
-              <div className="px-4 py-2 bg-zinc-950 border-t border-zinc-900 text-[11px] text-zinc-400 flex items-center justify-between font-mono">
+              <div className="px-4 py-2 bg-zinc-950 border-t border-zinc-900 text-[11px] text-zinc-400 flex flex-wrap items-center justify-between gap-2 font-mono">
                 <span className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                   Production Ready Pipeline
                 </span>
                 <span className="text-zinc-400 font-medium">High-Leverage ROI</span>

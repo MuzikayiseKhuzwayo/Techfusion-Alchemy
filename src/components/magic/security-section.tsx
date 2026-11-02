@@ -57,33 +57,33 @@ export const SecuritySection = () => {
   return (
     <AnimatedSection className="py-20 sm:py-28 bg-black relative overflow-hidden" id="security">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-white text-balance">
             Built for Zero Liability, Full Statutory Compliance
           </h2>
-          <p className="text-base text-zinc-400 mt-4 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-zinc-400 mt-4 leading-relaxed font-normal text-pretty">
             The biggest hesitation when hiring an automation specialist is risk: data leaks, model hallucinations, and silent pipeline failures. Techfusion Automata operates under strict South African statutes with formal legal governance.
           </p>
         </div>
 
         {/* Corporate Transparency & Subtab Hub Entry */}
-        <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-zinc-800 bg-zinc-950 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-zinc-800 bg-zinc-950 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div>
             <div className="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-1">
-              Registered Operating Business & Division
+              Registered Operating Business &amp; Division
             </div>
             <div className="text-white font-semibold text-base sm:text-lg">
               Techfusion Automata (Pty) Ltd <span className="text-zinc-500 text-sm font-normal">• Reg: 2026/399837/07</span>
             </div>
-            <div className="text-xs text-zinc-400 mt-1 max-w-xl font-sans">
+            <div className="text-xs text-zinc-400 mt-1 max-w-xl font-sans leading-relaxed">
               <strong className="text-zinc-200">Alchemy</strong> is the specialized AI and Workflow Automation engineering division under Techfusion Automata. Parent company: <a href="https://techfusion-ventures.xyz" target="_blank" rel="noopener noreferrer" className="text-white underline">Techfusion Ventures</a>.
             </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <Button asChild className="bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold px-6 py-5 shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all">
+          <div className="flex items-center gap-3 w-full lg:w-auto shrink-0">
+            <Button asChild className="w-full lg:w-auto h-auto whitespace-normal text-center bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold px-6 py-4 shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all">
               <Link href="/legal">
-                Open Full Legal & Regulatory Hub →
+                Open Full Legal &amp; Regulatory Hub →
               </Link>
             </Button>
           </div>

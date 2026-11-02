@@ -100,8 +100,8 @@ export default function LegalPage() {
             <ShieldCheck className="w-3.5 h-3.5 text-zinc-300" />
             Republic of South Africa Statutory Compliance
           </div>
-          <h1 className="text-4xl sm:text-6xl font-semibold tracking-tighter text-white mb-4">
-            Legal & Regulatory Governance
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.15] text-white mb-4 text-balance">
+            Legal &amp; Regulatory Governance
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal font-sans">
             Statutory disclosures, data privacy protocols, PAIA manual, and contractual standards governing{" "}
@@ -133,29 +133,29 @@ export default function LegalPage() {
         </div>
 
         {/* Subtabs Selector */}
-        <div className="flex overflow-x-auto gap-2 p-1.5 rounded-2xl bg-zinc-950 border border-zinc-800/80 mb-8 scrollbar-none">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 p-1.5 rounded-2xl bg-zinc-950 border border-zinc-800/80 mb-8">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`flex-1 min-w-[200px] p-3.5 rounded-xl text-left transition-all duration-200 relative flex flex-col justify-between ${
+                className={`p-3.5 rounded-xl text-left transition-all duration-200 relative flex flex-col justify-between ${
                   isActive
                     ? "bg-zinc-900 border border-zinc-400 shadow-[0_0_20px_rgba(255,255,255,0.08)] text-white"
                     : "hover:bg-zinc-900/60 border border-transparent text-zinc-400 hover:text-white"
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
                     {tab.badge}
                   </span>
-                  <div className="p-1 rounded-md bg-zinc-900 border border-zinc-800">
+                  <div className="p-1 rounded-md bg-zinc-900 border border-zinc-800 shrink-0">
                     {tab.icon}
                   </div>
                 </div>
-                <div className="text-sm font-semibold truncate">{tab.label}</div>
-                <div className="text-[11px] text-zinc-500 truncate mt-0.5">{tab.subtitle}</div>
+                <div className="text-sm font-semibold leading-snug">{tab.label}</div>
+                <div className="text-[11px] text-zinc-500 leading-snug line-clamp-1 mt-0.5">{tab.subtitle}</div>
 
                 {isActive && (
                   <motion.div
@@ -513,20 +513,20 @@ export default function LegalPage() {
         </div>
 
         {/* Action Bar */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 sm:p-7 rounded-2xl border border-zinc-800 bg-zinc-950 shadow-xl">
+        <div className="mt-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 p-6 sm:p-7 rounded-2xl border border-zinc-800 bg-zinc-950 shadow-xl">
           <div>
             <h3 className="text-base font-semibold text-white">Need a Signed Mutual NDA Before Technical Discovery?</h3>
             <p className="text-xs text-zinc-400 mt-0.5 font-sans">
               We execute mutual NDAs on Day 1 before inspecting your CRM, API keys, or operational data.
             </p>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold px-5 py-4 shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all">
+          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto shrink-0">
+            <Button asChild size="sm" className="w-full sm:w-auto h-auto whitespace-normal text-center bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold px-5 py-3 shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all">
               <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
                 Schedule Architecture Session →
               </Link>
             </Button>
-            <Button asChild variant="outline" size="sm" className="border-zinc-700 bg-zinc-900 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 hover:text-white rounded-full text-xs font-mono py-4">
+            <Button asChild variant="outline" size="sm" className="w-full sm:w-auto h-auto whitespace-normal text-center border-zinc-700 bg-zinc-900 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 hover:text-white rounded-full text-xs font-mono py-3 px-5">
               <a href="mailto:muzi@techfusion-alchemy.xyz?subject=Mutual%20NDA%20Request">
                 Request Mutual NDA
               </a>

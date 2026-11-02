@@ -43,10 +43,13 @@
   html {
     color-scheme: dark;
     background-color: #000000;
+    overflow-x: hidden;
   }
   body {
     @apply bg-black text-foreground antialiased selection:bg-zinc-800 selection:text-white;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+    overflow-wrap: break-word;
   }
 }
 

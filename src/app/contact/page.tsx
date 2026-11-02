@@ -73,7 +73,7 @@ export default function ContactPage() {
     <main className="bg-black text-zinc-200 min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 pt-32 pb-24">
       <div className="w-full max-w-4xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tighter text-white">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-white text-balance">
             Describe Your Automation Bottleneck
           </h1>
           <p className="text-xs sm:text-sm text-zinc-400 mt-3 max-w-lg mx-auto font-sans leading-relaxed">

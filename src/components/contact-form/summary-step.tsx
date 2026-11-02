@@ -37,17 +37,17 @@ export const SummaryStep = ({ formData, onEdit, onSubmit, isSubmitting }: Summar
         {entries.map(([key, value], index) => (
           <motion.div
             key={key}
-            className="flex justify-between items-start pb-4 border-b border-zinc-800 last:border-b-0"
+            className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 pb-4 border-b border-zinc-800 last:border-b-0"
             custom={index}
             initial="hidden"
             animate="visible"
             variants={summaryItemVariants}
           >
-            <div>
+            <div className="min-w-0 break-words">
               <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">{key.replace(/([A-Z])/g, ' $1')}</p>
               <p className="text-base sm:text-lg text-white font-medium mt-0.5">{value}</p>
             </div>
-            <Button variant="ghost" size="sm" onClick={() => onEdit(index)} className="text-zinc-400 hover:text-white hover:bg-zinc-900 rounded-full font-mono text-xs">
+            <Button variant="ghost" size="sm" onClick={() => onEdit(index)} className="self-start sm:self-auto shrink-0 text-zinc-400 hover:text-white hover:bg-zinc-900 rounded-full font-mono text-xs">
               <Edit className="h-3.5 w-3.5 mr-1.5" /> Edit
             </Button>
           </motion.div>
