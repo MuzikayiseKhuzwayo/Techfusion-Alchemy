@@ -47,7 +47,10 @@ export const Header = () => {
 
   useEffect(() => {
     // Prevent scrolling when mobile menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isMenuOpen]);
 
   const menuVariants = {

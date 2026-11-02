@@ -84,7 +84,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-black text-foreground selection:bg-zinc-800 selection:text-white overscroll-none`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-black text-foreground selection:bg-zinc-800 selection:text-white`}>
         <Header />
         <main className="flex-grow">
            {children}
