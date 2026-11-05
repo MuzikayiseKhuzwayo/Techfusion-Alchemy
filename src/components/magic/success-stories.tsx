@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getCalendlyUrl } from "@/lib/site-config";
 
 interface CaseStudy {
   id: string;
@@ -210,7 +211,7 @@ export const SuccessStories = () => {
             <div className="mt-8 pt-4 border-t border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-zinc-400 font-mono">
               <span className="text-zinc-400">{selectedStudy.verifiedReference}</span>
               <Link
-                href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes"
+                href={getCalendlyUrl(`case_study_${selectedStudy.id}`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-zinc-300 inline-flex items-center gap-1 font-semibold"
@@ -219,6 +220,22 @@ export const SuccessStories = () => {
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Semantic SSR Indexable Archive of All Case Studies for Search & Answer Engines */}
+        <div className="sr-only">
+          {caseStudies.map((study) => (
+            <article key={`seo-${study.id}`}>
+              <h3>{study.client} — {study.tagline}</h3>
+              <p>{study.role} ({study.timeframe}) • {study.badge} • {study.metric}</p>
+              <p>Technologies: {study.tags.join(", ")}</p>
+              <p>Operational Problem: {study.problem}</p>
+              <p>Bottleneck: {study.bottleneck}</p>
+              <p>Engineering Architecture: {study.architecture}</p>
+              <p>Production Outcome: {study.outcome}</p>
+              <p>{study.verifiedReference}</p>
+            </article>
+          ))}
         </div>
       </div>
     </AnimatedSection>

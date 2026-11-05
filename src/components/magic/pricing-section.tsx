@@ -5,6 +5,7 @@ import { Check, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "./animated-section";
 import Link from "next/link";
+import { getCalendlyUrl } from "@/lib/site-config";
 
 const engagementModels = [
   {
@@ -24,7 +25,7 @@ const engagementModels = [
     ],
     highlighted: true,
     ctaText: "Book Pilot Architecture Session",
-    ctaLink: "https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes"
+    ctaLink: getCalendlyUrl("pricing_pilot_sprint")
   },
   {
     name: "Core Pipeline Build",
@@ -152,7 +153,7 @@ export const PricingSection = () => {
           </p>
           <div className="mt-5">
             <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold px-6 py-5 shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all">
-              <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+              <Link href={getCalendlyUrl("pricing_bottom_cta")} target="_blank" rel="noopener noreferrer">
                 Book Your 30-Min Session →
               </Link>
             </Button>

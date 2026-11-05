@@ -9,6 +9,7 @@ import { MessageCircle, Send, X, User, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { AutomataIcon } from '@/components/layout/TechfusionLogo';
+import { trackChatEvent, trackLeadGenerated } from '@/lib/analytics';
 
 // --- Interfaces and Constants ---
 interface Message {
@@ -145,6 +146,7 @@ export function AlchemyChatbot() {
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+    trackChatEvent('message_sent', text.slice(0, 60));
 
     try {
       const response = await fetch(CHATBOT_WEBHOOK_URL, {
@@ -160,6 +162,9 @@ export function AlchemyChatbot() {
       if (response.ok) {
         const data = await response.json();
         botResponseText = data?.response || "I received a response I couldn't understand. Can you try rephrasing?";
+        if (data?.leadCaptured) {
+          trackLeadGenerated('ai_chatbot');
+        }
       }
 
       const botMessage: Message = { id: Date.now() + 1, text: botResponseText, sender: 'bot' };
@@ -179,8 +184,15 @@ export function AlchemyChatbot() {
     await sendUserMessage(inputValue);
   };
 
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    if (open) {
+      trackChatEvent('open');
+    }
+  };
+
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
           {/* Subtle invitation teaser when sheet is closed */}

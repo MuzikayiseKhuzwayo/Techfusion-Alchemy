@@ -23,6 +23,7 @@ import { AnimatedSection } from '@/components/magic/animated-section';
 import { Button } from '@/components/ui/button';
 import { TechfusionLogo } from '@/components/layout/TechfusionLogo';
 import Link from 'next/link';
+import { getCalendlyUrl } from '@/lib/site-config';
 
 export default function AboutPage() {
   const principles = [
@@ -202,7 +203,7 @@ export default function AboutPage() {
                 </div>
 
                 <Button asChild size="sm" className="w-full bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold py-5 shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all">
-                  <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+                  <Link href={getCalendlyUrl("about_sidebar_cta")} target="_blank" rel="noopener noreferrer">
                     Book Architecture Session With Muzi →
                   </Link>
                 </Button>
@@ -262,7 +263,7 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <Button asChild size="lg" className="bg-white hover:bg-zinc-200 text-black rounded-full px-8 text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all">
-                <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+                <Link href={getCalendlyUrl("about_bottom_cta")} target="_blank" rel="noopener noreferrer">
                   Schedule 30-Min Architecture Session →
                 </Link>
               </Button>

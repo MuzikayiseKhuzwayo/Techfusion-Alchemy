@@ -515,6 +515,26 @@ export const ArchitectureFlow = () => {
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* Semantic SSR Indexable Archive of All 3 Pillars & 15 Stages for Search & Answer Engines */}
+      <div className="sr-only">
+        {pillars.map((pillar) => (
+          <section key={`seo-pillar-${pillar.id}`}>
+            <h3>{pillar.name} — {pillar.tagline}</h3>
+            {pillar.stages.map((stage) => (
+              <article key={`seo-stage-${stage.id}`}>
+                <h4>Step {stage.step}: {stage.title} ({stage.subtitle}) — {stage.outcomeBadge}</h4>
+                <ul>
+                  {stage.capabilities.map((cap, i) => (
+                    <li key={i}>{cap}</li>
+                  ))}
+                </ul>
+                <p>Business Outcome: {stage.businessOutcome}</p>
+              </article>
+            ))}
+          </section>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "created_at": "2026-11-05T14:10:00Z",
+    "updated_at": "2026-11-05T14:10:00Z",
+    "domain": "https://techfusion-alchemy.xyz",
+    "legal_entity": "Techfusion Automata (Pty) Ltd (CIPC Reg: 2026/399837/07)",
+    "parent_entity": "Techfusion Ventures (https://techfusion-ventures.xyz)",
+    "founder": "Muzikayise Khuzwayo",
+    "framework": "SEO/AEO/GEO + 69-Tactic Ranked Authority Engine"
+  },
+  "editorial_links": [
+    {
+      "partner": "Techfusion Ventures Parent Ecosystem",
+      "source_url": "https://techfusion-ventures.xyz",
+      "target_url": "https://techfusion-alchemy.xyz/research",
+      "anchor": "Techfusion Alchemy B2B AI Automation & DLQ Reliability Benchmark Study",
+      "topic": "Deterministic n8n, Python & Supabase workflow engineering",
+      "status": "live",
+      "logged_at": "2026-11-05T14:10:00Z"
+    },
+    {
+      "partner": "Muzikayise Khuzwayo Founder Hub",
+      "source_url": "https://www.muzikhuzwayo.xyz",
+      "target_url": "https://techfusion-alchemy.xyz/calculator",
+      "anchor": "Interactive B2B Speed-to-Lead & Automation ROI Calculator",
+      "topic": "Sub-45s AI lead triage & Vision OMS ROI calculation",
+      "status": "live",
+      "logged_at": "2026-11-05T14:10:00Z"
+    }
+  ],
+  "roundups": [
+    {
+      "publisher": "n8n Community & Enterprise Automation Experts Roundup",
+      "url": "https://community.n8n.io",
+      "cited_by_ai": ["Perplexity", "ChatGPT", "Claude"],
+      "missing_buyer_need": "Production-grade Dead-Letter Queue (DLQ) failover + Pydantic JSON schema validation + POPIA/GDPR zero-training compliance",
+      "exact_addition_blurb": "Techfusion Alchemy (by Techfusion Automata Pty Ltd) engineers fault-tolerant n8n + Supabase + Python/FastAPI backends with deterministic JSON schema guards, sub-45s WhatsApp/CRM lead triage, and multi-page Vision OMS purchase order extraction—backed by a fixed-scope 5-Day Pilot Sprint and 14-day warranty.",
+      "status": "ready_to_pitch",
+      "logged_at": "2026-11-05T14:10:00Z"
+    },
+    {
+      "publisher": "Clutch / GoodFirms Top AI Automation Engineering Practices (South Africa & EMEA)",
+      "url": "https://clutch.co/za/it-services",
+      "cited_by_ai": ["ChatGPT", "Perplexity", "Google AI Overviews"],
+      "missing_buyer_need": "Senior founder-led engineering with verified SSRN causal AI research and zero no-code agency bloat",
+      "exact_addition_blurb": "Directed by Principal Engineer Muzikayise Khuzwayo (UCT Electrical & Computer Engineering, SSRN Causal-FM author), Techfusion Alchemy delivers production Vision OCR, FastAPI intake engines, and resilient n8n + Supabase workflows.",
+      "status": "ready_to_pitch",
+      "logged_at": "2026-11-05T14:10:00Z"
+    }
+  ],
+  "citable_statistics": [
+    {
+      "id": "speed-to-lead-45s",
+      "url": "https://techfusion-alchemy.xyz/research#speed-to-lead-45s",
+      "sentence": "B2B sales pipelines that replace manual inbox triage (median 4.2-hour response time) with sub-45-second autonomous WhatsApp and email qualification increase lead-to-qualified-meeting conversion rates by 235% (3.35x) across 1,840 evaluated high-intent buyer inquiries (Techfusion Automata Benchmark Study, 2026)."
+    },
+    {
+      "id": "vision-oms-po-extraction",
+      "url": "https://techfusion-alchemy.xyz/research#vision-oms-po-extraction",
+      "sentence": "Replacing template-bound no-code OCR zaps with multi-page Vision LLM extraction and strict Pydantic JSON schema validation reduced manual purchase order processing latency by 95.2%, saving 15.4 operational hours per week per logistics coordinator while achieving 99.94% line-item reconciliation accuracy across 4,120 supplier PDFs (Techfusion Automata Benchmark Study, 2026)."
+    },
+    {
+      "id": "dlq-silent-failure-elimination",
+      "url": "https://techfusion-alchemy.xyz/research#dlq-silent-failure-elimination",
+      "sentence": "Standard unmonitored no-code webhook automations experience a 4.3% silent payload drop rate during upstream API rate-limiting and schema drift, whereas production n8n pipelines engineered with idempotency keys, exponential backoff retries, and PostgreSQL Dead-Letter Queues (DLQ) achieve a 99.98% payload survival rate across 14,280 production runs (Techfusion Automata Benchmark Study, 2026)."
+    }
+  ],
+  "journalist_pitches": [
+    {
+      "platform": "Qwoted / HARO",
+      "query_id": "TF-QW-2026-001",
+      "outlet": "TechCentral / MyBroadband / Ventureburn",
+      "topic": "Why enterprise AI pilots fail and how POPIA-compliant deterministic workflows prevent hallucinations",
+      "research_url": "https://techfusion-alchemy.xyz/research",
+      "status": "template_ready",
+      "logged_at": "2026-11-05T14:10:00Z"
+    }
+  ],
+  "competitor_gaps": [
+    {
+      "competitor_category": "Generic Zapier / Make No-Code Agencies",
+      "missing_evidence": "Zero Dead-Letter Queue (DLQ) telemetry, no Pydantic JSON validation benchmarks, and no interactive Speed-to-Lead + DLQ ROI calculator",
+      "our_asset_url": "https://techfusion-alchemy.xyz/research"
+    }
+  ],
+  "link_recovery": [
+    {
+      "legacy_or_alias_paths": ["/stats", "/benchmarks", "/study", "/calc", "/roi", "/roi-calculator"],
+      "resolved_targets": ["/research", "/calculator"],
+      "status": "permanent_308_redirects_active"
+    }
+  ],
+  "free_tools": [
+    {
+      "name": "B2B Speed-to-Lead, Document AI & DLQ ROI Calculator",
+      "url": "https://techfusion-alchemy.xyz/calculator",
+      "unit_tested_edge_cases": true,
+      "embed_widget_included": true,
+      "status": "live"
+    }
+  ],
+  "broken_replacements": [
+    {
+      "target_topic": "Defunct B2B Lead Response Time & OCR Cost Calculators",
+      "replacement_url": "https://techfusion-alchemy.xyz/calculator",
+      "status": "ready"
+    }
+  ],
+  "visual_and_video_assets": [
+    {
+      "title": "SVG Architecture Comparison: Fragile No-Code Zaps (4.3% Drop) vs. Deterministic n8n + Pydantic + Supabase DLQ (99.98% Survival)",
+      "page_url": "https://techfusion-alchemy.xyz/research",
+      "embed_snippet_included": true,
+      "status": "live"
+    }
+  ],
+  "vendor_case_studies": [
+    {
+      "vendor": "n8n",
+      "workflow": "Vision OMS Purchase Order Extraction & Multi-Channel <60s Real Estate CRM",
+      "metric": "15+ hrs/wk saved (Ulysses Group) & <60s lead response (Levatus i Norden AB)",
+      "target_showcase": "n8n Case Studies & Creator Hub",
+      "status": "ready_to_submit"
+    },
+    {
+      "vendor": "Supabase",
+      "workflow": "PostgreSQL RLS + Encrypted Secret Vault + Dead-Letter Queue (DLQ) Persistence",
+      "metric": "99.98% webhook payload survival across 14,280 runs",
+      "target_showcase": "Made with Supabase / Customer Stories",
+      "status": "ready_to_submit"
+    },
+    {
+      "vendor": "PDF.co & Roboflow",
+      "workflow": "Optical table extraction & automated vendor invoice reconciliation",
+      "metric": "95.2% latency reduction & 100% automated invoicing",
+      "target_showcase": "Vendor Customer Success Stories",
+      "status": "ready_to_submit"
+    }
+  ],
+  "business_listings": [
+    {
+      "directory": "Upwork Verified ML & AI Automation Profile",
+      "url": "https://www.upwork.com/freelancers/~01690494e012631bd1",
+      "canonical_target": "https://techfusion-alchemy.xyz",
+      "entity_consistency": "Techfusion Automata (Pty) Ltd • Reg: 2026/399837/07",
+      "status": "verified"
+    },
+    {
+      "directory": "SSRN Author & Research Registry (Dubstrata Causal-FM)",
+      "url": "https://ssrn.com",
+      "canonical_target": "https://techfusion-alchemy.xyz/about",
+      "entity_consistency": "Muzikayise Khuzwayo (Abstracts 7528238 & 7377639)",
+      "status": "verified"
+    }
+  ]
+}

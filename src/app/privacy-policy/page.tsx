@@ -1,5 +1,16 @@
 // app/privacy-policy/page.tsx
+import type { Metadata } from "next";
 import { LegalPageLayout, LegalSection, PlainEnglishSummary } from "@/components/magic/legal-page";
+import { SITE_CONFIG } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy & POPIA Compliance (Zero AI Model Training)",
+  description:
+    "Privacy Policy and POPIA Act 4 of 2013 compliance for Techfusion Automata (Pty) Ltd (Reg: 2026/399837/07). Strict Zero-AI-Model-Training Guarantee and encrypted vault security.",
+  alternates: {
+    canonical: `${SITE_CONFIG.url}/privacy-policy`,
+  },
+};
 
 export default function PrivacyPolicyPage() {
   return (

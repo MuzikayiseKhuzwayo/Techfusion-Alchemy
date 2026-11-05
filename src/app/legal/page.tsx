@@ -20,6 +20,7 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TechfusionLogo } from "@/components/layout/TechfusionLogo";
+import { getCalendlyUrl } from "@/lib/site-config";
 
 type TabId = "ecta" | "popia" | "paia" | "terms" | "cybersecurity";
 
@@ -522,7 +523,7 @@ export default function LegalPage() {
           </div>
           <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto shrink-0">
             <Button asChild size="sm" className="w-full sm:w-auto h-auto whitespace-normal text-center bg-white hover:bg-zinc-200 text-black rounded-full text-xs font-semibold px-5 py-3 shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all">
-              <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+              <Link href={getCalendlyUrl("legal_nda_bar")} target="_blank" rel="noopener noreferrer">
                 Schedule Architecture Session →
               </Link>
             </Button>
@@ -532,6 +533,30 @@ export default function LegalPage() {
               </a>
             </Button>
           </div>
+        </div>
+
+        {/* Semantic SSR Indexable Summary of All 5 Statutory Tabs for Search & Answer Engines */}
+        <div className="sr-only">
+          <section>
+            <h2>ECTA Section 43 Statutory Disclosures (Act 25 of 2002)</h2>
+            <p>Full Registered Name: Techfusion Automata (Pty) Ltd. CIPC Registration Number: 2026/399837/07. Trading Division: TechFusion Alchemy. Parent Holding: Techfusion Ventures (https://techfusion-ventures.xyz). Sole Director & Principal: Muzikayise Khuzwayo (muzi@techfusion-alchemy.xyz). Operational Base: Cape Town & Johannesburg, Republic of South Africa.</p>
+          </section>
+          <section>
+            <h2>POPIA Act 4 of 2013 & Strict Zero-AI-Model-Training Guarantee</h2>
+            <p>Techfusion Automata warrants that no client data, customer database records, webhook payloads, or business workflows will ever be used to train, retrain, fine-tune, or benchmark public or proprietary LLMs. Compliant with all 8 POPIA lawful processing conditions and Section 72 cross-border transfer safeguards. Designated Information Officer: Muzikayise Khuzwayo.</p>
+          </section>
+          <section>
+            <h2>PAIA Section 51 Statutory Manual (Act 2 of 2000)</h2>
+            <p>Promotion of Access to Information Act manual for Private Body Techfusion Automata (Pty) Ltd (Reg: 2026/399837/07). Categories of records held: Statutory & Corporate, Financial & Tax, Client & Operational (SOWs, NDAs), and Proprietary Technology. Form 2 requests handled by the Information Officer.</p>
+          </section>
+          <section>
+            <h2>Master Services Agreement, CPA Section 49 & 14-Day Delivery Warranty (Act 68 of 2008)</h2>
+            <p>14-Day Production Delivery Warranty under CPA Section 54: all custom workflows and Pilot Sprints are warranted for 14 calendar days following production handover with zero-cost bug remediation. Perpetual, worldwide IP license granted upon full payment.</p>
+          </section>
+          <section>
+            <h2>Cybercrimes Act 19 of 2020, Encrypted Credential Vaults & Dead-Letter Queue (DLQ) Resilience</h2>
+            <p>All client API keys, database credentials, and webhook secrets are housed strictly inside hardware-encrypted secret vaults (Supabase Vault, AWS Secrets Manager, Doppler) using AES-256 / KMS encryption. Dead-letter queues (DLQ) and idempotency keys prevent data loss.</p>
+          </section>
         </div>
       </div>
     </main>

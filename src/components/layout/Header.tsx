@@ -9,12 +9,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { TechfusionLogo } from './TechfusionLogo';
+import { getCalendlyUrl } from '@/lib/site-config';
 
 const navLinks = [
   { href: "/#solutions", label: "Solutions" },
   { href: "/#architecture", label: "Architecture" },
   { href: "/#case-studies", label: "Case Studies" },
-  { href: "/#pricing", label: "Pilot Sprints" },
+  { href: "/research", label: "Research" },
+  { href: "/calculator", label: "ROI Calculator" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -78,7 +81,7 @@ export const Header = () => {
           <nav className="hidden lg:flex items-center gap-5 xl:gap-7 shrink-0">
             {navLinks.map(link => <NavLink key={link.href} {...link} />)}
             <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 text-xs px-4 xl:px-5 py-2 shrink-0">
-              <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+              <Link href={getCalendlyUrl("navbar_desktop")} target="_blank" rel="noopener noreferrer">
                 Architecture Session →
               </Link>
             </Button>
@@ -87,7 +90,7 @@ export const Header = () => {
           {/* Medium Screen CTA */}
           <div className="hidden md:flex lg:hidden items-center gap-4 shrink-0">
             <Button asChild size="sm" className="bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 text-xs px-4">
-              <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+              <Link href={getCalendlyUrl("navbar_tablet")} target="_blank" rel="noopener noreferrer">
                 Architecture Session →
               </Link>
             </Button>
@@ -134,7 +137,7 @@ export const Header = () => {
             </nav>
             <motion.div variants={menuItemVariants} className="mt-8 w-full max-w-xs">
               <Button asChild size="lg" className="w-full bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
+                <Link href={getCalendlyUrl("navbar_mobile")} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
                   Book Architecture Session
                 </Link>
               </Button>

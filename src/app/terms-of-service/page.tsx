@@ -1,5 +1,16 @@
 // app/terms-of-service/page.tsx
+import type { Metadata } from "next";
 import { LegalPageLayout, LegalSection, PlainEnglishSummary } from "@/components/magic/legal-page";
+import { SITE_CONFIG } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "Terms of Service & Master Services Agreement (14-Day Warranty)",
+  description:
+    "Master Services Agreement and Terms of Service for Techfusion Automata (Pty) Ltd (Reg: 2026/399837/07). Includes 14-day production delivery warranty, IP ownership, and CPA s49 notices.",
+  alternates: {
+    canonical: `${SITE_CONFIG.url}/terms-of-service`,
+  },
+};
 
 export default function TermsOfServicePage() {
   return (

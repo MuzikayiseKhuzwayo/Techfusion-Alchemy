@@ -1,0 +1,46 @@
+# Techfusion Alchemy (Techfusion Automata Pty Ltd)
+
+> Custom, deterministic AI & backend automation pipelines for high-growth businesses. Operating division of Techfusion Automata (Pty) Ltd (CIPC Reg: 2026/399837/07), a subsidiary of Techfusion Ventures, founded and led by Principal AI Engineer Muzikayise Khuzwayo.
+
+- **Canonical Website:** https://techfusion-alchemy.xyz
+- **Parent Group:** https://techfusion-ventures.xyz
+- **Founder & Principal Engineer:** Muzikayise Khuzwayo (https://www.muzikhuzwayo.xyz)
+- **Upwork Verified ML Profile:** https://www.upwork.com/freelancers/~01690494e012631bd1
+- **Official Contact Email:** muzi@techfusion-alchemy.xyz
+- **Book 30-Min Architecture Session:** https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes
+- **Operating Locations:** Cape Town & Johannesburg, Republic of South Africa (Deploying Globally)
+- **Citable Benchmark Statistics & Methodology:** https://techfusion-alchemy.xyz/research
+- **Free Interactive B2B Automation & Speed-to-Lead ROI Calculator:** https://techfusion-alchemy.xyz/calculator
+- **Full Technical & Case Study Context:** https://techfusion-alchemy.xyz/llms-full.txt
+
+## Core Technical Capabilities
+
+- **Autonomous Sales Lead Pipelines (< 45s Speed-to-Lead Moat):** Interactive ROI diagnostic intake, automated company enrichment, sub-60s personalized WhatsApp/email outreach, value-stacking nurture drips, and bi-directional CRM synchronization (HubSpot, GoHighLevel, Supabase).
+- **Vision OMS & Document AI Parsing:** Multi-page PDF purchase order and invoice table extraction, deterministic JSON/Pydantic schema validation, line-item reconciliation, and ERP/database persistence.
+- **Autonomous Marketing & Content Scaling:** Omnichannel content distribution (LinkedIn, X, Meta, newsletters), real-time retention telemetry, automated micro-budget ad boosting of top-10% organic winners, and competitor ad-library intelligence.
+- **Outcome-Driven Business Development 2.0:** POPIA/GDPR-compliant operational telemetry that evaluates real deliverables against role-calibrated benchmarks without invasive employee spyware.
+- **Mission-Critical Integration Infrastructure:** Self-hosted/enterprise n8n, Python/FastAPI microservices, Redis, PostgreSQL (Supabase), idempotency keys, exponential backoff retries, and automated Dead-Letter Queue (DLQ) Slack/Telegram alerts.
+
+## Engagement Models
+
+1. **The 5-Day Pilot Sprint (Recommended Entry):** Fixed-scope, 5-business-day delivery of 1 self-contained production workflow (e.g., lead triage, PO parsing, CRM sync) with deterministic JSON schemas, DLQ alerting, mutual NDA, and a 14-day bugfix warranty.
+2. **Core Pipeline Build:** End-to-end multi-stage automation overhaul across n8n, Supabase, FastAPI microservices, and Vision OCR with a 30-day post-deployment engineering warranty.
+3. **Fractional Automation Lead:** Dedicated senior ML & backend automation retainer directly with Muzikayise Khuzwayo (capped at 3 concurrent clients) with 24/7 DLQ monitoring and continuous workflow creation.
+
+## Verified Engineering Case Studies
+
+- **Henry Cumines / Ulysses Group Ltd (Enterprise Logistics & OMS):** Architected Vision OMS purchase order and line-item extraction pipeline using n8n, Supabase, PDF.co, and Vision LLMs. Saved 15+ hours/week with 95% latency reduction and zero dropped POs. (Reference: Dave Leng)
+- **PerformanceX / Digital Authority Partners (Enterprise SaaS & Analytics):** Head of Integrations & Automation Engineer. Built FastAPI and CRM sync client intake pipelines with continuous prompt feedback loops, accelerating client onboarding velocity by 60%. (Reference: Michael Reddy, Partner)
+- **Levatus i Norden AB (Nordic Real Estate & FinTech):** Engineered automated invoice reconciliation and conversational multi-channel real estate CRM in n8n + Roboflow, cutting lead response time from 6 hours to under 60 seconds. (Reference: Walid Valerius Namro)
+- **Dubstrata & Simulacra UAT (Autonomous Systems & Causal AI Research):** Engineered autonomous persona-based UAT testing framework and authored peer-reviewed foundation model architecture *Dubstrata Causal-FM* on SSRN (Abstract IDs: 7528238 & 7377639).
+
+## Key Site Routes
+
+- [Home & Architecture Overview](https://techfusion-alchemy.xyz/): Core solutions, 3-pillar interactive architecture flow, case studies, 5-Day Pilot Sprint pricing, and engineering FAQ.
+- [2026 B2B AI Automation & Pipeline Reliability Benchmark Research](https://techfusion-alchemy.xyz/research): Primary empirical statistics across N=14,280 production runs, methodology, and 1-click quotable findings.
+- [Interactive B2B Speed-to-Lead & Automation ROI Calculator](https://techfusion-alchemy.xyz/calculator): Free deterministic calculator modeling speed-to-lead revenue recovery, Vision OMS labor savings, and DLQ protection.
+- [About Muzikayise Khuzwayo](https://techfusion-alchemy.xyz/about): Founder story (Soweto to UCT Electrical & Computer Engineering Dean's Merit List & Dell Young Leaders Scholar), credentials, and engineering principles.
+- [Contact & Bottleneck Diagnostic Wizard](https://techfusion-alchemy.xyz/contact): Interactive 7-step project scoping wizard and direct Calendly booking link.
+- [Legal & Regulatory Governance Hub](https://techfusion-alchemy.xyz/legal): South African statutory disclosures (ECTA s43, POPIA Act 4 of 2013 Zero-AI-Model-Training Guarantee, PAIA s51 Manual, CPA s49 14-Day Warranty, Cybercrimes Act 19 of 2020 vault security).
+- [Privacy Policy & POPIA Compliance](https://techfusion-alchemy.xyz/privacy-policy): Full data privacy and zero-training warranty.
+- [Terms of Service & Master Services Agreement](https://techfusion-alchemy.xyz/terms-of-service): Contractual terms, IP licensing, and 14-day warranty.

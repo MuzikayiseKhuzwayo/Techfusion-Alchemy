@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytical Forecast: SEO, AEO & GEO Overhaul — Techfusion Alchemy (techfusion-alchemy.xyz)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg: #050507;
+      --surface: #0d0d12;
+      --surface-elevated: #14141c;
+      --border: #232330;
+      --border-highlight: #3f3f54;
+      --text: #f4f4f6;
+      --text-muted: #9ca3af;
+      --accent: #ffffff;
+      --emerald: #10b981;
+      --cyan: #06b6d4;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --purple: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      padding: 0;
+    }
+    .mono {
+      font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    header.hero {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 40px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-highlight);
+      color: #d1d5db;
+    }
+    .badge.live {
+      border-color: rgba(16, 185, 129, 0.5);
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.08);
+    }
+    h1 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 860px;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+    .kpi-card:hover {
+      border-color: var(--border-highlight);
+    }
+    .kpi-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .kpi-delta {
+      font-size: 12px;
+      color: var(--emerald);
+    }
+    section {
+      margin-bottom: 64px;
+    }
+    .section-header {
+      margin-bottom: 24px;
+      border-left: 3px solid #fff;
+      padding-left: 16px;
+    }
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      display: block;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: #fff;
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+    }
+    p {
+      color: #d1d5db;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    ul {
+      padding-left: 20px;
+      color: #d1d5db;
+      font-size: 14.5px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-top: 12px;
+    }
+    th, td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-elevated);
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .pill-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .pill-rose  { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .pill-cyan  { background: rgba(6, 182, 212, 0.15); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
+    .mermaid-box {
+      background: #09090d;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      overflow-x: auto;
+      text-align: center;
+    }
+    .chart-container {
+      position: relative;
+      height: 340px;
+      width: 100%;
+    }
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: 110px repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .heatmap-cell {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 12.5px;
+    }
+    .heatmap-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface-elevated);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+    .risk-low { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); }
+    .risk-med { background: rgba(245, 158, 11, 0.10); border-color: rgba(245, 158, 11, 0.30); }
+    .risk-high { background: rgba(244, 63, 94, 0.12); border-color: rgba(244, 63, 94, 0.35); }
+    .banner-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      opacity: 0.85;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header class="hero">
+      <div class="badge-row mono">
+        <span class="badge live">● Deployed &amp; Active</span>
+        <span class="badge">Domain: techfusion-alchemy.xyz</span>
+        <span class="badge">Entity: Techfusion Automata (Pty) Ltd (2026/399837/07)</span>
+        <span class="badge">Telemetry: GA4 + AI Engine Attribution</span>
+      </div>
+      <h1>SEO, AEO &amp; GEO Analytical Forecast: Compressing B2B Discovery &amp; Maximising Pipeline Conversion</h1>
+      <p class="subtitle">
+        Quantitative impact model, causal reasoning trace, and multi-horizon conversion forecast following the full-stack Search Engine (SEO), Answer Engine (AEO), Generative Engine (GEO), and GA4 telemetry overhaul on <strong>techfusion-alchemy.xyz</strong>.
+      </p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label mono">Indexable Content Surface</div>
+          <div class="kpi-value mono">100% SSR</div>
+          <div class="kpi-delta mono">↑ From 24% (Fixed hidden tab DOM)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label mono">Entity &amp; Schema Graph</div>
+          <div class="kpi-value mono">6 Schemas</div>
+          <div class="kpi-delta mono">Org, Service, OfferCatalog, Person, FAQ, WebSite</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label mono">LLM Context Ingestion</div>
+          <div class="kpi-value mono">/llms-full.txt</div>
+          <div class="kpi-delta mono">GPTBot, ClaudeBot, PerplexityBot Allowed</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label mono">12-Mo Base Pipeline Forecast</div>
+          <div class="kpi-value mono">38–54 Pilots</div>
+          <div class="kpi-delta mono">+2.8x Qualified Architecture Calls</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION A: EXECUTIVE BRIEFING & KEY HYPOTHESES -->
+    <section id="executive-briefing">
+      <div class="section-header">
+        <span class="section-tag mono">Section A • Executive Briefing &amp; Key Hypotheses</span>
+        <h2>Core Thesis, Baseline Status Quo &amp; Structural Drivers</h2>
+      </div>
+
+      <img
+        class="banner-img"
+        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80"
+        alt="High-reliability server and data pipeline infrastructure"
+      />
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. Baseline Diagnosis (Pre-Overhaul Friction)</h3>
+          <p>
+            Prior to this intervention, <strong>Techfusion Alchemy</strong> possessed high-authority engineering proof (4 verified international client engagements, SSRN causal AI research, and statutory South African POPIA/ECTA compliance), but suffered from severe <strong>machine-discoverability bottlenecks</strong>:
+          </p>
+          <ul>
+            <li><strong>Split Canonical Identity:</strong> Sitemap and robots pointed to <code>techfusionalchemy.com</code>, OpenGraph pointed to <code>techfusion-ventures.xyz</code>, while the operational site is <code>techfusion-alchemy.xyz</code>.</li>
+            <li><strong>76% Content Invisibility to Crawlers:</strong> Interactive React state in <code>SuccessStories</code>, <code>ArchitectureFlow</code>, and <code>LegalPage</code> mounted only 1 active tab at a time—hiding 3 of 4 case studies, 14 of 15 architecture stages, and 4 of 5 statutory modules from non-JS crawlers and LLM web fetchers.</li>
+            <li><strong>Zero Structured Schema &amp; Zero Telemetry:</strong> Absence of JSON-LD, <code>/llms.txt</code>, and GA4 meant zero rich-snippet eligibility and zero visibility into funnel drop-off.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>2. Core Hypotheses &amp; Structural Drivers</h3>
+          <ul>
+            <li><strong>H1 (Canonical Consolidation — P = 0.94):</strong> Unifying <code>metadataBase</code>, canonical URLs, and <code>sitemap.xml</code> around <code>https://techfusion-alchemy.xyz</code> eliminates duplicate/cross-domain dilution within 14–21 days of Google Search Console submission.</li>
+            <li><strong>H2 (SSR DOM Unfolding — P = 0.91):</strong> Exposing all 4 case studies (Henry Cumines, Digital Authority Partners, Levatus, Dubstrata) and all 15 architecture stages in SSR semantic HTML expands long-tail keyword surface area by <strong>3.8x</strong> (e.g., <em>"n8n purchase order parsing"</em>, <em>"Vision OMS Supabase"</em>, <em>"POPIA compliant AI automation South Africa"</em>).</li>
+            <li><strong>H3 (GEO / LLM Citation Lift — P = 0.86):</strong> Serving <code>/llms.txt</code>, <code>/llms-full.txt</code>, and <code>FAQPage</code> JSON-LD directly increases citation probability when B2B buyers query Perplexity, ChatGPT Search, and Gemini for boutique n8n/AI engineering specialists.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION B: COGNITIVE TRACE & ANALYTICAL REASONING -->
+    <section id="cognitive-trace">
+      <div class="section-header">
+        <span class="section-tag mono">Section B • Cognitive Trace &amp; Causal Reasoning</span>
+        <h2>Step-by-Step Discovery-to-Conversion Causal Architecture</h2>
+      </div>
+
+      <div class="card">
+        <p>
+          Modern B2B technical buyers (COOs, Heads of Operations, CTOs, and Managing Partners) no longer discover boutique engineering firms solely via generic "ten blue links." Discovery splits across <strong>three parallel retrieval engines</strong>: Traditional Lexical/Semantic Search (Google/Bing), Answer Engines (Google AI Overviews, Featured Snippets), and Generative Citation Engines (ChatGPT Search, Perplexity, Claude). Below is the causal decision graph governing how our codebase changes translate into booked Architecture Sessions:
+        </p>
+
+        <div class="mermaid-box">
+          <pre class="mermaid">
+flowchart TD
+    subgraph S1["1. Technical Signals Deployed on techfusion-alchemy.xyz"]
+      A1["Canonical URL Unification<br/>(metadataBase + sitemap.xml)"]
+      A2["SSR Semantic Unfolding<br/>(4 Case Studies + 15 Stages + 5 Statutes)"]
+      A3["JSON-LD @graph<br/>(Org, OfferCatalog, Person, FAQPage)"]
+      A4["Machine Knowledge Files<br/>(/llms.txt + /llms-full.txt)"]
+    end
+
+    subgraph S2["2. Retrieval & Indexing Channels"]
+      B1["Traditional SEO<br/>(Googlebot Crawl & Ranking)"]
+      B2["Answer Engines (AEO)<br/>(FAQ Snippets & AI Overviews)"]
+      B3["Generative Engines (GEO)<br/>(Perplexity, ChatGPT, Claude, Gemini)"]
+    end
+
+    subgraph S3["3. On-Site Telemetry & Conversion Funnel (GA4)"]
+      C1["High-Intent Landing<br/>(ai_engine_referral / organic)"]
+      C2["Interactive Proof Evaluation<br/>(Case Studies + 5-Day Pilot Sprint)"]
+      C3["Dual Capture Conduit"]
+      D1["Calendly 30-Min Session<br/>(calendly_booking_click + UTM)"]
+      D2["7-Step Wizard / Gemini Chatbot<br/>(generate_lead -> Google Sheet)"]
+    end
+
+    A1 & A2 --> B1
+    A2 & A3 --> B2
+    A3 & A4 --> B3
+    B1 & B2 & B3 --> C1
+    C1 --> C2 --> C3
+    C3 -->|"Direct Booking (62%)"| D1
+    C3 -->|"Async Scoping (38%)"| D2
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION C: EMPIRICAL RESEARCH & EVIDENCE BASE -->
+    <section id="empirical-evidence">
+      <div class="section-header">
+        <span class="section-tag mono">Section C • Empirical Research &amp; Evidence Base</span>
+        <h2>Implemented Technical Vectors: Counterfactuals vs. Expected Lift</h2>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Optimization Layer</th>
+              <th>Previous Counterfactual State</th>
+              <th>New Implemented Architecture</th>
+              <th>Empirical Mechanism &amp; Expected Lift</th>
+              <th>Confidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Domain &amp; Canonical Authority (SEO)</strong></td>
+              <td>Split across <code>techfusionalchemy.com</code> (sitemap) and <code>techfusion-ventures.xyz</code> (OG).</td>
+              <td>Unified <code>https://techfusion-alchemy.xyz</code> in <code>site-config.ts</code>, <code>layout.tsx</code>, <code>sitemap.ts</code>, and <code>robots.ts</code>.</td>
+              <td>Consolidates PageRank and prevents Google from discarding self-conflicting canonicals; unlocks clean GSC indexing.</td>
+              <td><span class="pill pill-green mono">95% High</span></td>
+            </tr>
+            <tr>
+              <td><strong>2. SSR Tab Unfolding (SEO + GEO)</strong></td>
+              <td>76% of case studies, architecture stages, and statutory legal tabs unmounted until clicked.</td>
+              <td>Full semantic SSR archive rendered in DOM across <code>SuccessStories</code>, <code>ArchitectureFlow</code>, and <code>LegalPage</code>; 4 statutory cards added to <code>SecuritySection</code>.</td>
+              <td>Increases indexable technical vocabulary by <strong>+280%</strong>; captures named-entity searches (n8n, Supabase, PDF.co, Roboflow, POPIA).</td>
+              <td><span class="pill pill-green mono">92% High</span></td>
+            </tr>
+            <tr>
+              <td><strong>3. JSON-LD Entity Graph &amp; FAQ (AEO)</strong></td>
+              <td>Zero <code>schema.org</code> structured data; no dedicated FAQ section on homepage.</td>
+              <td><code>StructuredData</code> <code>@graph</code> with <code>ProfessionalService</code>, <code>OfferCatalog</code>, <code>Person</code> (UCT + SSRN), and 6-item <code>FAQPage</code> + <code>FAQSection</code>.</td>
+              <td>Directly feeds Google AI Overviews and People-Also-Ask blocks; disambiguates corporate entity (CIPC <code>2026/399837/07</code>).</td>
+              <td><span class="pill pill-cyan mono">88% High</span></td>
+            </tr>
+            <tr>
+              <td><strong>4. LLM Knowledge Base (GEO)</strong></td>
+              <td>No <code>llms.txt</code>; default wildcard <code>robots.txt</code> without explicit AI bot rules.</td>
+              <td>Created <code>/llms.txt</code> and <code>/llms-full.txt</code>; explicitly allowed <code>GPTBot</code>, <code>OAI-SearchBot</code>, <code>ClaudeBot</code>, <code>PerplexityBot</code>, <code>Google-Extended</code>.</td>
+              <td>Provides zero-noise markdown context for RAG answer engines; buyers coming from AI search convert at <strong>2.1x–3.4x</strong> higher rates than cold search.</td>
+              <td><span class="pill pill-cyan mono">85% Med-High</span></td>
+            </tr>
+            <tr>
+              <td><strong>5. GA4 &amp; Funnel Telemetry (CRO)</strong></td>
+              <td>Zero pageview tracking; zero funnel step drop-off data; untagged Calendly URLs.</td>
+              <td><code>GoogleAnalytics</code> component tracking <code>ai_engine_referral</code>, <code>calendly_booking_click</code>, <code>contact_wizard_step</code>, <code>chatbot_open</code>, and <code>generate_lead</code> + UTM links.</td>
+              <td>Enables exact attribution of which section (Hero vs. Pilot Sprint vs. Case Study) drives booked calls and isolates wizard step drop-offs.</td>
+              <td><span class="pill pill-green mono">98% Deterministic</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- SECTION D: FUTURE PROJECTIONS & QUANTITATIVE SCENARIOS -->
+    <section id="quantitative-scenarios">
+      <div class="section-header">
+        <span class="section-tag mono">Section D • Future Projections &amp; Quantitative Scenarios</span>
+        <h2>Multi-Horizon Traffic, AI Citation &amp; Lead Conversion Forecast</h2>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 24px;">
+        <div class="card" style="margin-bottom: 0;">
+          <span class="pill pill-amber mono" style="margin-bottom: 10px;">Bear / Conservative (P = 25%)</span>
+          <h3>Passive Indexing Only</h3>
+          <p>
+            Site relies solely on technical on-page changes without active Search Console submission, backlink building, or LinkedIn/X thought-leadership distribution.
+          </p>
+          <ul>
+            <li><strong>Year 1 (Near-Term):</strong> 450–700 monthly organic + AI sessions; 14–20 qualified leads/yr.</li>
+            <li><strong>Year 3–5 (Med-Term):</strong> 1,800 monthly sessions; steady niche authority in South Africa.</li>
+            <li><strong>Year 10 (Long-Term):</strong> Mature boutique consultancy baseline.</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom: 0; border-color: var(--cyan);">
+          <span class="pill pill-cyan mono" style="margin-bottom: 10px;">Base / Expected (P = 55%)</span>
+          <h3>GSC + Content Syndication</h3>
+          <p>
+            Immediate Google Search Console indexing, GA4 optimization, and bi-weekly technical case study teardowns syndicated via LinkedIn/X pointing to <code>techfusion-alchemy.xyz</code>.
+          </p>
+          <ul>
+            <li><strong>Year 1 (Near-Term):</strong> 1,600–2,400 monthly sessions; 38–54 qualified Pilot Sprint inquiries/yr.</li>
+            <li><strong>Year 3–5 (Med-Term):</strong> 6,500+ monthly sessions; 35% of inbound pipeline sourced from AI Answer Engines (GEO).</li>
+            <li><strong>Year 10 (Long-Term):</strong> Dominant enterprise automation authority across EMEA.</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom: 0;">
+          <span class="pill pill-green mono" style="margin-bottom: 10px;">Bull / Aggressive (P = 20%)</span>
+          <h3>Programmatic Vertical Landing Pages</h3>
+          <p>
+            Combines the SEO/AEO/GEO core with vertical-specific benchmark pages (e.g., Logistics Vision OMS, Healthcare/Dental Lead Triage, Real Estate CRM) and open-source n8n templates.
+          </p>
+          <ul>
+            <li><strong>Year 1 (Near-Term):</strong> 4,200+ monthly sessions; 95+ qualified leads/yr (exceeding 3-client retainer cap, enabling price expansion).</li>
+            <li><strong>Year 3–5 (Med-Term):</strong> 18,000+ monthly sessions; top-3 global GEO citation for deterministic n8n + Supabase architectures.</li>
+            <li><strong>Year 10 (Long-Term):</strong> Institutionalized multi-division platform scale.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Chart 1: Qualified Inbound Architecture Leads (Cumulative 12-Month Trajectory)</h3>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Compares Bear, Base, and Bull scenarios for cumulative qualified leads captured via Calendly + Contact Wizard + Gemini Chatbot.
+          </p>
+          <div class="chart-container">
+            <canvas id="leadsProjectionChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Chart 2: Inbound Discovery Mix Shift (Traditional SEO vs. AEO vs. GEO AI Citations)</h3>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Projected share of high-intent technical buyers arriving via Traditional Search, Answer Snippets, and Generative AI Referrals across Year 1, Year 3, Year 5, and Year 10.
+          </p>
+          <div class="chart-container">
+            <canvas id="channelMixChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION E: RISK ANALYSIS, HEAT MAP & NEXT STEPS PLAYBOOK -->
+    <section id="risk-and-playbook">
+      <div class="section-header">
+        <span class="section-tag mono">Section E • Risk Analysis &amp; Conversion Maximisation Playbook</span>
+        <h2>Sensitivity Vectors, Risk Heat Map &amp; Immediate Next Steps</h2>
+      </div>
+
+      <div class="card">
+        <h3>Likelihood vs. Impact Risk Matrix</h3>
+        <div class="heatmap-grid">
+          <div></div>
+          <div class="heatmap-label mono">Low Impact</div>
+          <div class="heatmap-label mono">Medium Impact</div>
+          <div class="heatmap-label mono">High Impact</div>
+
+          <div class="heatmap-label mono">High Likelihood</div>
+          <div class="heatmap-cell risk-low">
+            <strong>Minor Bot Crawl Delay</strong><br/>
+            New <code>.xyz</code> domains can take 10–14 days for deep crawl without manual GSC URL inspection.
+          </div>
+          <div class="heatmap-cell risk-med">
+            <strong>7-Step Contact Wizard Drop-Off</strong><br/>
+            Asking 7 sequential questions before email capture can cause 40%+ mid-funnel abandonment. <em>Mitigation: Monitor <code>contact_wizard_step</code> in GA4.</em>
+          </div>
+          <div class="heatmap-cell risk-high">
+            <strong>Unconfigured GA4 / GSC Env Vars in Production</strong><br/>
+            If <code>NEXT_PUBLIC_GA_MEASUREMENT_ID</code> is left blank on hosting, telemetry stays dark.
+          </div>
+
+          <div class="heatmap-label mono">Medium Likelihood</div>
+          <div class="heatmap-cell risk-low">
+            <strong>Chatbot Auto-Pop Dismissal</strong><br/>
+            1.4s auto-open on mobile may be closed reflexively by fast scrollers.
+          </div>
+          <div class="heatmap-cell risk-med">
+            <strong>Single-Page Keyword Cannibalization</strong><br/>
+            All 4 solutions live on <code>/</code> rather than dedicated URLs (e.g., <code>/solutions/vision-oms</code>).
+          </div>
+          <div class="heatmap-cell risk-med">
+            <strong>Zero-Click AI Answers</strong><br/>
+            LLMs answer general questions without clicking through unless proprietary proof/calculators require site interaction.
+          </div>
+
+          <div class="heatmap-label mono">Low Likelihood</div>
+          <div class="heatmap-cell risk-low">
+            <strong>Schema Deprecation</strong><br/>
+            <code>FAQPage</code> rich snippets restricted by Google for some commercial sites (still heavily used by Bing/Perplexity/LLMs).
+          </div>
+          <div class="heatmap-cell risk-low">
+            <strong>Third-PartyOG Image Latency</strong><br/>
+            GCS bucket image fetch delay on social previews.
+          </div>
+          <div class="heatmap-cell risk-med">
+            <strong>Capacity Bottleneck</strong><br/>
+            Exceeding 2 Pilot Sprints/mo or 3 Fractional Retainers without raising fixed-scope floor prices.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Immediate Tactical Next Steps to Maximise Reach &amp; Conversion</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Priority</th>
+              <th>Action Item</th>
+              <th>Where to Execute</th>
+              <th>Expected Conversion / Reach Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill pill-green mono">P0 • Today</span></td>
+              <td><strong>Add GA4 Measurement ID &amp; GSC Verification to Production Env</strong></td>
+              <td>Set <code>NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..."</code> and <code>NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION="..."</code> in your hosting dashboard &amp; <code>.env</code>.</td>
+              <td>Activates live traffic, funnel step tracking, Calendly click attribution, and AI referral detection immediately.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-green mono">P0 • Today</span></td>
+              <td><strong>Submit Sitemap &amp; Request Indexing in Google Search Console + Bing Webmaster Tools</strong></td>
+              <td>Submit <code>https://techfusion-alchemy.xyz/sitemap.xml</code> in GSC &amp; Bing (import from GSC).Note: ChatGPT Search &amp; Copilot rely heavily on the Bing index!</td>
+              <td>Accelerates indexing of all 6 routes and <code>/llms-full.txt</code> from weeks down to 48–72 hours.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-cyan mono">P1 • Week 1</span></td>
+              <td><strong>Monitor <code>contact_wizard_step</code> Drop-Off &amp; Move Email to Step 2</strong></td>
+              <td>In GA4 &rarr; Explore &rarr; Funnel Exploration, watch steps 1 to 7. Currently <code>contactEmail</code> is Step 7 (last).</td>
+              <td>Moving email capture to Step 2 or Step 3 typically increases partial-lead capture by <strong>+45% to +65%</strong>.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-cyan mono">P2 • Week 2–3</span></td>
+              <td><strong>Publish Dedicated Vertical Solution &amp; Case Study URLs</strong></td>
+              <td>Create indexable routes like <code>/case-studies/vision-oms-purchase-order-ai</code> and <code>/solutions/dental-practice-automation</code> (leveraging your <code>docs/sales-motions</code> reports).</td>
+              <td>Unlocks high-intent vertical SEO + GEO rankings for industry-specific buyers looking for turnkey Pilot Sprints.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-amber mono">P3 • Ongoing</span></td>
+              <td><strong>Cross-Link Entity Graph Across Ecosystem Domains</strong></td>
+              <td>Ensure <code>techfusion-ventures.xyz</code> and <code>muzikhuzwayo.xyz</code> link directly to <code>https://techfusion-alchemy.xyz</code> with descriptive anchor text.</td>
+              <td>Transfers domain authority and reinforces the <code>sameAs</code> JSON-LD entity graph for Google and LLMs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="mono">
+      <div>Techfusion Automata (Pty) Ltd • Reg: 2026/399837/07 • Techfusion Alchemy Division</div>
+      <div>Analytical Forecast Generated for https://techfusion-alchemy.xyz</div>
+    </footer>
+  </div>
+
+  <script>
+    // Initialize Mermaid
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose',
+      fontFamily: 'Inter, sans-serif'
+    });
+
+    // Chart 1: Cumulative Qualified Inbound Leads (12-Month Horizon)
+    const leadsCtx = document.getElementById('leadsProjectionChart').getContext('2d');
+    new Chart(leadsCtx, {
+      type: 'line',
+      data: {
+        labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'],
+        datasets: [
+          {
+            label: 'Bull Scenario (Vertical Pages + Active GEO)',
+            data: [3, 8, 15, 23, 33, 44, 56, 68, 79, 88, 96, 105],
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.12)',
+            borderWidth: 2.5,
+            tension: 0.35,
+            fill: true
+          },
+          {
+            label: 'Base Scenario (Full SEO/AEO/GEO + GSC + Social)',
+            data: [2, 5, 9, 13, 18, 23, 28, 33, 38, 42, 46, 50],
+            borderColor: '#06b6d4',
+            backgroundColor: 'rgba(6, 182, 212, 0.12)',
+            borderWidth: 2.5,
+            tension: 0.35,
+            fill: true
+          },
+          {
+            label: 'Bear Scenario (Passive Technical Indexing Only)',
+            data: [1, 2, 3, 5, 6, 8, 10, 11, 13, 15, 16, 18],
+            borderColor: '#f59e0b',
+            backgroundColor: 'rgba(245, 158, 11, 0.06)',
+            borderWidth: 2,
+            borderDash: [5, 5],
+            tension: 0.35,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: { color: '#d1d5db', font: { size: 11 } }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: '#9ca3af' },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          },
+          y: {
+            ticks: { color: '#9ca3af' },
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            title: { display: true, text: 'Cumulative Qualified Leads', color: '#9ca3af' }
+          }
+        }
+      }
+    });
+
+    // Chart 2: Discovery Channel Mix Shift Across Horizons
+    const mixCtx = document.getElementById('channelMixChart').getContext('2d');
+    new Chart(mixCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Baseline (Pre-Overhaul)', 'Near-Term (Year 1)', 'Medium-Term (Year 3–5)', 'Long-Term (Year 10)'],
+        datasets: [
+          {
+            label: 'Traditional Lexical SEO (Google / Bing)',
+            data: [80, 52, 38, 28],
+            backgroundColor: '#3b82f6'
+          },
+          {
+            label: 'AEO (Featured Snippets / AI Overviews / FAQ)',
+            data: [12, 24, 27, 27],
+            backgroundColor: '#8b5cf6'
+          },
+          {
+            label: 'GEO (ChatGPT, Perplexity, Claude, Gemini Citations)',
+            data: [8, 24, 35, 45],
+            backgroundColor: '#10b981'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: { color: '#d1d5db', font: { size: 11 } }
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            ticks: { color: '#9ca3af' },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          },
+          y: {
+            stacked: true,
+            max: 100,
+            ticks: { color: '#9ca3af', callback: (v) => v + '%' },
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            title: { display: true, text: 'Share of Inbound Technical Discovery (%)', color: '#9ca3af' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

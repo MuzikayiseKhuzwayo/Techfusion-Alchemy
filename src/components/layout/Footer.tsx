@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowUp, ExternalLink, ShieldCheck, Mail, MapPin, Scale } from "lucide-react";
 import { AnimatedSection } from '../magic/animated-section';
 import { TechfusionLogo } from './TechfusionLogo';
+import { getCalendlyUrl } from '@/lib/site-config';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -54,7 +55,10 @@ export const Footer = () => {
               <li><Link href="/#solutions" className="hover:text-white transition-colors">Solutions</Link></li>
               <li><Link href="/#architecture" className="hover:text-white transition-colors">Data Flow & DLQ</Link></li>
               <li><Link href="/#case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+              <li><Link href="/research" className="hover:text-white transition-colors">Benchmark Research</Link></li>
+              <li><Link href="/calculator" className="hover:text-white transition-colors">ROI Calculator</Link></li>
               <li><Link href="/#pricing" className="hover:text-white transition-colors">Pilot Sprints</Link></li>
+              <li><Link href="/#faq" className="hover:text-white transition-colors">Engineering FAQ</Link></li>
               <li><Link href="/about" className="hover:text-white transition-colors">About Muzi</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
@@ -83,7 +87,7 @@ export const Footer = () => {
             </p>
             <div className="pt-2">
               <Link
-                href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes"
+                href={getCalendlyUrl("footer_cta")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-5 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-semibold text-xs shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all text-center"

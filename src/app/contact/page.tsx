@@ -7,6 +7,8 @@ import { useFormStore, FormData } from '@/lib/store';
 import { FormProgress } from '@/components/contact-form/form-progress';
 import { QuestionStep } from '@/components/contact-form/question-step';
 import { SummaryStep } from '@/components/contact-form/summary-step';
+import { getCalendlyUrl } from '@/lib/site-config';
+import { trackContactStep, trackLeadGenerated } from '@/lib/analytics';
 
 const questions = [
   { id: 'name', question: "Let's start with your name.", type: 'text' },
@@ -35,12 +37,11 @@ export default function ContactPage() {
   }, [reset]);
 
   const handleNext = () => {
+    const currentQ = questions[step];
+    if (currentQ) {
+      trackContactStep(step, currentQ.id);
+    }
     nextStep();
-  };
-
-  const handleUpdateAndNext = (field: keyof FormData, value: string) => {
-    setFormData({ [field]: value });
-    // For a better UX, you might not auto-advance on textarea
   };
 
   const handleSubmit = async () => {
@@ -58,6 +59,7 @@ export default function ContactPage() {
       const result = await response.json();
       console.log("Webhook response:", result);
 
+      trackLeadGenerated('contact_wizard', formData.companyName);
       router.push('/contact/thank-you');
     } catch (error) {
       console.error('An error occurred:', error);
@@ -79,7 +81,7 @@ export default function ContactPage() {
           <p className="text-xs sm:text-sm text-zinc-400 mt-3 max-w-lg mx-auto font-sans leading-relaxed">
             Need an immediate technical review? You can also{" "}
             <a
-              href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes"
+              href={getCalendlyUrl("contact_page_header")}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white underline font-medium hover:text-zinc-300"

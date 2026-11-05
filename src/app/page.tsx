@@ -31,9 +31,11 @@ import { ArchitectureFlow } from "@/components/magic/architecture-flow";
 import { SuccessStories } from "@/components/magic/success-stories";
 import { SecuritySection } from "@/components/magic/security-section";
 import { PricingSection } from "@/components/magic/pricing-section";
+import { FAQSection } from "@/components/magic/faq-section";
 import { InfiniteMovingLogos } from "@/components/magic/infinite-moving-logos";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getCalendlyUrl } from "@/lib/site-config";
 
 export default function Home() {
   const offeringsRef = useRef<HTMLDivElement>(null);
@@ -220,7 +222,10 @@ export default function Home() {
       {/* 7. Security, Privacy & POPIA Section (Step 4) */}
       <SecuritySection />
 
-      {/* 8. Final CTA Section */}
+      {/* 8. Technical & Commercial FAQ Section (AEO / GEO) */}
+      <FAQSection />
+
+      {/* 9. Final CTA Section */}
       <AnimatedSection className="py-20 sm:py-28 text-center bg-black border-t border-zinc-900">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 text-zinc-300 text-xs font-mono mb-6">
@@ -235,7 +240,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3.5 sm:gap-4 max-w-md sm:max-w-none mx-auto">
             <Button asChild size="lg" className="w-full sm:w-auto h-auto whitespace-normal text-center bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_25px_rgba(255,255,255,0.2)] px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base">
-              <Link href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes" target="_blank" rel="noopener noreferrer">
+              <Link href={getCalendlyUrl("home_final_cta")} target="_blank" rel="noopener noreferrer">
                 Book Architecture Session →
               </Link>
             </Button>

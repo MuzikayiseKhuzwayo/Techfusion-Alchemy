@@ -66,6 +66,40 @@ export const SecuritySection = () => {
           </p>
         </div>
 
+        {/* 4 Statutory Framework Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          {legalFrameworks.map((fw) => (
+            <Link
+              key={fw.tabId}
+              href={`/legal#${fw.tabId}`}
+              className="group p-6 rounded-2xl border border-zinc-800/80 bg-zinc-950/70 hover:border-zinc-600 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white">
+                    {fw.icon}
+                  </div>
+                  <span className="text-[11px] font-mono text-zinc-300 bg-zinc-900 px-3 py-1 rounded-full border border-zinc-800">
+                    {fw.statute}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-zinc-200 transition-colors">
+                  {fw.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
+                  {fw.description}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-zinc-900 flex items-center justify-between text-xs font-mono text-zinc-400 group-hover:text-white transition-colors">
+                <span>{fw.badge}</span>
+                <span className="inline-flex items-center gap-1">
+                  Read Statutory Notice <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
         {/* Corporate Transparency & Subtab Hub Entry */}
         <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-zinc-800 bg-zinc-950 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div>

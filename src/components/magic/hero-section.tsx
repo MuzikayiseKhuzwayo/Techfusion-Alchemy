@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { fadeIn, staggerContainer } from "@/lib/motion";
 import { ArrowRight, ShieldCheck, CheckCircle2, Terminal, ExternalLink } from "lucide-react";
+import { getCalendlyUrl } from "@/lib/site-config";
 
 export const HeroSection = ({ scrollToOfferings }: { scrollToOfferings: () => void }) => {
   return (
@@ -89,7 +90,7 @@ export const HeroSection = ({ scrollToOfferings }: { scrollToOfferings: () => vo
             className="group w-full sm:w-auto h-auto whitespace-normal text-center bg-white hover:bg-zinc-200 text-black font-semibold rounded-full shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.02] transition-all duration-300 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base"
           >
             <Link
-              href="https://calendly.com/khuzwayomuzikayise/automated-growth-systems-consultation-30-minutes"
+              href={getCalendlyUrl("hero_primary_cta")}
               target="_blank"
               rel="noopener noreferrer"
             >
